@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Orbitron&display=swap");
+
+body {
+  background-color: #f1f0ec;
+}
+
+/* ----------HEADER---------- */
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292826;
+  height: 60px;
+  padding: 0 60px;
+}
+
+.searchbar-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  color: #f4563c;
+  font-size: 36px;
+  font-family: "Cooper Black", sans-serif;
+  cursor: default;
+  user-select: none;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-links > a {
+  font-family: "ATF Franklin Gothic", sans-serif;
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.searchbar {
+  width: 350px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 75px;
+  border: 1px solid black;
+}
+
+.search-btn {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  height: 23px;
+  background-color: #e0dbdb;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 1px;
+}
+
+/* ----------PSEUDO CLASSES---------- */
+
+.page:hover {
+  /* text-decoration: underline; */
+  padding-bottom: 2px;
+  border-bottom: 2px solid white;
+}
+
+.searchbar:focus {
+  outline: none;
+}
+
+.search-btn:hover {
+  background-color: rgb(224 219 219 / 70%);
+}

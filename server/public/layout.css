@@ -1,0 +1,8 @@
+.row {
+  display: flex;
+  height: inherit;
+}
+
+.column-third {
+  flex-basis: calc(100% / 3);
+}
