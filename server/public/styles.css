@@ -86,7 +86,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 415px;
+  height: 480px;
 }
 
 .banner-flex {
@@ -97,8 +97,8 @@ body {
 
 .banner {
   position: relative;
-  height: 350px;
-  width: 1000px;
+  width: 1100px;
+  height: 400px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px;
 }
@@ -132,11 +132,11 @@ body {
 
 /* ----------HOME EVENTS---------- */
 
-.local-event-container {
+.local-events-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  height: 400px;
 }
 
 .local-events-flex {
@@ -146,14 +146,55 @@ body {
 }
 
 .local-events {
-  height: 275px;
+  height: 400px;
   width: 1300px;
-  border: 2px solid black;
   border-radius: 20px;
 }
 
-/* ----------PSEUDO CLASSES---------- */
+.local-events-header {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  margin-top: 0;
+}
 
+.local-events-card-container {
+  display: flex;
+  align-content: center;
+  margin: 0 50px;
+  height: 340px;
+  width: 1300px;
+  padding: 20px 0;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.event-card-container {
+  flex-shrink: 0;
+  width: 280px;
+  height: 300px;
+  margin: 0 20px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+}
+
+.event-image-container {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 280px;
+  height: 200px;
+}
+
+.event-image-container > img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+/* ----------PSEUDO CLASSES---------- */
 .pages:hover {
   border-bottom-color: white;
 }
@@ -168,4 +209,8 @@ body {
 
 .banner-icons:hover {
   color: white;
+}
+
+.local-events-card-container::-webkit-scrollbar {
+  display: none;
 }
