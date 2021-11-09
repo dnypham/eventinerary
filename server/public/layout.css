@@ -3,6 +3,10 @@
   height: inherit;
 }
 
+.column-full {
+  flex-basis: 100%;
+}
+
 .column-third {
   flex-basis: calc(100% / 3);
 }

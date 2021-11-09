@@ -74,12 +74,62 @@ body {
   position: absolute;
   right: 0;
   top: 1px;
+  user-select: none;
+}
+
+/* ----------HOME BANNER---------- */
+
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 425px;
+}
+
+.banner-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  position: relative;
+  height: 350px;
+  width: 1000px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+}
+
+.banner > img {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  user-select: none;
+}
+
+.dot-container {
+  position: absolute;
+  display: flex;
+  left: 15px;
+  bottom: 10px;
+}
+
+.banner-icons {
+  cursor: pointer;
+  color: white;
+  padding: 0;
+  margin: 0 3px;
+  user-select: none;
+}
+
+.dot-active {
+  color: gray;
 }
 
 /* ----------PSEUDO CLASSES---------- */
 
 .page:hover {
-  /* text-decoration: underline; */
   padding-bottom: 2px;
   border-bottom: 2px solid white;
 }
@@ -90,4 +140,8 @@ body {
 
 .search-btn:hover {
   background-color: rgb(224 219 219 / 70%);
+}
+
+.dot-container > i:hover {
+  color: gray;
 }
