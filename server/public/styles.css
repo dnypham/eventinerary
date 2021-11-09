@@ -162,7 +162,7 @@ body {
   display: flex;
   align-content: center;
   margin: 0 50px;
-  height: 340px;
+  height: 360px;
   width: 1300px;
   padding: 20px 0;
   overflow-y: hidden;
@@ -170,12 +170,15 @@ body {
 }
 
 .event-card-container {
+  cursor: pointer;
   flex-shrink: 0;
   width: 280px;
   height: 300px;
   margin: 0 20px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px;
+  transform: scale(1);
+  transition-duration: 0.5s;
 }
 
 .event-image-container {
@@ -192,6 +195,14 @@ body {
   width: 100%;
   object-fit: cover;
   user-select: none;
+}
+
+.local-event-title {
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
 }
 
 /* ----------PSEUDO CLASSES---------- */
@@ -211,6 +222,6 @@ body {
   color: white;
 }
 
-.local-events-card-container::-webkit-scrollbar {
-  display: none;
+.event-card-container:hover {
+  transform: scale(1.1);
 }
