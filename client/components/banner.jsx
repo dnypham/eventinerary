@@ -29,12 +29,12 @@ export default class Banner extends React.Component {
     clearInterval(this.carousel);
 
     this.carousel = setInterval(() => {
-      if (this.state.index === 2) {
+      if (this.state.index === this.imageArray.length - 1) {
         this.setState({ index: 0 });
       } else {
         this.setState({ index: this.state.index + 1 });
       }
-    }, 5000);
+    }, 6000);
   }
 
   handleImage() {
@@ -51,34 +51,10 @@ export default class Banner extends React.Component {
     this.setState({ index: number });
   }
 
-  getStatus1() {
-    const index = this.state.index;
-
-    if (index === 0) {
-      return 'dot-active';
-    } else {
-      return '';
-    }
-  }
-
-  getStatus2() {
-    const index = this.state.index;
-
-    if (index === 1) {
-      return 'dot-active';
-    } else {
-      return '';
-    }
-  }
-
-  getStatus3() {
-    const index = this.state.index;
-
-    if (index === 2) {
-      return 'dot-active';
-    } else {
-      return '';
-    }
+  createDots() {
+    return this.imageArray.map((img, index) => (
+      <i onClick={this.handleClick} key={index} data-id={index} className={`fas fa-circle fa-1x banner-icons ${index === this.state.index ? 'dot-active' : ''}`} />
+    ));
   }
 
   render() {
@@ -89,9 +65,7 @@ export default class Banner extends React.Component {
             <div className="banner">
               <img src={this.handleImage()} alt={this.handleAlt()}></img>
               <div className="dot-container">
-                <i data-id="0" className={`fas fa-circle fa-1x banner-icons ${this.getStatus1()}`} onClick={this.handleClick}></i>
-                <i data-id="1" className={`fas fa-circle fa-1x banner-icons ${this.getStatus2()}`} onClick={this.handleClick}></i>
-                <i data-id="2" className={`fas fa-circle fa-1x banner-icons ${this.getStatus3()}`} onClick={this.handleClick}></i>
+                {this.createDots()}
               </div>
             </div>
           </div>
