@@ -117,14 +117,14 @@ body {
 
 .banner-icons {
   cursor: pointer;
-  color: white;
+  color: gray;
   padding: 0;
   margin: 0 3px;
   user-select: none;
 }
 
 .dot-active {
-  color: gray;
+  color: white;
 }
 
 /* ----------PSEUDO CLASSES---------- */
@@ -142,6 +142,6 @@ body {
   background-color: rgb(224 219 219 / 70%);
 }
 
-.dot-container > i:hover {
-  color: gray;
+.banner-icons:hover {
+  color: white;
 }
