@@ -75,6 +75,9 @@ body {
   right: 0;
   top: 1px;
   user-select: none;
+  text-decoration: none;
+  padding: 4px 10px 0;
+  color: black;
 }
 
 /* ----------HOME BANNER---------- */
