@@ -7,8 +7,7 @@ export default class LocalEvents extends React.Component {
     this.state = {
       events: [],
       meta: [],
-      location: '',
-      ip: []
+      location: ''
     };
   }
 
@@ -72,9 +71,6 @@ export default class LocalEvents extends React.Component {
   }
 
   render() {
-    console.log(this.state.ip);
-    console.log(this.state.events);
-    console.log(this.state.meta);
     return (
       <>
         <div className="local-events-container">
