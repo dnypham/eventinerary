@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Orbitron&display=swap");
+
+body {
+  background-color: #f1f0ec;
+}
+
+/* ----------HEADER---------- */
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292826;
+  height: 55px;
+  padding: 0 60px;
+}
+
+.searchbar-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  color: #f4563c;
+  font-size: 36px;
+  font-family: "Cooper Black", sans-serif;
+  cursor: default;
+  user-select: none;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.pages {
+  font-family: "ATF Franklin Gothic", sans-serif;
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.searchbar {
+  width: 350px;
+  height: 25px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 75px;
+  border: 1px solid black;
+}
+
+.search-btn {
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
+  height: 23px;
+  background-color: #e0dbdb;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  right: 0;
+  top: 1px;
+  user-select: none;
+}
+
+/* ----------HOME BANNER---------- */
+
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 480px;
+}
+
+.banner-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  position: relative;
+  width: 1100px;
+  height: 400px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+}
+
+.banner > img {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  user-select: none;
+}
+
+.dot-container {
+  position: absolute;
+  display: flex;
+  left: 15px;
+  bottom: 10px;
+}
+
+.banner-icons {
+  cursor: pointer;
+  color: gray;
+  padding: 0;
+  margin: 0 3px;
+  user-select: none;
+}
+
+.dot-active {
+  color: white;
+}
+
+/* ----------HOME EVENTS---------- */
+
+.local-events-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.local-events-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.local-events {
+  height: 400px;
+  width: 1300px;
+  border-radius: 20px;
+}
+
+.local-events-header {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  margin-top: 0;
+}
+
+.local-events-card-container {
+  display: flex;
+  align-content: center;
+  margin: 0 50px;
+  height: 360px;
+  width: 1300px;
+  padding: 20px 0;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.event-card-container {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  width: 280px;
+  height: 300px;
+  margin: 0 20px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  border-radius: 20px;
+  transform: scale(1);
+  transition-duration: 0.5s;
+}
+
+.event-image-container {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  width: 280px;
+  height: 200px;
+}
+
+.event-image-container > img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  user-select: none;
+  border-bottom: 1px solid #292826;
+}
+
+.local-event-info-container {
+  width: 280px;
+  height: 100px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 5px 15px;
+}
+
+.local-event-time-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.local-event-time {
+  font-family: Montserrat, sans-serif;
+  color: black;
+  margin: 0;
+  font-size: 10px;
+  text-align: start;
+}
+
+.local-event-title {
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.local-event-venue {
+  font-family: Montserrat, sans-serif;
+  color: gray;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.local-event-location {
+  position: absolute;
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  font-size: 10px;
+  text-align: end;
+  padding-top: 3px;
+  bottom: 5px;
+  right: 15px;
+  color: gray;
+}
+
+/* ----------FOOTER---------- */
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292826;
+  height: 30px;
+  padding: 0 60px;
+  margin-top: 50px;
+}
+
+/* ----------PSEUDO CLASSES---------- */
+.pages:hover {
+  color: #f4563c;
+}
+
+.searchbar:focus {
+  outline: none;
+}
+
+.search-btn:hover {
+  background-color: rgb(224 219 219 / 70%);
+}
+
+.banner-icons:hover {
+  color: white;
+}
+
+.event-card-container:hover {
+  transform: scale(1.1);
+}
