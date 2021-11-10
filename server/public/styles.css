@@ -246,6 +246,18 @@ body {
   color: gray;
 }
 
+/* ----------FOOTER---------- */
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292826;
+  height: 30px;
+  padding: 0 60px;
+  margin-top: 50px;
+}
+
 /* ----------PSEUDO CLASSES---------- */
 .pages:hover {
   color: #f4563c;

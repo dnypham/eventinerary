@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/header';
+import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
 import Itinerary from './pages/itinerary';
@@ -41,6 +42,7 @@ export default class App extends React.Component {
       <>
         <Header />
         {this.renderPage()}
+        <Footer />
       </>
     );
   }
