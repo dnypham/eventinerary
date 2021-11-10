@@ -92,7 +92,11 @@ export default function convertDateTime(dateTime) {
     newTime = `12:${minute}AM`;
   }
 
-  const datetime = `${newDate} at ${newTime}`;
+  const datetime = {
+    dateAndTime: `${newDate} at ${newTime}`,
+    date: newDate,
+    time: newTime
+  };
 
   return datetime;
 }

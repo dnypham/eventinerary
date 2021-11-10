@@ -46,9 +46,6 @@ body {
   text-decoration: none;
   color: white;
   margin: 0 10px;
-  padding-bottom: 2px;
-  border-bottom: 3px solid #292826;
-  transition: 0.4s ease-in-out;
 }
 
 .search-container {
@@ -170,6 +167,7 @@ body {
 }
 
 .event-card-container {
+  position: relative;
   cursor: pointer;
   flex-shrink: 0;
   width: 280px;
@@ -203,28 +201,54 @@ body {
   height: 100px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  padding: 5px 15px;
+}
+
+.local-event-time-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.local-event-time {
+  font-family: Montserrat, sans-serif;
+  color: black;
+  margin: 0;
+  font-size: 10px;
+  text-align: start;
 }
 
 .local-event-title {
   font-family: Montserrat, sans-serif;
   margin: 0;
-  padding-top: 8px;
   font-size: 14px;
   text-align: center;
+  padding-top: 5px;
 }
 
 .local-event-venue {
   font-family: Montserrat, sans-serif;
   color: gray;
   margin: 0;
-  padding: 3px;
   font-size: 12px;
   text-align: center;
+  padding-top: 3px;
+}
+
+.local-event-location {
+  position: absolute;
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  font-size: 10px;
+  text-align: end;
+  padding-top: 3px;
+  bottom: 5px;
+  right: 15px;
+  color: gray;
 }
 
 /* ----------PSEUDO CLASSES---------- */
 .pages:hover {
-  border-bottom-color: white;
+  color: #f4563c;
 }
 
 .searchbar:focus {

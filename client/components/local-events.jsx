@@ -18,7 +18,7 @@ export default class LocalEvents extends React.Component {
       .then(data => {
         this.setState({ ip: data });
         this.setState({ location: data.city + ', ' + data.regionName });
-        fetch('http://api.seatgeek.com/2/events/?per_page=20&geoip=' + data.ip + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+        fetch('http://api.seatgeek.com/2/events/?per_page=50&geoip=' + data.ip + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
           .then(request => request.json())
           .then(data => {
             this.setState({
@@ -38,9 +38,13 @@ export default class LocalEvents extends React.Component {
           <img src={event.performers[0].image}></img>
         </div>
         <div className="local-event-info-container">
+          <div className="local-event-time-container">
+            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).date}`}</h6>
+            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).time}`}</h6>
+          </div>
           <h6 className="local-event-title">{event.performers[0].name}</h6>
           <h6 className="local-event-venue">{event.venue.name}</h6>
-          <p>{convertDateTime(event.datetime_local)}</p>
+          <h6 className="local-event-location">{event.venue.display_location}</h6>
         </div>
       </div>
     ));
@@ -55,8 +59,13 @@ export default class LocalEvents extends React.Component {
           <img src={event.performers[0].image}></img>
         </div>
         <div className="local-event-info-container">
+          <div className="local-event-time-container">
+            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).date}`}</h6>
+            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).time}`}</h6>
+          </div>
           <h6 className="local-event-title">{event.performers[0].name}</h6>
           <h6 className="local-event-venue">{event.venue.name}</h6>
+          <h6 className="local-event-location">{event.venue.display_location}</h6>
         </div>
       </div>
     ));
