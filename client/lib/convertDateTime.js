@@ -11,29 +11,29 @@ export default function convertDateTime(dateTime) {
   const [year, month, day] = dateArray;
 
   if (month === '01') {
-    newDate = `Jan ${day} ${year}`;
+    newDate = `Jan ${day}, ${year}`;
   } else if (month === '02') {
-    newDate = `Feb ${day} ${year}`;
+    newDate = `Feb ${day}, ${year}`;
   } else if (month === '03') {
-    newDate = `Mar ${day} ${year}`;
+    newDate = `Mar ${day}, ${year}`;
   } else if (month === '04') {
-    newDate = `Apr ${day} ${year}`;
+    newDate = `Apr ${day}, ${year}`;
   } else if (month === '05') {
-    newDate = `May ${day} ${year}`;
+    newDate = `May ${day}, ${year}`;
   } else if (month === '06') {
-    newDate = `Jun ${day} ${year}`;
+    newDate = `Jun ${day}, ${year}`;
   } else if (month === '07') {
-    newDate = `Jul ${day} ${year}`;
+    newDate = `Jul ${day}, ${year}`;
   } else if (month === '08') {
-    newDate = `Aug ${day} ${year}`;
+    newDate = `Aug ${day}, ${year}`;
   } else if (month === '09') {
-    newDate = `Sep ${day} ${year}`;
+    newDate = `Sep ${day}, ${year}`;
   } else if (month === '10') {
-    newDate = `Oct ${day} ${year}`;
+    newDate = `Oct ${day}, ${year}`;
   } else if (month === '11') {
-    newDate = `Nov ${day} ${year}`;
+    newDate = `Nov ${day}, ${year}`;
   } else if (month === '12') {
-    newDate = `Dec ${day} ${year}`;
+    newDate = `Dec ${day}, ${year}`;
   }
 
   const time = dateAndTime[1];
