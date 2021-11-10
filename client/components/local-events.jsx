@@ -1,4 +1,5 @@
 import React from 'react';
+import convertDateTime from '../lib/convertDateTime';
 
 export default class LocalEvents extends React.Component {
   constructor(props) {
@@ -36,7 +37,11 @@ export default class LocalEvents extends React.Component {
         <div className="event-image-container">
           <img src={event.performers[0].image}></img>
         </div>
-        <h6 className="local-event-title">{event.title}</h6>
+        <div className="local-event-info-container">
+          <h6 className="local-event-title">{event.performers[0].name}</h6>
+          <h6 className="local-event-venue">{event.venue.name}</h6>
+          <p>{convertDateTime(event.datetime_local)}</p>
+        </div>
       </div>
     ));
   }
@@ -49,7 +54,10 @@ export default class LocalEvents extends React.Component {
         <div className="event-image-container">
           <img src={event.performers[0].image}></img>
         </div>
-        <h6 className="local-event-title">{event.title}</h6>
+        <div className="local-event-info-container">
+          <h6 className="local-event-title">{event.performers[0].name}</h6>
+          <h6 className="local-event-venue">{event.venue.name}</h6>
+        </div>
       </div>
     ));
   }
