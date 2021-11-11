@@ -30,7 +30,6 @@ export default class App extends React.Component {
     fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
       .then(request => request.json())
       .then(data => {
-        console.log(data);
         this.setState({
           performer: data.performers[0]
         });
@@ -65,8 +64,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.searchResults);
-    console.log(this.state.meta);
     return (
       <>
         <Header search={this.getSearchResults}/>
