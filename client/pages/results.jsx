@@ -28,7 +28,9 @@ export default function Results(props) {
               <h1 className="search-results-header-text">{props.results[0].performers[0].name.toUpperCase()}</h1>
             </div>
           </div>
+          <div className="rendered-events-container">
           {renderEvents()}
+          </div>
         </div>
       </div>
     </div>

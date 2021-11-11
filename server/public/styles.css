@@ -252,7 +252,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 925px;
+  height: 900px;
 }
 
 .search-events-flex {
@@ -267,7 +267,6 @@ body {
   height: 800px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px;
-  overflow-y: auto;
 }
 
 .search-results-header-container {
@@ -301,6 +300,13 @@ body {
   color: #f4563c;
 }
 
+.rendered-events-container {
+  height: 640px;
+  width: inherit;
+  border-bottom-left-radius: 20px;
+  overflow-y: auto;
+}
+
 .test {
   border: 1px solid black;
   cursor: pointer;
@@ -329,6 +335,7 @@ body {
   align-items: center;
   height: 80px;
   flex-basis: 80%;
+  background-color: white;
 }
 
 .search-events-venue-container > h3 {

@@ -16,7 +16,7 @@ export default class Searchbar extends React.Component {
   }
 
   handleClick(event) {
-    const search = this.state.value;
+    const search = this.state.value.trim().replaceAll(' ', '-');
 
     this.props.search(search);
 

@@ -25,7 +25,7 @@ export default class App extends React.Component {
   }
 
   getSearchResults(search) {
-    fetch('https://api.seatgeek.com/2/events?q=' + search + '&per_page=50&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+    fetch('https://api.seatgeek.com/2/events?performers.slug=' + search + '&per_page=50&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
       .then(request => request.json())
       .then(data => {
         this.setState({
