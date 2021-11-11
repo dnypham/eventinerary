@@ -296,6 +296,22 @@ body {
   color: #f4563c;
 }
 
+.font-size-1 {
+  font-size: 58px;
+}
+
+.font-size-2 {
+  font-size: 42px;
+}
+
+.font-size-3 {
+  font-size: 32px;
+}
+
+.font-size-4 {
+  font-size: 24px;
+}
+
 .rendered-events-container {
   height: 640px;
   width: inherit;
@@ -375,20 +391,4 @@ body {
 
 .event-card-container:hover {
   transform: scale(1.1);
-}
-
-.font-size-1 {
-  font-size: 58px;
-}
-
-.font-size-2 {
-  font-size: 42px;
-}
-
-.font-size-3 {
-  font-size: 32px;
-}
-
-.font-size-4 {
-  font-size: 24px;
 }

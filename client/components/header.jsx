@@ -27,7 +27,7 @@ export default class Header extends React.Component {
         <div className="column-third">
           <div className="nav-flex">
             <nav className="nav-links">
-              <a className="pages" href="#trips">Trips</a>
+              <a className="pages" href="#saved-events">Saved Events</a>
               <a className="pages" href="#contact">Contact</a>
               <a className="pages" href="#log-in">Log In</a>
             </nav>

@@ -54,8 +54,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.searchResults);
-    console.log(this.state.meta);
     return (
       <>
         <Header search={this.getSearchResults}/>
