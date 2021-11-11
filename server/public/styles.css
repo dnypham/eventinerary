@@ -269,10 +269,6 @@ body {
   border-radius: 20px;
 }
 
-.search-results-header-container {
-  display: flex;
-}
-
 .search-results-image {
   flex-basis: 20%;
   height: 160px;
@@ -317,7 +313,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 80px;
-  flex-basis: 20%;
+  flex-basis: 20.3%;
   background-color: #292826;
 }
 
@@ -342,6 +338,10 @@ body {
   font-family: Montserrat, sans-serif;
   font-size: 20px;
   font-weight: bold;
+}
+
+.search-events-location {
+  color: gray;
 }
 
 /* ----------FOOTER---------- */
@@ -375,4 +375,20 @@ body {
 
 .event-card-container:hover {
   transform: scale(1.1);
+}
+
+.font-size-1 {
+  font-size: 58px;
+}
+
+.font-size-2 {
+  font-size: 42px;
+}
+
+.font-size-3 {
+  font-size: 32px;
+}
+
+.font-size-4 {
+  font-size: 24px;
 }
