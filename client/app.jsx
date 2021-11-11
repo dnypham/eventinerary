@@ -43,7 +43,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'results') {
-      return <Results search={this.state.searchResults}/>;
+      return <Results results={this.state.searchResults}/>;
     }
     if (route.path === 'itinerary') {
       return <Itinerary />;
@@ -54,7 +54,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <>
         <Header search={this.getSearchResults}/>
