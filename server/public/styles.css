@@ -248,14 +248,14 @@ body {
 
 /* ----------RESULTS COMPONENT---------- */
 
-.search-events-container {
+.events-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 900px;
 }
 
-.search-events-flex {
+.events-flex {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -358,6 +358,20 @@ body {
 
 .search-events-location {
   color: gray;
+}
+
+.no-events-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-events-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 56px;
+  font-weight: bold;
 }
 
 /* ----------FOOTER---------- */
