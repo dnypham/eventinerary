@@ -25,6 +25,10 @@ export default class Banner extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.carousel);
+  }
+
   handleCarousel() {
     clearInterval(this.carousel);
 

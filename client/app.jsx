@@ -12,7 +12,6 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       route: parseRoute(window.location.hash),
-      searchTerm: '',
       searchResults: [],
       meta: []
     };
@@ -26,13 +25,14 @@ export default class App extends React.Component {
   }
 
   getSearchResults(search) {
-    this.setState({ searchTerm: search });
     fetch('https://api.seatgeek.com/2/events?q=' + search + '&per_page=50&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
       .then(request => request.json())
       .then(data => {
         this.setState({
           searchResults: data.events,
           meta: data.meta
+        }, () => {
+          location.hash = '#results';
         });
       });
   }
@@ -57,7 +57,7 @@ export default class App extends React.Component {
     console.log(this.state);
     return (
       <>
-        <Header search={this.getSearchResults} searchTerm={this.state.searchTerm} getSearchTerm={this.getSearchTerm}/>
+        <Header search={this.getSearchResults}/>
         {this.renderPage()}
         <Footer />
       </>

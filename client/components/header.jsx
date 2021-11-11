@@ -7,7 +7,7 @@ export default class Header extends React.Component {
       <header className="header-container">
         <div className="column-third">
           <div className="searchbar-flex">
-            <Searchbar search={this.props.search} searchTerm={this.props.searchTerm} getSearchTerm={this.props.getSearchTerm}/>
+            <Searchbar search={this.props.search}/>
           </div>
         </div>
         <div className="column-third">
