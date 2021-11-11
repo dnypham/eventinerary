@@ -11,8 +11,12 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: parseRoute(window.location.hash)
+      route: parseRoute(window.location.hash),
+      searchResults: [],
+      performer: [],
+      meta: []
     };
+    this.getSearchResults = this.getSearchResults.bind(this);
   }
 
   componentDidMount() {
@@ -21,13 +25,35 @@ export default class App extends React.Component {
     });
   }
 
+  getSearchResults(search) {
+
+    fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+      .then(request => request.json())
+      .then(data => {
+        this.setState({
+          performer: data.performers[0]
+        });
+        fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+          .then(request => request.json())
+          .then(data => {
+            this.setState({
+              searchResults: data.events,
+              meta: data.meta
+            }, () => {
+              location.hash = '#results';
+            });
+          });
+      });
+
+  }
+
   renderPage() {
     const { route } = this.state;
     if (route.path === '') {
       return <Home />;
     }
     if (route.path === 'results') {
-      return <Results />;
+      return <Results results={this.state.searchResults} performer={this.state.performer}/>;
     }
     if (route.path === 'itinerary') {
       return <Itinerary />;
@@ -40,7 +66,7 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Header search={this.getSearchResults}/>
         {this.renderPage()}
         <Footer />
       </>
