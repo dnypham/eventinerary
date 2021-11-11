@@ -2,6 +2,15 @@ import React from 'react';
 import Searchbar from './searchbar';
 
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    location.hash = '';
+  }
+
   render() {
     return (
       <header className="header-container">
@@ -12,7 +21,7 @@ export default class Header extends React.Component {
         </div>
         <div className="column-third">
           <div className="logo-flex">
-            <h1 className="logo">Eventinerary</h1>
+            <h1 className="logo" onClick={this.handleClick}>Eventinerary</h1>
           </div>
         </div>
         <div className="column-third">

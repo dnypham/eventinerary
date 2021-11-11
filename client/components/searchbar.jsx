@@ -8,14 +8,16 @@ export default class Searchbar extends React.Component {
     });
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
 
-  handleClick(event) {
+  handleSubmit(event) {
+    event.preventDefault();
+
     const search = this.state.value.trim().replaceAll(' ', '-');
 
     this.props.search(search);
@@ -25,10 +27,12 @@ export default class Searchbar extends React.Component {
 
   render() {
     return (
-      <div className="search-container">
-        <input className="searchbar" value={this.state.value} onChange={this.handleChange} placeholder="Search for artist, sports team, or venue"></input>
-        <button className="search-btn" onClick={this.handleClick}>SEARCH</button>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <div className="search-container">
+          <input required className="searchbar" value={this.state.value} onChange={this.handleChange} placeholder="Search for artist, sports team, or venue"></input>
+          <button className="search-btn">SEARCH</button>
+        </div>
+      </form>
     );
   }
 }

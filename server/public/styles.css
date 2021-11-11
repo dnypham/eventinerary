@@ -31,7 +31,7 @@ body {
   color: #f4563c;
   font-size: 36px;
   font-family: "Cooper Black", sans-serif;
-  cursor: default;
+  cursor: pointer;
   user-select: none;
 }
 
