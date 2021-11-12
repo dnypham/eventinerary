@@ -31,7 +31,7 @@ export default class Results extends React.Component {
 
     if (this.props.results.length !== 0) {
       return this.props.results.map((event, index) => (
-        <div key={event.id} data-id={event.id} className="row test" onClick={() => this.handleClick(event.id)}>
+        <div key={event.id} data-id={event.id} className="row rendered-event" onClick={() => this.handleClick(event.id)}>
           <div className="search-events-date-container">
             <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
           </div>
