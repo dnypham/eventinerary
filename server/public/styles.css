@@ -395,6 +395,7 @@ body {
   height: 600px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px;
+  background-color: white;
 }
 
 .event-info-image {
@@ -422,6 +423,100 @@ body {
   margin: 0;
   user-select: none;
   color: #f4563c;
+}
+
+.event-info-map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  width: 100%;
+}
+
+.map-outline {
+  height: 200px;
+  width: 500px;
+  border: 1px solid black;
+}
+
+.event-info-text-container {
+  height: 175px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.event-card-title {
+  text-align: center;
+  font-size: 28px;
+}
+
+.event-card-info-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.event-info-line-space {
+  line-height: 5px;
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
+
+.event-card-venue-name {
+  font-size: 18px;
+}
+
+.event-card-info-address {
+  font-size: 16px;
+  color: gray;
+}
+
+.event-card-info-date {
+  font-size: 18px;
+}
+
+.event-card-info-time {
+  color: gray;
+  font-size: 16px;
+  text-align: center;
+}
+
+.event-info-btn-container {
+  background-color: #292826;
+  height: 75px;
+  width: 100%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 175px;
+}
+
+.tickets-btn {
+  font-family: "ATF Franklin Gothic", sans-serif;
+  cursor: pointer;
+  height: 40px;
+  width: 90px;
+  border-radius: 5px;
+  border: none;
+  padding: 0 5px;
+  font-size: 14px;
+  background-color: #f4563c;
+  color: white;
+}
+
+.save-event-btn {
+  font-family: "ATF Franklin Gothic", sans-serif;
+  cursor: pointer;
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  border: none;
+  padding: 0 5px;
+  font-size: 14px;
+  background-color: #50c878;
+  color: white;
 }
 
 /* ----------FOOTER---------- */
@@ -456,4 +551,12 @@ body {
 
 .event-card-container:hover {
   transform: scale(1.1);
+}
+
+.tickets-btn:hover {
+  background-color: rgb(244 86 60 / 80%);
+}
+
+.save-event-btn:hover {
+  background-color: rgb(80 200 120 / 80%);
 }
