@@ -76,7 +76,7 @@ export default class App extends React.Component {
       return <Trips />;
     }
     if (route.path === 'event') {
-      return <Event />;
+      return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
     }
   }
 
