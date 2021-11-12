@@ -1,29 +1,37 @@
 import React from 'react';
 import convertDateTime from '../lib/convertDateTime';
 
-export default function Results(props) {
+export default class Results extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  function getFontSize() {
+  handleClick(eventId) {
+    this.props.getEventInfo(eventId);
+  }
+
+  getFontSize() {
     let fontSize = '';
 
-    if (props.performer.name.length > 41) {
+    if (this.props.performer.name.length > 41) {
       fontSize = 'font-size-4';
-    } else if (props.performer.name.length > 32) {
+    } else if (this.props.performer.name.length > 32) {
       fontSize = 'font-size-3';
-    } else if (props.performer.name.length > 26) {
+    } else if (this.props.performer.name.length > 26) {
       fontSize = 'font-size-2';
-    } else if (props.performer.name.length > 12) {
+    } else if (this.props.performer.name.length > 12) {
       fontSize = 'font-size-1';
     }
 
     return fontSize;
   }
 
-  function renderEvents() {
+  renderEvents() {
 
-    if (props.results.length !== 0) {
-      return props.results.map((event, index) => (
-        <div key={event.id} className="row test">
+    if (this.props.results.length !== 0) {
+      return this.props.results.map((event, index) => (
+        <div key={event.id} data-id={event.id} className="row rendered-event" onClick={() => this.handleClick(event.id)}>
           <div className="search-events-date-container">
             <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
           </div>
@@ -42,21 +50,23 @@ export default function Results(props) {
 
   }
 
-  return (
-    <div className="events-container">
-      <div className="events-flex">
-        <div className="search-results-container">
-          <div className="row">
-            <img className="search-results-image" src={props.performer.image}></img>
-            <div className="search-results-header-text-container">
-              <h1 className={`search-results-header-text ${getFontSize()}`}>{props.performer.name.toUpperCase()}</h1>
+  render() {
+    return (
+      <div className="events-container">
+        <div className="events-flex">
+          <div className="search-results-container">
+            <div className="row">
+              <img className="search-results-image" src={this.props.performer.image}></img>
+              <div className="search-results-header-text-container">
+                <h1 className={`search-results-header-text ${this.getFontSize()}`}>{this.props.performer.name.toUpperCase()}</h1>
+              </div>
             </div>
-          </div>
-          <div className="rendered-events-container">
-          {renderEvents()}
+            <div className="rendered-events-container">
+            {this.renderEvents()}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

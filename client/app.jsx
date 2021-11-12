@@ -3,6 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
+import Event from './pages/event';
 import Itinerary from './pages/itinerary';
 import Trips from './pages/trips';
 import parseRoute from './lib/parse-route';
@@ -14,9 +15,11 @@ export default class App extends React.Component {
       route: parseRoute(window.location.hash),
       searchResults: [],
       performer: [],
-      meta: []
+      meta: [],
+      eventInfo: []
     };
     this.getSearchResults = this.getSearchResults.bind(this);
+    this.getEventInfo = this.getEventInfo.bind(this);
   }
 
   componentDidMount() {
@@ -44,7 +47,18 @@ export default class App extends React.Component {
             });
           });
       });
+  }
 
+  getEventInfo(eventId) {
+    fetch('https://api.seatgeek.com/2/events/' + eventId + '?client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+      .then(request => request.json())
+      .then(data => {
+        this.setState({
+          eventInfo: data
+        }, () => {
+          location.hash = '#event';
+        });
+      });
   }
 
   renderPage() {
@@ -53,7 +67,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'results') {
-      return <Results results={this.state.searchResults} performer={this.state.performer}/>;
+      return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer}/>;
     }
     if (route.path === 'itinerary') {
       return <Itinerary />;
@@ -61,9 +75,14 @@ export default class App extends React.Component {
     if (route.path === 'trips') {
       return <Trips />;
     }
+    if (route.path === 'event') {
+      return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
+    }
   }
 
   render() {
+    console.log(this.state.eventInfo);
+    console.log(this.state.searchResults);
     return (
       <>
         <Header search={this.getSearchResults}/>
