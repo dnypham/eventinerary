@@ -8,7 +8,6 @@ export default class Results extends React.Component {
   }
 
   handleClick(eventId) {
-    console.log(eventId);
     this.props.getEventInfo(eventId);
   }
 

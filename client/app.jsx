@@ -3,6 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
+import Event from './pages/event';
 import Itinerary from './pages/itinerary';
 import Trips from './pages/trips';
 import parseRoute from './lib/parse-route';
@@ -73,6 +74,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'trips') {
       return <Trips />;
+    }
+    if (route.path === 'event') {
+      return <Event />;
     }
   }
 
