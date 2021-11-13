@@ -6,7 +6,7 @@ drop schema "public" cascade;
 
 create schema "public";
 
-CREATE TABLE "public.users" (
+CREATE TABLE "users" (
 	"userId" serial NOT NULL,
 	"username" TEXT NOT NULL,
 	"firstName" TEXT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE "public.users" (
 
 
 
-CREATE TABLE "public.locations" (
+CREATE TABLE "locations" (
 	"locationId" serial NOT NULL,
 	"location" TEXT,
 	"time" TEXT,
@@ -37,7 +37,7 @@ CREATE TABLE "public.locations" (
 
 
 
-CREATE TABLE "public.itineraries" (
+CREATE TABLE "itineraries" (
 	"itineraryId" serial NOT NULL,
 	"eventId" integer NOT NULL,
 	"userId" integer NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE "public.itineraries" (
 
 
 
-CREATE TABLE "public.events" (
+CREATE TABLE "events" (
 	"eventId" serial NOT NULL,
 	"userId" integer NOT NULL,
 	"seatgeekEventId" integer NOT NULL,
