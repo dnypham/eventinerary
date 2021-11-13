@@ -7,6 +7,23 @@ export default class Event extends React.Component {
     this.state = {
 
     };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    const id = this.props.eventInfo.id;
+
+    fetch('api/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(id)
+    })
+      .then(request => request.json())
+      .then(data => {
+        console.log(data);
+      });
   }
 
   render() {
@@ -42,7 +59,7 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-btn-container">
               <button className="tickets-btn">TICKETS</button>
-              <button className="save-event-btn">SAVE EVENT</button>
+              <button className="save-event-btn" onClick={this.handleClick}>SAVE EVENT</button>
             </div>
           </div>
         </div>

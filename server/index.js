@@ -1,7 +1,15 @@
 require('dotenv/config');
 const express = require('express');
+const pg = require('pg');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
+
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 const app = express();
 

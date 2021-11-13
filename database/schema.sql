@@ -13,7 +13,7 @@ CREATE TABLE "users" (
 	"lastName" TEXT NOT NULL,
 	"password" TEXT NOT NULL,
 	"email" TEXT NOT NULL,
-	"createdAt" TEXT NOT NULL,
+	"createdAt" TIMESTAMP NOT NULL default now(),
 	CONSTRAINT "users_pk" PRIMARY KEY ("userId")
 ) WITH (
   OIDS=FALSE
