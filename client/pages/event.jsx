@@ -11,16 +11,18 @@ export default class Event extends React.Component {
   }
 
   handleClick(event) {
-    const id = this.props.eventInfo.id;
+    const seatgeekEventId = {
+      seatgeekEventId: this.props.eventInfo.id
+    };
 
-    fetch('api/events', {
+    fetch('/api/events', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(id)
+      body: JSON.stringify(seatgeekEventId)
     })
-      .then(request => request.json())
+      .then(res => res.text())
       .then(data => {
         console.log(data);
       });
