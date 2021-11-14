@@ -4,6 +4,7 @@ import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
 import Event from './pages/event';
+import SavedEvents from './pages/saved-events';
 import Itinerary from './pages/itinerary';
 import Trips from './pages/trips';
 import parseRoute from './lib/parse-route';
@@ -77,6 +78,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'event') {
       return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
+    }
+    if (route.path === 'saved-events') {
+      return <SavedEvents />;
     }
   }
 
