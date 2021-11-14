@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default function SavedEvents(props) {
-  return (
-    <>
-    </>
-  );
+export default class SavedEvents extends React.Component {
+  render() {
+    return (
+      <>
+      </>
+    );
+  }
 }
