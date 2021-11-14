@@ -554,7 +554,7 @@ body {
 }
 
 .saved-events-list-container {
-  height: 50px;
+  height: 70px;
   width: 100%;
   display: flex;
   background-color: #292826;
@@ -567,7 +567,46 @@ body {
 .saved-events-list-container > h2 {
   font-family: Montserrat, sans-serif;
   font-weight: bold;
+  font-size: 32px;
   color: #f4563c;
+}
+
+.rendered-saved-events-container {
+  height: 650px;
+  width: inherit;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow-y: auto;
+}
+
+.saved-events-date-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex-basis: 30%;
+  background-color: #292826;
+}
+
+.saved-events-date-container > h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f4563c;
+}
+
+.saved-events-venue-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex-basis: 70%;
+}
+
+.saved-events-venue-container > h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* ----------FOOTER---------- */

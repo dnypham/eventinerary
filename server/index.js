@@ -27,7 +27,7 @@ app.post('/api/events', (req, res, next) => {
   const sql = `
     INSERT INTO "events" ("userId", "seatgeekEventId", "performer", "performerImage")
          VALUES ($1, $2, $3, $4)
-    RETURNING *
+    RETURNING *;
   `;
   const params = [userId, seatgeekEventId, performer, performerImage];
 
@@ -37,6 +37,19 @@ app.post('/api/events', (req, res, next) => {
       res.status(201).json(event);
     })
     .catch(err => next(err));
+});
+
+app.get('/api/events', (req, res) => {
+  const sql = `
+    SELECT *
+    FROM "events"
+    WHERE "userId" = 1;
+  `;
+
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    });
 });
 
 app.listen(process.env.PORT, () => {
