@@ -51,6 +51,8 @@ CREATE TABLE "itineraries" (
 CREATE TABLE "events" (
 	"eventId" serial NOT NULL,
 	"userId" integer NOT NULL,
+	"performer" TEXT NOT NULL,
+	"performerImage" TEXT NOT NULL,
 	"seatgeekEventId" integer NOT NULL,
 	CONSTRAINT "events_pk" PRIMARY KEY ("eventId")
 ) WITH (

@@ -4,15 +4,15 @@ import convertDateTime from '../lib/convertDateTime';
 export default class Event extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
 
-    };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(event) {
-    const seatgeekEventId = {
-      seatgeekEventId: this.props.eventInfo.id
+  handleClick() {
+    const event = {
+      seatgeekEventId: this.props.eventInfo.id,
+      performer: this.props.performer.name,
+      performerImage: this.props.performer.image
     };
 
     fetch('/api/events', {
@@ -20,7 +20,7 @@ export default class Event extends React.Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(seatgeekEventId)
+      body: JSON.stringify(event)
     })
       .then(res => res.text())
       .then(data => {
