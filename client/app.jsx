@@ -6,7 +6,6 @@ import Results from './pages/results';
 import Event from './pages/event';
 import SavedEvents from './pages/saved-events';
 import Itinerary from './pages/itinerary';
-import Trips from './pages/trips';
 import parseRoute from './lib/parse-route';
 
 export default class App extends React.Component {
