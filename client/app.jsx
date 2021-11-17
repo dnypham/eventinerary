@@ -31,13 +31,13 @@ export default class App extends React.Component {
 
   getSearchResults(search) {
 
-    fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+    fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=' + process.env.SEATGEEK_API_KEY)
       .then(request => request.json())
       .then(data => {
         this.setState({
           performer: data.performers[0]
         });
-        fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+        fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=' + process.env.SEATGEEK_API_KEY)
           .then(request => request.json())
           .then(data => {
             this.setState({
