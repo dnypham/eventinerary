@@ -14,7 +14,7 @@ export default class SavedEvents extends React.Component {
       .then(request => request.json())
       .then(events => {
         const seatgeekEventFetches = events.map(event => {
-          return fetch('https://api.seatgeek.com/2/events/' + event.seatgeekEventId + '?client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+          return fetch('https://api.seatgeek.com/2/events/' + event.seatgeekEventId + '?client_id=' + process.env.SEATGEEK_API_KEY)
             .then(response => response.json())
             .then(data => {
               data.performer = event.performer;

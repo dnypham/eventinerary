@@ -51,7 +51,7 @@ export default class App extends React.Component {
   }
 
   getEventInfo(eventId) {
-    fetch('https://api.seatgeek.com/2/events/' + eventId + '?client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+    fetch('https://api.seatgeek.com/2/events/' + eventId + '?client_id=' + process.env.SEATGEEK_API_KEY)
       .then(request => request.json())
       .then(data => {
         this.setState({
@@ -72,9 +72,6 @@ export default class App extends React.Component {
     }
     if (route.path === 'itinerary') {
       return <Itinerary />;
-    }
-    if (route.path === 'trips') {
-      return <Trips />;
     }
     if (route.path === 'event') {
       return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
