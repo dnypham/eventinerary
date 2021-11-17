@@ -4,9 +4,28 @@ import convertDateTime from '../lib/convertDateTime';
 export default class Event extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
 
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const event = {
+      seatgeekEventId: this.props.eventInfo.id,
+      performer: this.props.performer.name,
+      performerImage: this.props.performer.image
     };
+
+    fetch('/api/events', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(event)
+    })
+      .then(res => res.text())
+      .then(data => {
+        console.log(data);
+      });
   }
 
   render() {
@@ -42,7 +61,7 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-btn-container">
               <button className="tickets-btn">TICKETS</button>
-              <button className="save-event-btn">SAVE EVENT</button>
+              <button className="save-event-btn" onClick={this.handleClick}>SAVE EVENT</button>
             </div>
           </div>
         </div>

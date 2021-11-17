@@ -17,7 +17,7 @@ export default class LocalEvents extends React.Component {
       .then(data => {
         this.setState({ ip: data });
         this.setState({ location: data.city + ', ' + data.regionName });
-        fetch('https://api.seatgeek.com/2/events/?per_page=50&geoip=' + data.ip + '&client_id=OTEzNzY5NnwxNjM1Nzk3ODUzLjE2OTAyNTI')
+        fetch('https://api.seatgeek.com/2/events/?per_page=50&geoip=' + data.ip + '&client_id=' + process.env.SEATGEEK_API_KEY)
           .then(request => request.json())
           .then(data => {
             this.setState({
