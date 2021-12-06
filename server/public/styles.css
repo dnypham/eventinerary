@@ -288,47 +288,31 @@ body {
 
 /* ----------EVENT VIEW---------- */
 
-.event-info-layout-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.e-info-lyt-ctr {
   height: 700px;
 }
 
-.event-info-layout-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.event-info-container {
-  position: relative;
+.e-info-ctr {
   width: 600px;
   height: 600px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-  border-radius: 20px;
   background-color: white;
 }
 
-.event-info-image {
+.e-info-img {
   flex-basis: 20%;
   height: 100px;
-  border-top-left-radius: 20px;
   object-fit: cover;
   user-select: none;
 }
 
-.event-info-header-text-container {
+.e-info-hdr-txt-ctr {
   height: 100px;
   flex-basis: 80%;
-  display: flex;
   background-color: #292826;
-  justify-content: center;
-  align-items: center;
-  border-top-right-radius: 20px;
 }
 
-.event-info-header-text {
+.e-info-hdr-txt {
   font-family: Montserrat, sans-serif;
   font-size: 38px;
   font-weight: bold;
@@ -337,10 +321,7 @@ body {
   color: #f4563c;
 }
 
-.event-info-map-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.e-info-map-ctr {
   height: 250px;
   width: 100%;
 }
@@ -351,86 +332,51 @@ body {
   border: 1px solid black;
 }
 
-.event-info-text-container {
+.e-info-txt-ctr {
   height: 175px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 50px;
 }
 
-.event-card-title {
+.e-card-title {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   text-align: center;
   font-size: 28px;
 }
 
-.event-card-info-flex-space-between {
-  display: flex;
-  justify-content: space-between;
-}
-
-.event-info-line-space {
-  line-height: 5px;
-  margin: 0;
+.e-info-txt-ctr-2 {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
+  line-height: 5px;
+  margin: 0;
 }
 
-.event-card-venue-name {
-  font-size: 18px;
-}
-
-.event-card-info-address {
-  font-size: 16px;
-  color: gray;
-}
-
-.event-card-info-date {
-  font-size: 18px;
-}
-
-.event-card-info-time {
-  color: gray;
-  font-size: 16px;
-  text-align: center;
-}
-
-.event-info-btn-container {
+.e-info-btn-ctr {
   background-color: #292826;
   height: 75px;
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 175px;
 }
 
-.tickets-btn {
-  font-family: "ATF Franklin Gothic", sans-serif;
+.e-info-btn {
   cursor: pointer;
   height: 40px;
-  width: 90px;
   border-radius: 5px;
   border: none;
   padding: 0 5px;
   font-size: 14px;
-  background-color: #f4563c;
   color: white;
 }
 
+.tickets-btn {
+  width: 90px;
+  background-color: #f4563c;
+}
+
 .save-event-btn {
-  font-family: "ATF Franklin Gothic", sans-serif;
-  cursor: pointer;
-  height: 40px;
   width: 120px;
-  border-radius: 5px;
-  border: none;
-  padding: 0 5px;
-  font-size: 14px;
   background-color: #50c878;
-  color: white;
 }
 
 /* ----------SAVED EVENTS VIEW---------- */
