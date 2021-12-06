@@ -1,9 +1,15 @@
+/* ----------FONTS---------- */
+
 .ft-cooper-black {
   font-family: "Cooper Black", sans-serif;
 }
 
 .ft-atf-franklin-gothic {
   font-family: "ATF Franklin Gothic", sans-serif;
+}
+
+.ft-montseratt {
+  font-family: Montseratt, sans-serif;
 }
 
 .row {
@@ -38,4 +44,17 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+.pst-rel {
+  position: relative;
+}
+
+.pst-abs {
+  position: absolute;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
 }
