@@ -181,36 +181,25 @@ body {
 
 /* ----------RESULTS COMPONENT---------- */
 
-.events-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.events-ctr {
   height: 900px;
 }
 
-.events-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-results-container {
-  position: relative;
+.sr-ctr {
   width: 1200px;
   height: 800px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px 20px 0;
 }
 
-.search-results-image {
+.sr-img {
   flex-basis: 20%;
   height: 160px;
-  border-top-left-radius: 20px;
   object-fit: cover;
   user-select: none;
 }
 
-.search-results-header-text-container {
+.sr-hdr-txt-ctr {
   height: 160px;
   flex-basis: 80%;
   display: flex;
@@ -220,7 +209,7 @@ body {
   border-top-right-radius: 20px;
 }
 
-.search-results-header-text {
+.sr-hdr-txt {
   font-family: Montserrat, sans-serif;
   font-size: 96px;
   font-weight: bold;
@@ -229,26 +218,25 @@ body {
   color: #f4563c;
 }
 
-.font-size-1 {
+.ft-size-1 {
   font-size: 58px;
 }
 
-.font-size-2 {
+.ft-size-2 {
   font-size: 42px;
 }
 
-.font-size-3 {
+.ft-size-3 {
   font-size: 32px;
 }
 
-.font-size-4 {
+.ft-size-4 {
   font-size: 24px;
 }
 
-.rendered-events-container {
+.rendered-events-ctr {
   height: 640px;
   width: inherit;
-  border-bottom-left-radius: 20px;
   overflow-y: auto;
 }
 
@@ -257,51 +245,42 @@ body {
   cursor: pointer;
 }
 
-.search-events-date-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.se-date-ctr {
   height: 80px;
   flex-basis: 20.3%;
   background-color: #292826;
 }
 
-.search-events-date-container > h3 {
+.se-date-ctr > h3 {
   font-family: Montserrat, sans-serif;
   font-size: 28px;
   font-weight: bold;
   color: #f4563c;
 }
 
-.search-events-venue-container {
-  display: flex;
+.se-venue-ctr {
+  background-color: white;
   padding-left: 30px;
-  justify-content: flex-start;
-  align-items: center;
   height: 80px;
   flex-basis: 80%;
-  background-color: white;
 }
 
-.search-events-venue-container > h3 {
+.se-venue-ctr > h3 {
   font-family: Montserrat, sans-serif;
   font-size: 20px;
   font-weight: bold;
 }
 
-.search-events-location {
+.se-location {
   color: gray;
 }
 
-.no-events-container {
+.no-events-ctr {
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.no-events-text {
+.no-events-txt {
   font-family: Montserrat, sans-serif;
   font-size: 56px;
   font-weight: bold;
