@@ -1,15 +1,41 @@
+.ft-cooper-black {
+  font-family: "Cooper Black", sans-serif;
+}
+
+.ft-atf-franklin-gothic {
+  font-family: "ATF Franklin Gothic", sans-serif;
+}
+
 .row {
   display: flex;
 }
 
-.column-full {
+.col-full {
   flex-basis: 100%;
 }
 
-.column-third {
+.col-third {
   flex-basis: calc(100% / 3);
 }
 
 .margin-top {
   margin-top: 40px;
+}
+
+.flex-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-s {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.flex-e {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

@@ -7,42 +7,19 @@ body {
 /* ----------HEADER---------- */
 
 .header-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #292826;
   height: 55px;
   padding: 0 60px;
 }
 
-.searchbar-flex {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.logo-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .logo {
   color: #f4563c;
   font-size: 36px;
-  font-family: "Cooper Black", sans-serif;
   cursor: pointer;
   user-select: none;
 }
 
-.nav-flex {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.pages {
-  font-family: "ATF Franklin Gothic", sans-serif;
+.links {
   text-decoration: none;
   color: white;
   margin: 0 10px;
@@ -623,7 +600,7 @@ body {
 }
 
 /* ----------PSEUDO CLASSES---------- */
-.pages:hover {
+.links:hover {
   color: #f4563c;
 }
 
