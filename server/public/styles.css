@@ -6,7 +6,7 @@ body {
 
 /* ----------HEADER---------- */
 
-.header-container {
+.header-ctr {
   background-color: #292826;
   height: 55px;
   padding: 0 60px;
@@ -14,14 +14,14 @@ body {
 
 .logo {
   color: #f4563c;
-  font-size: 36px;
   cursor: pointer;
   user-select: none;
+  font-size: 36px;
 }
 
 .links {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
   margin: 0 10px;
 }
 
@@ -47,21 +47,11 @@ body {
 
 /* ----------HOME BANNER---------- */
 
-.banner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.banner-ctr {
   height: 480px;
 }
 
-.banner-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .banner {
-  position: relative;
   width: 1100px;
   height: 400px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -76,18 +66,17 @@ body {
   user-select: none;
 }
 
-.dot-container {
-  position: absolute;
+.banner > div {
   display: flex;
   left: 15px;
   bottom: 10px;
 }
 
 .banner-icons {
-  cursor: pointer;
   color: gray;
   padding: 0;
   margin: 0 3px;
+  cursor: pointer;
   user-select: none;
 }
 

@@ -63,12 +63,12 @@ export default class Banner extends React.Component {
 
   render() {
     return (
-      <div className="banner-container">
+      <div className="banner-ctr flex-c">
         <div className="column-full">
-          <div className="banner-flex">
-            <div className="banner">
+          <div className="flex-c">
+            <div className="banner pst-rel">
               <img src={this.handleImage()} alt={this.handleAlt()}></img>
-              <div className="dot-container">
+              <div className="pst-abs">
                 {this.createDots()}
               </div>
             </div>
