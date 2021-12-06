@@ -32,18 +32,18 @@ export default class LocalEvents extends React.Component {
     const concerts = this.state.events.filter(event => event.taxonomies[0].name === 'concert');
 
     return concerts.map((event, index) => (
-      <div className="event-card-container" data-id={event.id} key={event.id}>
-        <div className="event-image-container">
-          <img src={event.performers[0].image}></img>
+      <div className="event-card-ctr pos-rel bdr-radius-20px" data-id={event.id} key={event.id}>
+        <div className="event-image-ctr">
+          <img className="bdr-radius-t-l-20px bdr-radius-t-r-20px"src={event.performers[0].image}></img>
         </div>
-        <div className="local-event-info-container">
-          <div className="local-event-time-container">
-            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).date}`}</h6>
-            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).time}`}</h6>
+        <div className="le-info-ctr">
+          <div className="flex-space-between">
+            <h6 className="le-time-date">{`${convertDateTime(event.datetime_local).date}`}</h6>
+            <h6 className="le-time-date">{`${convertDateTime(event.datetime_local).time}`}</h6>
           </div>
-          <h6 className="local-event-title">{event.performers[0].name}</h6>
-          <h6 className="local-event-venue">{event.venue.name}</h6>
-          <h6 className="local-event-location">{event.venue.display_location}</h6>
+          <h6 className="le-title">{event.performers[0].name}</h6>
+          <h6 className="le-venue">{event.venue.name}</h6>
+          <h6 className="le-location pos-abs">{event.venue.display_location}</h6>
         </div>
       </div>
     ));
@@ -53,18 +53,18 @@ export default class LocalEvents extends React.Component {
     const sportingEvents = this.state.events.filter(event => event.taxonomies[0].name === 'sports');
 
     return sportingEvents.map((event, index) => (
-      <div className="event-card-container" data-id={event.id} key={event.id}>
-        <div className="event-image-container">
-          <img src={event.performers[0].image}></img>
+      <div className="event-card-ctr pos-rel bdr-radius-20px" data-id={event.id} key={event.id}>
+        <div className="event-image-ctr">
+          <img className="bdr-radius-t-l-20px bdr-radius-t-r-20px" src={event.performers[0].image}></img>
         </div>
-        <div className="local-event-info-container">
-          <div className="local-event-time-container">
-            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).date}`}</h6>
-            <h6 className="local-event-time">{`${convertDateTime(event.datetime_local).time}`}</h6>
+        <div className="le-info-ctr">
+          <div className="flex-space-between">
+            <h6 className="le-time-date">{`${convertDateTime(event.datetime_local).date}`}</h6>
+            <h6 className="le-time-date">{`${convertDateTime(event.datetime_local).time}`}</h6>
           </div>
-          <h6 className="local-event-title">{event.performers[0].name}</h6>
-          <h6 className="local-event-venue">{event.venue.name}</h6>
-          <h6 className="local-event-location">{event.venue.display_location}</h6>
+          <h6 className="le-title">{event.performers[0].name}</h6>
+          <h6 className="le-venue">{event.venue.name}</h6>
+          <h6 className="le-location pos-abs">{event.venue.display_location}</h6>
         </div>
       </div>
     ));
@@ -73,15 +73,15 @@ export default class LocalEvents extends React.Component {
   render() {
     return (
       <>
-        <div className="local-events-container">
+        <div className="le-lyt-ctr flex-c">
           <div className="column-full">
-            <div className="local-events-flex">
-              <div className="local-events">
+            <div className="flex-c">
+              <div className="le-ctr bdr-radius-20px">
                 <div className="row">
-                  <h1 className="local-events-header">{`CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="le-hdr">{`CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
-                  <div className="local-events-card-container">
+                  <div className="le-card-ctr">
                     {this.renderConcerts()}
                   </div>
                 </div>
@@ -89,15 +89,15 @@ export default class LocalEvents extends React.Component {
             </div>
           </div>
         </div>
-        <div className="local-events-container margin-top">
+        <div className="le-lyt-ctr margin-t">
           <div className="column-full">
-            <div className="local-events-flex">
-              <div className="local-events">
+            <div className="flex-c">
+              <div className="le-ctr">
                 <div className="row">
-                  <h1 className="local-events-header">{`SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="le-hdr">{`SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
-                  <div className="local-events-card-container">
+                  <div className="le-card-ctr">
                     {this.renderSportingEvents()}
                   </div>
                 </div>
