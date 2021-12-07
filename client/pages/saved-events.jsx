@@ -31,11 +31,11 @@ export default class SavedEvents extends React.Component {
     return this.state.events.map((event, index) => (
 
           <div key={event.id} data-id={event.id} className="row rendered-event">
-            <div className="saved-events-date-container">
+            <div className="saved-date-container flex-c">
               <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
             </div>
-            <div className="saved-events-venue-container">
-              <h3>{event.performer}</h3>
+            <div className="saved-venue-container flex-c">
+              <h3 className="ft-montseratt">{event.performer}</h3>
             </div>
           </div>
 
@@ -45,17 +45,17 @@ export default class SavedEvents extends React.Component {
   render() {
     console.log(this.state.events);
     return (
-      <div className="saved-events-layout-container">
-        <div className="saved-events-layout-flex">
-          <div className="saved-events-container">
-            <div className="saved-events-list-container">
+      <div className="saved-layout-container flex-c">
+        <div className="saved-layout align-items-c flex-space-between">
+          <div className="saved-container border-radius">
+            <div className="saved-list-container flex-c border-radius-t">
               <h2>SAVED EVENTS</h2>
             </div>
-            <div className="rendered-saved-events-container">
+            <div className="rendered-events-container border-radius-b">
               {this.renderSavedEvents()}
             </div>
           </div>
-          <div className="itinerary-container">
+          <div className="itinerary-container border-radius">
 
           </div>
         </div>

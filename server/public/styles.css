@@ -381,26 +381,62 @@ body {
 
 /* ----------SAVED EVENTS VIEW---------- */
 
-.saved-events-layout-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.saved-layout-container {
   height: 850px;
 }
 
-.saved-events-layout-flex {
-  display: flex;
+.saved-layout {
   width: 1250px;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.saved-events-container {
+.saved-container {
   width: 600px;
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-  border-radius: 20px;
+}
+
+.saved-list-container {
+  height: 70px;
+  width: 100%;
+  background-color: #292826;
+}
+
+.saved-list-container > h2 {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #f4563c;
+}
+
+.rendered-events-container {
+  height: 650px;
+  width: inherit;
+  overflow-y: auto;
+}
+
+.saved-date-container {
+  height: 50px;
+  flex-basis: 30%;
+  background-color: #292826;
+}
+
+.saved-date-container > h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #f4563c;
+}
+
+.saved-venue-container {
+  height: 50px;
+  flex-basis: 70%;
+}
+
+.saved-venue-container > h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .itinerary-container {
@@ -408,63 +444,6 @@ body {
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-  border-radius: 20px;
-}
-
-.saved-events-list-container {
-  height: 70px;
-  width: 100%;
-  display: flex;
-  background-color: #292826;
-  justify-content: center;
-  align-items: center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.saved-events-list-container > h2 {
-  font-family: Montserrat, sans-serif;
-  font-weight: bold;
-  font-size: 32px;
-  color: #f4563c;
-}
-
-.rendered-saved-events-container {
-  height: 650px;
-  width: inherit;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  overflow-y: auto;
-}
-
-.saved-events-date-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  flex-basis: 30%;
-  background-color: #292826;
-}
-
-.saved-events-date-container > h3 {
-  font-family: Montserrat, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  color: #f4563c;
-}
-
-.saved-events-venue-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  flex-basis: 70%;
-}
-
-.saved-events-venue-container > h3 {
-  font-family: Montserrat, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
 }
 
 /* ----------FOOTER---------- */
