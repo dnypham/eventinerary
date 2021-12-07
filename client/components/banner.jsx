@@ -63,7 +63,7 @@ export default class Banner extends React.Component {
 
   render() {
     return (
-      <div className="banner-ctr flex-c">
+      <div className="banner-container flex-c">
         <div className="column-full">
           <div className="flex-c">
             <div className="banner pos-rel">

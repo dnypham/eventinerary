@@ -31,19 +31,19 @@ export default class Results extends React.Component {
 
     if (this.props.results.length !== 0) {
       return this.props.results.map((event, index) => (
-        <div key={event.id} data-id={event.id} className="row rendered-event" onClick={() => this.handleClick(event.id)}>
-          <div className="se-date-ctr flex-c">
+        <div key={event.id} data-id={event.id} className="row results-event" onClick={() => this.handleClick(event.id)}>
+          <div className="results-event-date-container flex-c">
             <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
           </div>
-          <div className="se-venue-ctr flex-s">
-            <h3>{`${event.venue.name} | `}<span className="se-location">{`${event.venue.display_location}`}</span></h3>
+          <div className="results-event-venue-container flex-s">
+            <h3>{`${event.venue.name} | `}<span className="results-event-location">{`${event.venue.display_location}`}</span></h3>
           </div>
         </div>
       ));
     } else {
       return (
-        <div className="no-events-ctr flex-c">
-          <h1 className="no-events-txt">NO UPCOMING EVENTS</h1>
+        <div className="results-no-events-container flex-c">
+          <h1 className="results-no-events-txt">NO UPCOMING EVENTS</h1>
         </div>
       );
     }
@@ -52,16 +52,16 @@ export default class Results extends React.Component {
 
   render() {
     return (
-      <div className="events-ctr flex-c">
+      <div className="results-layout-container flex-c">
         <div className="flex-c">
-          <div className="sr-ctr pos-rel">
+          <div className="results-container pos-rel">
             <div className="row">
-              <img className="sr-img bdr-radius-t-l-20px" src={this.props.performer.image}></img>
-              <div className="sr-hdr-txt-ctr">
-                <h1 className={`sr-hdr-txt ${this.getFontSize()}`}>{this.props.performer.name.toUpperCase()}</h1>
+              <img className="results-img bdr-radius-t-l-20px" src={this.props.performer.image}></img>
+              <div className="results-performer-container flex-c">
+                <h1 className={`results-performer-txt ${this.getFontSize()}`}>{this.props.performer.name.toUpperCase()}</h1>
               </div>
             </div>
-            <div className="rendered-events-ctr bdr-radius-b-l-20px">
+            <div className="results-events-container">
             {this.renderEvents()}
             </div>
           </div>

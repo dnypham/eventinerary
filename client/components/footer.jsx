@@ -3,7 +3,7 @@ import React from 'react';
 export default class Footer extends React.Component {
   render() {
     return (
-      <footer className="footer-container">
+      <footer className="footer-container flex-c">
 
       </footer>
     );

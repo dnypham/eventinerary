@@ -13,7 +13,7 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <header className="header-ctr flex-c">
+      <header className="header-layout-container flex-c">
         <div className="col-third">
           <div className="flex-s">
             <Searchbar search={this.props.search}/>

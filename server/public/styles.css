@@ -6,7 +6,7 @@ body {
 
 /* ----------HEADER---------- */
 
-.header-ctr {
+.header-layout-container {
   background-color: #292826;
   height: 55px;
   padding: 0 60px;
@@ -47,7 +47,7 @@ body {
 
 /* ----------HOME BANNER---------- */
 
-.banner-ctr {
+.banner-container {
   height: 480px;
 }
 
@@ -86,23 +86,23 @@ body {
 
 /* ----------HOME EVENTS---------- */
 
-.le-lyt-ctr {
+.home-layout-container {
   height: 400px;
 }
 
-.le-ctr {
+.home-container {
   height: 400px;
   width: 1300px;
 }
 
-.le-hdr {
+.home-header {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 26px;
   margin-top: 0;
 }
 
-.le-card-ctr {
+.home-events-layout-container {
   display: flex;
   align-content: center;
   width: 1300px;
@@ -113,7 +113,7 @@ body {
   overflow-x: auto;
 }
 
-.event-card-ctr {
+.home-event-card-container {
   cursor: pointer;
   flex-shrink: 0;
   width: 280px;
@@ -124,12 +124,12 @@ body {
   transition-duration: 0.5s;
 }
 
-.event-image-ctr {
+.home-event-image-container {
   width: 280px;
   height: 200px;
 }
 
-.event-image-ctr > img {
+.home-event-image-container > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -137,13 +137,13 @@ body {
   border-bottom: 1px solid #292826;
 }
 
-.le-info-ctr {
+.home-event-info-container {
   width: 280px;
   height: 100px;
   padding: 5px 15px;
 }
 
-.le-time-date {
+.home-event-time-date {
   font-family: Montserrat, sans-serif;
   font-size: 10px;
   color: black;
@@ -151,7 +151,7 @@ body {
   margin: 0;
 }
 
-.le-title {
+.home-event-title {
   font-family: Montserrat, sans-serif;
   margin: 0;
   font-size: 14px;
@@ -159,7 +159,7 @@ body {
   text-align: center;
 }
 
-.le-venue {
+.home-event-venue {
   font-family: Montserrat, sans-serif;
   color: gray;
   font-size: 12px;
@@ -168,7 +168,7 @@ body {
   text-align: center;
 }
 
-.le-location {
+.home-event-location {
   font-family: Montserrat, sans-serif;
   color: gray;
   font-size: 10px;
@@ -181,35 +181,32 @@ body {
 
 /* ----------RESULTS COMPONENT---------- */
 
-.events-ctr {
+.results-layout-container {
   height: 900px;
 }
 
-.sr-ctr {
+.results-container {
   width: 1200px;
   height: 800px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px 20px 0;
 }
 
-.sr-img {
+.results-img {
   flex-basis: 20%;
   height: 160px;
   object-fit: cover;
   user-select: none;
 }
 
-.sr-hdr-txt-ctr {
+.results-performer-container {
   height: 160px;
   flex-basis: 80%;
-  display: flex;
   background-color: #292826;
-  justify-content: center;
-  align-items: center;
   border-top-right-radius: 20px;
 }
 
-.sr-hdr-txt {
+.results-performer-txt {
   font-family: Montserrat, sans-serif;
   font-size: 96px;
   font-weight: bold;
@@ -234,53 +231,54 @@ body {
   font-size: 24px;
 }
 
-.rendered-events-ctr {
+.results-events-container {
   height: 640px;
   width: inherit;
   overflow-y: auto;
+  border-bottom-left-radius: 20px;
 }
 
-.rendered-event {
+.results-event {
   border: 1px solid black;
   cursor: pointer;
 }
 
-.se-date-ctr {
+.results-event-date-container {
   height: 80px;
   flex-basis: 20.3%;
   background-color: #292826;
 }
 
-.se-date-ctr > h3 {
+.results-event-date-container > h3 {
   font-family: Montserrat, sans-serif;
   font-size: 28px;
   font-weight: bold;
   color: #f4563c;
 }
 
-.se-venue-ctr {
+.results-event-venue-container {
   background-color: white;
   padding-left: 30px;
   height: 80px;
   flex-basis: 80%;
 }
 
-.se-venue-ctr > h3 {
+.results-event-venue-container > h3 {
   font-family: Montserrat, sans-serif;
   font-size: 20px;
   font-weight: bold;
 }
 
-.se-location {
+.results-event-location {
   color: gray;
 }
 
-.no-events-ctr {
+.results-no-events-container {
   height: 100%;
   width: 100%;
 }
 
-.no-events-txt {
+.results-no-events-txt {
   font-family: Montserrat, sans-serif;
   font-size: 56px;
   font-weight: bold;
@@ -288,31 +286,33 @@ body {
 
 /* ----------EVENT VIEW---------- */
 
-.e-info-lyt-ctr {
+.event-info-layout-container {
   height: 700px;
 }
 
-.e-info-ctr {
+.event-info-container {
   width: 600px;
   height: 600px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   background-color: white;
 }
 
-.e-info-img {
+.event-info-img {
   flex-basis: 20%;
   height: 100px;
   object-fit: cover;
   user-select: none;
+  border-top-left-radius: 20px;
 }
 
-.e-info-hdr-txt-ctr {
+.event-info-performer-container {
   height: 100px;
   flex-basis: 80%;
   background-color: #292826;
+  border-top-right-radius: 20px;
 }
 
-.e-info-hdr-txt {
+.event-info-performer {
   font-family: Montserrat, sans-serif;
   font-size: 38px;
   font-weight: bold;
@@ -321,7 +321,7 @@ body {
   color: #f4563c;
 }
 
-.e-info-map-ctr {
+.event-info-map-container {
   height: 250px;
   width: 100%;
 }
@@ -332,34 +332,34 @@ body {
   border: 1px solid black;
 }
 
-.e-info-txt-ctr {
+.event-info-txt-layout-container {
   height: 175px;
   width: 100%;
   padding: 0 50px;
 }
 
-.e-card-title {
+.event-title {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   text-align: center;
   font-size: 28px;
 }
 
-.e-info-txt-ctr-2 {
+.event-info-txt-container {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   line-height: 5px;
   margin: 0;
 }
 
-.e-info-btn-ctr {
+.event-info-btn-layout-container {
   background-color: #292826;
   height: 75px;
   width: 100%;
   padding: 0 175px;
 }
 
-.e-info-btn {
+.event-info-btn {
   cursor: pointer;
   height: 40px;
   border-radius: 5px;
@@ -449,9 +449,6 @@ body {
 /* ----------FOOTER---------- */
 
 .footer-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #292826;
   height: 30px;
   padding: 0 60px;
