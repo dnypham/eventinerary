@@ -409,10 +409,14 @@ body {
   color: #f4563c;
 }
 
-.rendered-events-container {
+.saved-events-container {
   height: 650px;
   width: inherit;
   overflow-y: auto;
+}
+
+.saved-event {
+  border: 1px solid black;
 }
 
 .saved-date-container {
@@ -485,6 +489,6 @@ body {
   background-color: rgb(80 200 120 / 80%);
 }
 
-.rendered-event:hover {
+.saved-event:hover {
   border: 1px solid #f4563c;
 }

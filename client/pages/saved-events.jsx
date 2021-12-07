@@ -30,7 +30,7 @@ export default class SavedEvents extends React.Component {
   renderSavedEvents() {
     return this.state.events.map((event, index) => (
 
-          <div key={event.id} data-id={event.id} className="row rendered-event">
+          <div key={event.id} data-id={event.id} className="row saved-event">
             <div className="saved-date-container flex-c">
               <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
             </div>
@@ -51,7 +51,7 @@ export default class SavedEvents extends React.Component {
             <div className="saved-list-container flex-c border-radius-t">
               <h2>SAVED EVENTS</h2>
             </div>
-            <div className="rendered-events-container border-radius-b">
+            <div className="saved-events-container border-radius-b">
               {this.renderSavedEvents()}
             </div>
           </div>
