@@ -26,7 +26,7 @@ export default class Header extends React.Component {
         </div>
         <div className="col-third">
           <div className="flex-e">
-            <nav>
+            <nav className="navbar-links">
               <a className="links ft-atf-franklin-gothic" href="#saved-events">Saved Events</a>
               <a className="links ft-atf-franklin-gothic" href="#contact">Contact</a>
               <a className="links ft-atf-franklin-gothic" href="#log-in">Log In</a>

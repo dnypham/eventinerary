@@ -77,7 +77,7 @@ export default class LocalEvents extends React.Component {
           <div className="column-full">
             <div className="flex-c">
               <div className="home-container bdr-radius">
-                <div className="row">
+                <div className="row justify-c">
                   <h1 className="home-header">{`CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
@@ -93,7 +93,7 @@ export default class LocalEvents extends React.Component {
           <div className="column-full">
             <div className="flex-c">
               <div className="home-container bdr-radius">
-                <div className="row">
+                <div className="row justify-c">
                   <h1 className="home-header">{`SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
