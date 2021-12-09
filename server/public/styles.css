@@ -360,10 +360,8 @@ body {
 }
 
 .event-info-btn {
-  cursor: pointer;
   height: 40px;
   border-radius: 5px;
-  border: none;
   padding: 0 5px;
   font-size: 14px;
   color: white;
@@ -451,6 +449,28 @@ body {
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
+.saved-no-itinerary-container {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.saved-no-itinerary-txt {
+  font-family: Montserrat, sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.create-itinerary-btn {
+  height: 40px;
+  width: 200px;
+  background-color: #f4563c;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-size: 20px;
+  color: white;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {
@@ -493,6 +513,10 @@ body {
 .saved-event:hover,
 .results-event:hover {
   border: 1px solid #f4563c;
+}
+
+.create-itinerary-btn:hover {
+  background-color: rgb(244 86 60 / 80%);
 }
 
 /* ----------MEDIA QUERIES---------- */

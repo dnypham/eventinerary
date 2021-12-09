@@ -58,8 +58,8 @@ export default class Event extends React.Component {
               </div>
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
-              <button className="tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
-              <button className="save-event-btn event-info-btn ft-atf-franklin-gothic" onClick={this.handleClick}>SAVE EVENT</button>
+              <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
+              <button className="btn save-event-btn event-info-btn ft-atf-franklin-gothic" onClick={this.handleClick}>SAVE EVENT</button>
             </div>
           </div>
         </div>

@@ -5,8 +5,12 @@ export default class SavedEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      itinerary: null,
+      eventId: null
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.createItinerary = this.createItinerary.bind(this);
   }
 
   componentDidMount() {
@@ -18,19 +22,30 @@ export default class SavedEvents extends React.Component {
             .then(response => response.json())
             .then(data => {
               data.performer = event.performer;
+              data.eventId = event.eventId;
               return data;
             });
         });
         Promise
           .all(seatgeekEventFetches)
-          .then(events => this.setState({ events: events }));
+          .then(events => this.setState({
+            events: events
+          }));
       });
   }
 
   renderSavedEvents() {
-    return this.state.events.map((event, index) => (
 
-          <div key={event.id} data-id={event.id} className="row saved-event">
+    if (this.state.events.length === 0) {
+      return (
+        <div className="saved-no-itinerary-container flex-c">
+          <h1 className="saved-no-itinerary-txt">NO EVENTS SAVED</h1>
+        </div>
+      );
+    }
+
+    return this.state.events.map((event, index) => (
+      <div key={event.eventId} data-id={event.eventId} className="row saved-event" onClick={() => this.handleClick(event.eventId)}>
             <div className="saved-date-container flex-c">
               <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
             </div>
@@ -38,12 +53,74 @@ export default class SavedEvents extends React.Component {
               <h3 className="ft-montseratt">{event.performer}</h3>
             </div>
           </div>
-
     ));
   }
 
+  handleClick(eventId) {
+    fetch(`/api/itineraries/${eventId}`)
+      .then(req => req.json())
+      .then(data => {
+        console.log(data);
+        data.length > 0 ? this.setState({ itinerary: true }) : this.setState({ itinerary: false });
+        this.setState({ eventId: eventId });
+      });
+  }
+
+  createItinerary() {
+
+    fetch(`/api/itineraries/${this.state.eventId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+
+    this.renderItinerary();
+  }
+
+  renderItinerary() {
+
+    if (this.state.events.length === 0) {
+      return (
+        <div className="saved-no-itinerary-container flex-c">
+          <h1 className="saved-no-itinerary-txt">SAVE EVENTS TO CREATE ITINERARIES</h1>
+        </div>
+      );
+    }
+
+    if (this.state.itinerary === false) {
+      return (
+        <div className="saved-no-itinerary-container flex-c">
+          <h1 className="saved-no-itinerary-txt">ITINERARY NOT FOUND</h1>
+          <button className="btn create-itinerary-btn" onClick={this.createItinerary}>Create Itinerary</button>
+        </div>
+      );
+    } else if (this.state.itinerary === true) {
+      return (
+        <div className="saved-container border-radius">
+          <div className="saved-list-container flex-c border-radius-t">
+            <h2>TEST</h2>
+          </div>
+          <div className="saved-events-container border-radius-b">
+            {}
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="saved-no-itinerary-container flex-c">
+          <h1 className="saved-no-itinerary-txt">SELECT EVENT TO VIEW ITINERARY</h1>
+        </div>
+      );
+    }
+  }
+
   render() {
-    console.log(this.state.events);
+    console.log(this.state);
     return (
       <div className="saved-layout-container flex-c">
         <div className="saved-layout align-items-c flex-space-between">
@@ -56,7 +133,7 @@ export default class SavedEvents extends React.Component {
             </div>
           </div>
           <div className="itinerary-container border-radius">
-
+              {this.renderItinerary()}
           </div>
         </div>
       </div>
