@@ -6,8 +6,9 @@ export default class SavedEvents extends React.Component {
     super(props);
     this.state = {
       events: [],
-      itinerary: null,
-      eventId: null
+      selectedEvent: [],
+      eventId: null,
+      itinerary: null
     };
     this.handleClick = this.handleClick.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
@@ -61,8 +62,29 @@ export default class SavedEvents extends React.Component {
       .then(req => req.json())
       .then(data => {
         console.log(data);
-        data.length > 0 ? this.setState({ itinerary: true }) : this.setState({ itinerary: false });
-        this.setState({ eventId: eventId });
+        let venue, dateTimeLocal;
+
+        for (let i = 0; i < this.state.events.length; i++) {
+          if (this.state.events[i].eventId === eventId) {
+            data.dateTimeLocal = convertDateTime(this.state.events[i].datetime_local);
+            data.venue = this.state.events[i].venue.name;
+          }
+        }
+
+        if (data.length > 0) {
+          this.setState({
+            itinerary: true,
+            eventId: eventId,
+            selectedEvent: data
+
+          });
+        } else {
+          this.setState({
+            itinerary: false,
+            eventId: eventId,
+            selectedEvent: data
+          });
+        }
       });
   }
 
@@ -103,7 +125,7 @@ export default class SavedEvents extends React.Component {
       return (
         <div className="saved-container border-radius">
           <div className="saved-list-container flex-c border-radius-t">
-            <h2>TEST</h2>
+            <h2>{this.state.selectedEvent[0].performer.toUpperCase()}</h2>
           </div>
           <div className="saved-events-container border-radius-b">
             {}

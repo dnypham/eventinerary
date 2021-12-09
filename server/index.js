@@ -58,6 +58,7 @@ app.get('/api/itineraries/:eventId', (req, res) => {
   const sql = `
     SELECT *
     FROM "itineraries"
+    JOIN "events" USING ("eventId")
     WHERE "eventId" = $1;
   `;
 
