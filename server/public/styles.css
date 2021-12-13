@@ -276,6 +276,7 @@ body {
 .results-no-events-container {
   height: 100%;
   width: 100%;
+  background-color: white;
 }
 
 .results-no-events-txt {
