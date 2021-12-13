@@ -61,7 +61,6 @@ export default class SavedEvents extends React.Component {
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
-        console.log(data);
 
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
@@ -103,11 +102,7 @@ export default class SavedEvents extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      });
+    });
 
     this.renderItinerary();
   }
@@ -150,7 +145,6 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="saved-layout-container flex-c">
         <div className="saved-layout align-items-c flex-space-between">
