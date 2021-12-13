@@ -10,7 +10,7 @@ export default class SavedEvents extends React.Component {
       eventId: null,
       itinerary: null
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.checkItinerary = this.checkItinerary.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
   }
 
@@ -46,7 +46,7 @@ export default class SavedEvents extends React.Component {
     }
 
     return this.state.events.map((event, index) => (
-      <div key={event.eventId} data-id={event.eventId} className="row saved-event" onClick={() => this.handleClick(event.eventId)}>
+      <div key={event.eventId} data-id={event.eventId} className="row saved-event" onClick={() => this.checkItinerary(event.eventId)}>
             <div className="saved-date-container flex-c">
               <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
             </div>
@@ -57,17 +57,18 @@ export default class SavedEvents extends React.Component {
     ));
   }
 
-  handleClick(eventId) {
+  checkItinerary(eventId) {
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
         console.log(data);
-        let venue, dateTimeLocal;
 
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
             data.dateTimeLocal = convertDateTime(this.state.events[i].datetime_local);
             data.venue = this.state.events[i].venue.name;
+            data.address = this.state.events[i].venue.address + ' ' + this.state.events[i].venue.extended_address;
+            data.performer = this.state.events[i].performer;
           }
         }
 
@@ -89,12 +90,19 @@ export default class SavedEvents extends React.Component {
   }
 
   createItinerary() {
+    const data = {
+      eventId: this.state.eventId,
+      location: this.state.selectedEvent.performer,
+      time: this.state.selectedEvent.dateTimeLocal.time,
+      address: this.state.selectedEvent.address
+    };
 
-    fetch(`/api/itineraries/${this.state.eventId}`, {
+    fetch('/api/itineraries', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify(data)
     })
       .then(res => res.json())
       .then(data => {

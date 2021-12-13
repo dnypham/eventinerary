@@ -70,23 +70,38 @@ app.get('/api/itineraries/:eventId', (req, res) => {
     });
 });
 
-app.post('/api/itineraries/:eventId', (req, res, next) => {
-  const eventId = parseInt(req.params.eventId);
+app.post('/api/itineraries', (req, res, next) => {
+  const { eventId, location, time, address } = req.body;
   const userId = 1;
 
-  const sql = `
+  const sql1 = `
     INSERT INTO "itineraries" ("eventId", "userId")
          VALUES ($2, $1)
     RETURNING *;
   `;
-  const params = [userId, eventId];
+  const params1 = [userId, eventId];
 
-  db.query(sql, params)
+  db.query(sql1, params1)
     .then(data => {
-      const [event] = data.rows;
-      res.status(201).json(event);
+      const { itineraryId } = data.rows[0];
+
+      const sql2 = `
+        INSERT INTO "locations" ("userId", "itineraryId", "location", "time", "address")
+             VALUES ($1, $2, $3, $4, $5)
+        RETURNING *;
+  `;
+      const params2 = [userId, itineraryId, location, time, address];
+
+      db.query(sql2, params2)
+        .then(data => {
+          const [event] = data.rows;
+          res.status(201).json(event);
+        })
+        .catch(err => next(err));
+
     })
     .catch(err => next(err));
+
 });
 
 app.listen(process.env.PORT, () => {
