@@ -472,6 +472,39 @@ body {
   color: white;
 }
 
+.saved-itinerary-container {
+  height: 70px;
+  width: 100%;
+  background-color: #292826;
+}
+
+.saved-itinerary-img {
+  flex-basis: 20%;
+  height: 70px;
+  object-fit: cover;
+  user-select: none;
+}
+
+.saved-itinerary-performer-container {
+  flex-basis: 80%;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  margin: 0;
+  user-select: none;
+  color: #f4563c;
+  flex-direction: column;
+}
+
+.saved-itinerary-performer-txt {
+  font-size: 22px;
+  margin: 0;
+}
+
+.saved-itinerary-venue-txt {
+  font-size: 18px;
+  margin: 0;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {

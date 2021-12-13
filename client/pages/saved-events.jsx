@@ -104,8 +104,7 @@ export default class SavedEvents extends React.Component {
       body: JSON.stringify(data)
     });
 
-    this.setState({ itinerary: true });
-
+    this.checkItinerary(this.state.eventId);
     this.renderItinerary();
   }
 
@@ -128,12 +127,11 @@ export default class SavedEvents extends React.Component {
       );
     } else if (this.state.itinerary === true) {
       return (
-        <div className="saved-container border-radius">
-          <div className="saved-list-container flex-c border-radius-t">
-            <h2>{this.state.selectedEvent.performer.toUpperCase()}</h2>
-          </div>
-          <div className="saved-events-container border-radius-b">
-            {}
+        <div className="saved-itinerary-container row border-radius-t">
+          <img className="saved-itinerary-img bdr-radius-t-l-20px" src={this.state.selectedEvent[0].performerImage}></img>
+          <div className="saved-itinerary-performer-container flex-c">
+            <h2 className={'saved-itinerary-performer-txt'}>{this.state.selectedEvent[0].performer.toUpperCase()}</h2>
+            <h2 className={'saved-itinerary-venue-txt'}>{this.state.selectedEvent.venue}</h2>
           </div>
         </div>
       );
@@ -147,6 +145,7 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="saved-layout-container flex-c">
         <div className="saved-layout align-items-c flex-space-between">
@@ -159,7 +158,7 @@ export default class SavedEvents extends React.Component {
             </div>
           </div>
           <div className="itinerary-container border-radius">
-              {this.renderItinerary()}
+            {this.renderItinerary()}
           </div>
         </div>
       </div>

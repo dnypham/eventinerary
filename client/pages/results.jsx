@@ -62,7 +62,7 @@ export default class Results extends React.Component {
               </div>
             </div>
             <div className="results-events-container">
-            {this.renderEvents()}
+              {this.renderEvents()}
             </div>
           </div>
         </div>
