@@ -8,7 +8,9 @@ export default class SavedEvents extends React.Component {
       events: [],
       selectedEvent: [],
       eventId: null,
-      itinerary: null
+      itinerary: null,
+      itineraryId: null,
+      locations: []
     };
     this.checkItinerary = this.checkItinerary.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
@@ -61,7 +63,6 @@ export default class SavedEvents extends React.Component {
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
-
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
             data.dateTimeLocal = convertDateTime(this.state.events[i].datetime_local);
@@ -76,7 +77,6 @@ export default class SavedEvents extends React.Component {
             itinerary: true,
             eventId: eventId,
             selectedEvent: data
-
           });
         } else {
           this.setState({
@@ -85,6 +85,12 @@ export default class SavedEvents extends React.Component {
             selectedEvent: data
           });
         }
+
+        fetch(`/api/locations/${data[0].itineraryId}`)
+          .then(req => req.json())
+          .then(locations => {
+            this.setState({ locations: locations });
+          });
       });
   }
 
@@ -106,6 +112,27 @@ export default class SavedEvents extends React.Component {
 
     this.checkItinerary(this.state.eventId);
     this.renderItinerary();
+  }
+
+  renderItineraryLocations() {
+    if (this.state.locations.length !== 0) {
+      return this.state.locations.map((location, index) => (
+        <div key={location.locationId} data-id={location.locationId} className="flex-c itinerary-location">
+          <div className="itinerary-location-time-container flex-c">
+            <h3>{location.time}</h3>
+          </div>
+          <div className="itinerary-location-name-container flex-c">
+            <h3>{location.location}</h3>
+          </div>
+        </div>
+      ));
+    } else {
+      return (
+        <div className="results-no-events-container flex-c">
+          <h1 className="results-no-events-txt">NO UPCOMING EVENTS</h1>
+        </div>
+      );
+    }
   }
 
   renderItinerary() {
@@ -136,12 +163,12 @@ export default class SavedEvents extends React.Component {
             </div>
           </div>
           <div className="saved-itinerary-locations-container">
-            {/* {this.renderItineraryLocations()} */}
+            {this.renderItineraryLocations()}
           </div>
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
-            <i className="fas fa-edit fa-2x"></i>
+            <i className="fas fa-edit fa-2x itinerary-icons"></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
-            <i className="fas fa-share fa-2x"></i>
+            <i className="fas fa-share fa-2x itinerary-icons"></i>
           </div>
         </div>
       );

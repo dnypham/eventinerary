@@ -70,6 +70,23 @@ app.get('/api/itineraries/:eventId', (req, res) => {
     });
 });
 
+app.get('/api/locations/:itineraryId', (req, res) => {
+  const itineraryId = parseInt(req.params.itineraryId);
+
+  const sql = `
+    SELECT *
+    FROM "locations"
+    WHERE "itineraryId" = $1;
+  `;
+
+  const params = [itineraryId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
 app.post('/api/itineraries', (req, res, next) => {
   const { eventId, location, time, address } = req.body;
   const userId = 1;
