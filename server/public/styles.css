@@ -473,6 +473,11 @@ body {
 }
 
 .saved-itinerary-container {
+  height: 100%;
+  width: 100%;
+}
+
+.saved-itinerary-header-container {
   height: 70px;
   width: 100%;
   background-color: #292826;
@@ -502,6 +507,27 @@ body {
 
 .saved-itinerary-venue-txt {
   font-size: 18px;
+  margin: 0;
+}
+
+.saved-itinerary-locations-container {
+  height: 560px;
+  width: 100%;
+}
+
+.saved-itinerary-footer-container {
+  height: 70px;
+  width: 100%;
+  background-color: white;
+  padding: 0 35px;
+}
+
+.saved-itinerary-footer-container > h2 {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: #292826;
+  text-align: center;
   margin: 0;
 }
 

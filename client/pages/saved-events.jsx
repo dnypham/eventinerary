@@ -127,11 +127,21 @@ export default class SavedEvents extends React.Component {
       );
     } else if (this.state.itinerary === true) {
       return (
-        <div className="saved-itinerary-container row border-radius-t">
-          <img className="saved-itinerary-img bdr-radius-t-l-20px" src={this.state.selectedEvent[0].performerImage}></img>
-          <div className="saved-itinerary-performer-container flex-c">
-            <h2 className={'saved-itinerary-performer-txt'}>{this.state.selectedEvent[0].performer.toUpperCase()}</h2>
-            <h2 className={'saved-itinerary-venue-txt'}>{this.state.selectedEvent.venue}</h2>
+        <div className="saved-itinerary-container border-radius">
+          <div className="saved-itinerary-header-container row border-radius-t">
+            <img className="saved-itinerary-img bdr-radius-t-l-20px" src={this.state.selectedEvent[0].performerImage}></img>
+            <div className="saved-itinerary-performer-container flex-c">
+              <h2 className={'saved-itinerary-performer-txt'}>{this.state.selectedEvent[0].performer.toUpperCase()}</h2>
+              <h2 className={'saved-itinerary-venue-txt'}>{this.state.selectedEvent.venue}</h2>
+            </div>
+          </div>
+          <div className="saved-itinerary-locations-container">
+            {/* {this.renderItineraryLocations()} */}
+          </div>
+          <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
+            <i className="fas fa-edit fa-2x"></i>
+            <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
+            <i className="fas fa-share fa-2x"></i>
           </div>
         </div>
       );
