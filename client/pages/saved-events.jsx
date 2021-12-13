@@ -104,6 +104,8 @@ export default class SavedEvents extends React.Component {
       body: JSON.stringify(data)
     });
 
+    this.setState({ itinerary: true });
+
     this.renderItinerary();
   }
 
@@ -128,7 +130,7 @@ export default class SavedEvents extends React.Component {
       return (
         <div className="saved-container border-radius">
           <div className="saved-list-container flex-c border-radius-t">
-            <h2>{this.state.selectedEvent[0].performer.toUpperCase()}</h2>
+            <h2>{this.state.selectedEvent.performer.toUpperCase()}</h2>
           </div>
           <div className="saved-events-container border-radius-b">
             {}
