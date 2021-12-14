@@ -365,17 +365,27 @@ body {
   border-radius: 5px;
   padding: 0 5px;
   font-size: 14px;
-  color: white;
+  border: none;
 }
 
 .tickets-btn {
   width: 90px;
   background-color: #f4563c;
+  color: white;
 }
 
 .save-event-btn {
   width: 120px;
   background-color: #50c878;
+  color: white;
+  cursor: pointer;
+}
+
+.save-event-btn-2 {
+  width: 120px;
+  background-color: white;
+  color: #50c878;
+  border: 1px solid #50c878;
 }
 
 /* ----------SAVED EVENTS VIEW---------- */

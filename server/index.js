@@ -67,7 +67,26 @@ app.get('/api/itineraries/:eventId', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
+      console.log(result.rows);
       res.json(result.rows);
+    });
+});
+
+app.get('/api/events/:seatgeekEventId', (req, res) => {
+  const seatgeekEventId = parseInt(req.params.seatgeekEventId);
+
+  const sql = `
+    SELECT "seatgeekEventId"
+    FROM "events"
+    WHERE "seatgeekEventId" = $1
+  `;
+
+  const params = [seatgeekEventId];
+
+  db.query(sql, params)
+    .then(result => {
+      const id = result.rows[0].seatgeekEventId;
+      res.json(id);
     });
 });
 

@@ -64,6 +64,7 @@ export default class SavedEvents extends React.Component {
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
+        console.log(data);
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
             data.dateTimeLocal = convertDateTime(this.state.events[i].datetime_local);
@@ -73,12 +74,18 @@ export default class SavedEvents extends React.Component {
           }
         }
 
-        if (data.length > 0) {
+        if (data[0]) {
           this.setState({
             itinerary: true,
             eventId: eventId,
             selectedEvent: data
           });
+
+          fetch(`/api/locations/${data[0].itineraryId}`)
+            .then(req => req.json())
+            .then(locations => {
+              this.setState({ locations: locations });
+            });
         } else {
           this.setState({
             itinerary: false,
@@ -87,11 +94,14 @@ export default class SavedEvents extends React.Component {
           });
         }
 
-        fetch(`/api/locations/${data[0].itineraryId}`)
-          .then(req => req.json())
-          .then(locations => {
-            this.setState({ locations: locations });
-          });
+        // if (data[0]) {
+        //   fetch(`/api/locations/${data[0].itineraryId}`)
+        //     .then(req => req.json())
+        //     .then(locations => {
+        //       console.log(locations);
+        //       this.setState({ locations: locations });
+        //     });
+        // }
       });
   }
 
@@ -128,12 +138,6 @@ export default class SavedEvents extends React.Component {
           <i className="fas fa-trash-alt fa-2x location-delete-icon"></i>
         </div>
       ));
-    } else {
-      return (
-        <div className="results-no-events-container flex-c">
-          <h1 className="results-no-events-txt">NO UPCOMING EVENTS</h1>
-        </div>
-      );
     }
   }
 

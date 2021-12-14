@@ -4,25 +4,56 @@ import convertDateTime from '../lib/convertDateTime';
 export default class Event extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      saved: false
+    };
 
     this.saveEvent = this.saveEvent.bind(this);
+    this.renderButton = this.renderButton.bind(this);
+  }
+
+  componentDidMount() {
+    const seatgeekEventId = this.props.eventInfo.id;
+
+    fetch(`/api/events/${seatgeekEventId}`)
+      .then(req => req.json())
+      .then(id => {
+        if (seatgeekEventId === id) {
+          this.setState({ saved: true });
+        }
+      });
+
+    this.renderButton();
   }
 
   saveEvent() {
-    const event = {
-      seatgeekEventId: this.props.eventInfo.id,
-      performer: this.props.performer.name,
-      performerImage: this.props.performer.image,
-      date: this.props.eventInfo.datetime_local.slice(0, 10)
-    };
 
-    fetch('/api/events', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(event)
-    });
+    if (!this.state.saved) {
+      const event = {
+        seatgeekEventId: this.props.eventInfo.id,
+        performer: this.props.performer.name,
+        performerImage: this.props.performer.image,
+        date: this.props.eventInfo.datetime_local.slice(0, 10)
+      };
+
+      fetch('/api/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(event)
+      });
+
+      this.setState({ saved: true });
+    }
+
+  }
+
+  renderButton() {
+
+    return (
+      <button className={`${this.state.saved ? 'save-event-btn-2' : 'save-event-btn'} event-info-btn ft-atf-franklin-gothic`} onClick={this.saveEvent}>{this.state.saved ? 'SAVED' : 'SAVE EVENT'}</button>
+    );
   }
 
   render() {
@@ -56,7 +87,7 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
               <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
-              <button className="btn save-event-btn event-info-btn ft-atf-franklin-gothic" onClick={this.saveEvent}>SAVE EVENT</button>
+              {this.renderButton()}
             </div>
           </div>
         </div>
