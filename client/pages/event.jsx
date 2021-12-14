@@ -9,7 +9,6 @@ export default class Event extends React.Component {
     };
 
     this.saveEvent = this.saveEvent.bind(this);
-    this.renderButton = this.renderButton.bind(this);
   }
 
   componentDidMount() {
@@ -22,8 +21,6 @@ export default class Event extends React.Component {
           this.setState({ saved: true });
         }
       });
-
-    this.renderButton();
   }
 
   saveEvent() {
@@ -47,13 +44,6 @@ export default class Event extends React.Component {
       this.setState({ saved: true });
     }
 
-  }
-
-  renderButton() {
-
-    return (
-      <button className={`${this.state.saved ? 'save-event-btn-2' : 'save-event-btn'} event-info-btn ft-atf-franklin-gothic`} onClick={this.saveEvent}>{this.state.saved ? 'SAVED' : 'SAVE EVENT'}</button>
-    );
   }
 
   render() {
@@ -87,7 +77,7 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
               <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
-              {this.renderButton()}
+              <button className={`${this.state.saved ? 'save-event-btn-2' : 'save-event-btn'} event-info-btn ft-atf-franklin-gothic`} onClick={this.saveEvent}>{this.state.saved ? 'SAVED' : 'SAVE EVENT'}</button>
             </div>
           </div>
         </div>

@@ -64,7 +64,6 @@ export default class SavedEvents extends React.Component {
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
-        console.log(data);
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
             data.dateTimeLocal = convertDateTime(this.state.events[i].datetime_local);
@@ -188,7 +187,6 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="saved-layout-container flex-c">
         <div className="saved-layout align-items-c flex-space-between">

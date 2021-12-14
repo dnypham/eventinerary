@@ -67,7 +67,6 @@ app.get('/api/itineraries/:eventId', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
-      console.log(result.rows);
       res.json(result.rows);
     });
 });
