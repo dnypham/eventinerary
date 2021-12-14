@@ -415,8 +415,16 @@ body {
 }
 
 .saved-event {
+  position: relative;
   border: 1px solid black;
   cursor: pointer;
+}
+
+.saved-event-delete-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 8px;
 }
 
 .saved-date-container {
@@ -536,6 +544,7 @@ body {
 }
 
 .itinerary-location {
+  position: relative;
   height: 50px;
   width: 100%;
   border: 1px solid black;
@@ -543,7 +552,7 @@ body {
 }
 
 .itinerary-location-time-container {
-  height: 50px;
+  height: 100%;
   flex-basis: 20%;
   background-color: #292826;
 }
@@ -556,6 +565,7 @@ body {
 }
 
 .itinerary-location-name-container {
+  height: 100%;
   flex-basis: 80%;
   text-align: center;
 }
@@ -565,6 +575,11 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: #292826;
+}
+
+.location-delete-icon {
+  position: absolute;
+  right: 15px;
 }
 
 /* ----------FOOTER---------- */
@@ -606,9 +621,10 @@ body {
   background-color: rgb(80 200 120 / 80%);
 }
 
-.saved-event:hover,
-.results-event:hover {
-  border: 1px solid #f4563c;
+.saved-venue-container:hover,
+.results-event-venue-container:hover,
+.itinerary-location-name-container:hover {
+  background-color: #e0dbdb;
 }
 
 .create-itinerary-btn:hover {
@@ -616,6 +632,11 @@ body {
 }
 
 .itinerary-icons:hover {
+  color: #f4563c;
+}
+
+.location-delete-icon:hover,
+.saved-event-delete-icon:hover {
   color: #f4563c;
 }
 

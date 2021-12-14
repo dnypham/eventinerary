@@ -48,14 +48,15 @@ export default class SavedEvents extends React.Component {
     }
 
     return this.state.events.map((event, index) => (
-      <div key={event.eventId} data-id={event.eventId} className="row saved-event" onClick={() => this.checkItinerary(event.eventId)}>
-            <div className="saved-date-container flex-c">
-              <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
-            </div>
-            <div className="saved-venue-container flex-c">
-              <h3 className="ft-montseratt">{event.performer}</h3>
-            </div>
-          </div>
+      <div key={event.eventId} data-id={event.eventId} className="row saved-event">
+        <div className="saved-date-container flex-c">
+          <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
+        </div>
+        <div className="saved-venue-container flex-c" onClick={() => this.checkItinerary(event.eventId)}>
+          <h3 className="ft-montseratt">{event.performer}</h3>
+        </div>
+        <i className="fas fa-trash-alt fa-2x saved-event-delete-icon"></i>
+      </div>
     ));
   }
 
@@ -124,6 +125,7 @@ export default class SavedEvents extends React.Component {
           <div className="itinerary-location-name-container flex-c">
             <h3>{location.location}</h3>
           </div>
+          <i className="fas fa-trash-alt fa-2x location-delete-icon"></i>
         </div>
       ));
     } else {
