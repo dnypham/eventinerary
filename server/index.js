@@ -21,15 +21,15 @@ const jsonMiddleware = express.json();
 app.use(jsonMiddleware);
 
 app.post('/api/events', (req, res, next) => {
-  const { seatgeekEventId, performer, performerImage } = req.body;
+  const { seatgeekEventId, performer, performerImage, date } = req.body;
   const userId = 1;
 
   const sql = `
-    INSERT INTO "events" ("userId", "seatgeekEventId", "performer", "performerImage")
-         VALUES ($1, $2, $3, $4)
+    INSERT INTO "events" ("userId", "seatgeekEventId", "performer", "performerImage", "date")
+         VALUES ($1, $2, $3, $4, $5)
     RETURNING *;
   `;
-  const params = [userId, seatgeekEventId, performer, performerImage];
+  const params = [userId, seatgeekEventId, performer, performerImage, date];
 
   db.query(sql, params)
     .then(data => {
@@ -43,7 +43,8 @@ app.get('/api/events', (req, res) => {
   const sql = `
     SELECT *
     FROM "events"
-    WHERE "userId" = 1;
+    WHERE "userId" = 1
+    ORDER BY "date" ASC;
   `;
 
   db.query(sql)

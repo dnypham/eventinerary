@@ -5,14 +5,15 @@ export default class Event extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.saveEvent = this.saveEvent.bind(this);
   }
 
-  handleClick() {
+  saveEvent() {
     const event = {
       seatgeekEventId: this.props.eventInfo.id,
       performer: this.props.performer.name,
-      performerImage: this.props.performer.image
+      performerImage: this.props.performer.image,
+      date: this.props.eventInfo.datetime_local.slice(0, 10)
     };
 
     fetch('/api/events', {
@@ -21,11 +22,7 @@ export default class Event extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(event)
-    })
-      .then(res => res.text())
-      .then(data => {
-        console.log(data);
-      });
+    });
   }
 
   render() {
@@ -59,7 +56,7 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
               <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
-              <button className="btn save-event-btn event-info-btn ft-atf-franklin-gothic" onClick={this.handleClick}>SAVE EVENT</button>
+              <button className="btn save-event-btn event-info-btn ft-atf-franklin-gothic" onClick={this.saveEvent}>SAVE EVENT</button>
             </div>
           </div>
         </div>
