@@ -430,11 +430,12 @@ body {
   cursor: pointer;
 }
 
-.saved-event-delete-icon {
+.selected-event-icon {
   position: absolute;
   cursor: pointer;
   right: 15px;
   top: 8px;
+  color: #50c878;
 }
 
 .saved-date-container {
@@ -645,8 +646,7 @@ body {
   color: #f4563c;
 }
 
-.location-delete-icon:hover,
-.saved-event-delete-icon:hover {
+.location-delete-icon:hover {
   color: #f4563c;
 }
 

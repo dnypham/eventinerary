@@ -54,10 +54,18 @@ export default class SavedEvents extends React.Component {
         </div>
         <div className="saved-venue-container flex-c" onClick={() => this.checkItinerary(event.eventId)}>
           <h3 className="ft-montseratt">{event.performer}</h3>
+          {this.renderIcon(event.eventId)}
         </div>
-        <i className="fas fa-trash-alt fa-2x saved-event-delete-icon"></i>
       </div>
     ));
+  }
+
+  renderIcon(eventId) {
+    if (eventId === this.state.eventId) {
+      return (
+          <i className="far fa-check-circle fa-2x selected-event-icon"></i>
+      );
+    }
   }
 
   checkItinerary(eventId) {
