@@ -652,7 +652,7 @@ body {
 
 /* ----------MEDIA QUERIES---------- */
 
-@media only screen and (max-width: 1350px) {
+/* @media only screen and (max-width: 1350px) {
   .home-container {
     width: 1200px;
   }
@@ -960,4 +960,4 @@ body {
   .home-header {
     font-size: 20px;
   }
-}
+} */

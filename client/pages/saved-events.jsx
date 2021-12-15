@@ -17,6 +17,7 @@ export default class SavedEvents extends React.Component {
   }
 
   componentDidMount() {
+
     fetch('/api/events')
       .then(request => request.json())
       .then(events => {
@@ -134,7 +135,6 @@ export default class SavedEvents extends React.Component {
           <div className="itinerary-location-name-container flex-c">
             <h3>{location.location}</h3>
           </div>
-          <i className="fas fa-trash-alt fa-2x location-delete-icon"></i>
         </div>
       ));
     }

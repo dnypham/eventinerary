@@ -16,10 +16,8 @@ export default class Event extends React.Component {
 
     fetch(`/api/events/${seatgeekEventId}`)
       .then(req => req.json())
-      .then(id => {
-        if (seatgeekEventId === id) {
-          this.setState({ saved: true });
-        }
+      .then(idExists => {
+        this.setState({ saved: idExists });
       });
   }
 

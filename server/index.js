@@ -84,8 +84,19 @@ app.get('/api/events/:seatgeekEventId', (req, res) => {
 
   db.query(sql, params)
     .then(result => {
-      const id = result.rows[0].seatgeekEventId;
-      res.json(id);
+      let idExists = false;
+
+      if (result.rows[0]) {
+        idExists = true;
+      }
+
+      res.json(idExists);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
     });
 });
 
