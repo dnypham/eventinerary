@@ -54,6 +54,7 @@ CREATE TABLE "events" (
 	"performer" TEXT NOT NULL,
 	"performerImage" TEXT NOT NULL,
 	"seatgeekEventId" integer NOT NULL,
+  "date" DATE NOT NULL,
 	CONSTRAINT "events_pk" PRIMARY KEY ("eventId")
 ) WITH (
   OIDS=FALSE

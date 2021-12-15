@@ -1,15 +1,108 @@
+/* ----------FONTS---------- */
+
+.ft-cooper-black {
+  font-family: "Cooper Black", sans-serif;
+}
+
+.ft-atf-franklin-gothic {
+  font-family: "ATF Franklin Gothic", sans-serif;
+}
+
 .row {
   display: flex;
 }
 
-.column-full {
+.col-full {
   flex-basis: 100%;
 }
 
-.column-third {
+.col-third {
   flex-basis: calc(100% / 3);
 }
 
-.margin-top {
+.margin-t {
   margin-top: 40px;
+}
+
+.flex-c {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-s {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.flex-e {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.align-items-c {
+  align-items: center;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.border-radius {
+  border-radius: 20px;
+}
+
+.border-radius-b {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.border-radius-t {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.bdr-radius-b-l-20px {
+  border-bottom-left-radius: 20px;
+}
+
+.bdr-radius-b-r-20px {
+  border-bottom-right-radius: 20px;
+}
+
+.bdr-radius-t-l-20px {
+  border-top-left-radius: 20px;
+}
+
+.bdr-radius-t-r-20px {
+  border-top-right-radius: 20px;
+}
+
+.ft-18px {
+  font-size: 18px;
+}
+
+.ft-16px {
+  font-size: 16px;
+  color: gray;
+}
+
+.txt-gray {
+  color: gray;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
 }

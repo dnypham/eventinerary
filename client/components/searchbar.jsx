@@ -28,9 +28,9 @@ export default class Searchbar extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="search-container">
+        <div className="pos-rel">
           <input required className="searchbar" value={this.state.value} onChange={this.handleChange} placeholder="Search for artist, sports team, or venue"></input>
-          <button className="search-btn">SEARCH</button>
+          <button className="btn search-btn ft-montseratt pos-abs">SEARCH</button>
         </div>
       </form>
     );

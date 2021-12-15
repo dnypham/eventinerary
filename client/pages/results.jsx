@@ -15,13 +15,13 @@ export default class Results extends React.Component {
     let fontSize = '';
 
     if (this.props.performer.name.length > 41) {
-      fontSize = 'font-size-4';
+      fontSize = 'ft-size-4';
     } else if (this.props.performer.name.length > 32) {
-      fontSize = 'font-size-3';
+      fontSize = 'ft-size-3';
     } else if (this.props.performer.name.length > 26) {
-      fontSize = 'font-size-2';
+      fontSize = 'ft-size-2';
     } else if (this.props.performer.name.length > 12) {
-      fontSize = 'font-size-1';
+      fontSize = 'ft-size-1';
     }
 
     return fontSize;
@@ -31,19 +31,19 @@ export default class Results extends React.Component {
 
     if (this.props.results.length !== 0) {
       return this.props.results.map((event, index) => (
-        <div key={event.id} data-id={event.id} className="row rendered-event" onClick={() => this.handleClick(event.id)}>
-          <div className="search-events-date-container">
+        <div key={event.id} data-id={event.id} className="row results-event" onClick={() => this.handleClick(event.id)}>
+          <div className="results-event-date-container flex-c">
             <h3>{convertDateTime(event.datetime_local).date.toUpperCase()}</h3>
           </div>
-          <div className="search-events-venue-container">
-            <h3>{`${event.venue.name} | `}<span className="search-events-location">{`${event.venue.display_location}`}</span></h3>
+          <div className="results-event-venue-container flex-s">
+            <h3>{`${event.venue.name} | `}<span className="results-event-location">{`${event.venue.display_location}`}</span></h3>
           </div>
         </div>
       ));
     } else {
       return (
-        <div className="no-events-container">
-          <h1 className="no-events-text">NO UPCOMING EVENTS</h1>
+        <div className="results-no-events-container flex-c">
+          <h1 className="results-no-events-txt">NO UPCOMING EVENTS</h1>
         </div>
       );
     }
@@ -52,17 +52,17 @@ export default class Results extends React.Component {
 
   render() {
     return (
-      <div className="events-container">
-        <div className="events-flex">
-          <div className="search-results-container">
+      <div className="results-layout-container flex-c">
+        <div className="flex-c">
+          <div className="results-container pos-rel">
             <div className="row">
-              <img className="search-results-image" src={this.props.performer.image}></img>
-              <div className="search-results-header-text-container">
-                <h1 className={`search-results-header-text ${this.getFontSize()}`}>{this.props.performer.name.toUpperCase()}</h1>
+              <img className="results-img bdr-radius-t-l-20px" src={this.props.performer.image}></img>
+              <div className="results-performer-container flex-c">
+                <h1 className={`results-performer-txt ${this.getFontSize()}`}>{this.props.performer.name.toUpperCase()}</h1>
               </div>
             </div>
-            <div className="rendered-events-container">
-            {this.renderEvents()}
+            <div className="results-events-container">
+              {this.renderEvents()}
             </div>
           </div>
         </div>

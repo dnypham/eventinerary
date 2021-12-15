@@ -13,23 +13,23 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <header className="header-container">
-        <div className="column-third">
-          <div className="searchbar-flex">
+      <header className="header-layout-container flex-c">
+        <div className="col-third">
+          <div className="flex-s">
             <Searchbar search={this.props.search}/>
           </div>
         </div>
-        <div className="column-third">
-          <div className="logo-flex">
-            <h1 className="logo" onClick={this.handleClick}>Eventinerary</h1>
+        <div className="col-third">
+          <div className="flex-c">
+            <h1 className="logo ft-cooper-black" onClick={this.handleClick}>Eventinerary</h1>
           </div>
         </div>
-        <div className="column-third">
-          <div className="nav-flex">
-            <nav className="nav-links">
-              <a className="pages" href="#saved-events">Saved Events</a>
-              <a className="pages" href="#contact">Contact</a>
-              <a className="pages" href="#log-in">Log In</a>
+        <div className="col-third">
+          <div className="flex-e">
+            <nav className="navbar-links">
+              <a className="links ft-atf-franklin-gothic" href="#saved-events">Saved Events</a>
+              <a className="links ft-atf-franklin-gothic" href="#contact">Contact</a>
+              <a className="links ft-atf-franklin-gothic" href="#log-in">Log In</a>
             </nav>
           </div>
         </div>
