@@ -93,14 +93,6 @@ export default class SavedEvents extends React.Component {
           });
         }
 
-        // if (data[0]) {
-        //   fetch(`/api/locations/${data[0].itineraryId}`)
-        //     .then(req => req.json())
-        //     .then(locations => {
-        //       console.log(locations);
-        //       this.setState({ locations: locations });
-        //     });
-        // }
       });
   }
 
