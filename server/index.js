@@ -50,6 +50,13 @@ app.get('/api/events', (req, res) => {
   db.query(sql)
     .then(result => {
       res.json(result.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
     });
 });
 
@@ -68,6 +75,13 @@ app.get('/api/itineraries/:eventId', (req, res) => {
   db.query(sql, params)
     .then(result => {
       res.json(result.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
     });
 });
 
@@ -93,6 +107,7 @@ app.get('/api/events/:seatgeekEventId', (req, res) => {
       res.json(idExists);
     })
     .catch(err => {
+      // eslint-disable-next-line
       console.log(err);
       res.status(500).json({
         error: 'an unexpected error occurred'
@@ -114,6 +129,13 @@ app.get('/api/locations/:itineraryId', (req, res) => {
   db.query(sql, params)
     .then(result => {
       res.json(result.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
     });
 });
 
@@ -144,10 +166,22 @@ app.post('/api/itineraries', (req, res, next) => {
           const [event] = data.rows;
           res.status(201).json(event);
         })
-        .catch(err => next(err));
+        .catch(err => {
+          // eslint-disable-next-line
+          console.log(err);
+          res.status(500).json({
+            error: 'an unexpected error occurred'
+          });
+        });
 
     })
-    .catch(err => next(err));
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
 
 });
 
