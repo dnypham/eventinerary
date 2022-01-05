@@ -187,6 +187,7 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="saved-layout-container flex-c">
         <div className="saved-layout align-items-c flex-space-between">
@@ -196,6 +197,9 @@ export default class SavedEvents extends React.Component {
             </div>
             <div className="saved-events-container border-radius-b">
               {this.renderSavedEvents()}
+            </div>
+            <div className="saved-events-footer-container border-radius-b flex-c">
+              <button className="btn delete-event-btn ft-atf-franklin-gothic">DELETE EVENT</button>
             </div>
           </div>
           <div className="itinerary-container border-radius">

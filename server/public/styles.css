@@ -419,7 +419,7 @@ body {
 }
 
 .saved-events-container {
-  height: 650px;
+  height: 560px;
   width: inherit;
   overflow-y: auto;
 }
@@ -449,6 +449,19 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: #f4563c;
+}
+
+.saved-events-footer-container {
+  height: 70px;
+  background-color: #292826;
+}
+
+.delete-event-btn {
+  color: white;
+  height: 35px;
+  width: 130px;
+  background-color: #f4563c;
+  border-radius: 10px;
 }
 
 .saved-venue-container {
@@ -630,6 +643,10 @@ body {
 
 .save-event-btn:hover {
   background-color: rgb(80 200 120 / 80%);
+}
+
+.delete-event-btn:hover {
+  background-color: rgb(244 86 60 / 90%);
 }
 
 .saved-venue-container:hover,
