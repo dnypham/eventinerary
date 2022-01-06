@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationModal from '../components/location-modal';
 import convertDateTime from '../lib/convertDateTime';
 
 export default class SavedEvents extends React.Component {
@@ -18,6 +19,7 @@ export default class SavedEvents extends React.Component {
     this.createItinerary = this.createItinerary.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.renderDeleteModal = this.renderDeleteModal.bind(this);
   }
 
   componentDidMount() {
@@ -235,13 +237,19 @@ export default class SavedEvents extends React.Component {
         this.getEvents();
         this.renderItinerary();
       });
+  }
 
+  renderLocationModal() {
+    return (
+      <LocationModal />
+    );
   }
 
   render() {
     return (
       <div className="relative">
         {this.renderDeleteModal()}
+        {this.renderLocationModal()}
         <div className="saved-layout-container flex-c">
           <div className="saved-layout align-items-c flex-space-between">
             <div className="saved-container border-radius">
