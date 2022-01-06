@@ -106,7 +106,8 @@ export default class SavedEvents extends React.Component {
           this.setState({
             itinerary: false,
             eventId: eventId,
-            selectedEvent: data
+            selectedEvent: data,
+            itineraryId: null
           });
         }
 
