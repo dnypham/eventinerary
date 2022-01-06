@@ -10,14 +10,21 @@ export default class SavedEvents extends React.Component {
       eventId: null,
       itinerary: null,
       itineraryId: null,
-      locations: []
+      locations: [],
+      deleteModal: false
     };
+
     this.checkItinerary = this.checkItinerary.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
+    this.renderDeleteModal = this.renderDeleteModal.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
   }
 
   componentDidMount() {
+    this.getEvents();
+  }
 
+  getEvents() {
     fetch('/api/events')
       .then(request => request.json())
       .then(events => {
@@ -86,7 +93,8 @@ export default class SavedEvents extends React.Component {
           this.setState({
             itinerary: true,
             eventId: eventId,
-            selectedEvent: data
+            selectedEvent: data,
+            itineraryId: data[0].itineraryId
           });
 
           fetch(`/api/locations/${data[0].itineraryId}`)
@@ -186,24 +194,68 @@ export default class SavedEvents extends React.Component {
     }
   }
 
-  render() {
-    console.log(this.state);
-    return (
-      <div className="saved-layout-container flex-c">
-        <div className="saved-layout align-items-c flex-space-between">
-          <div className="saved-container border-radius">
-            <div className="saved-list-container flex-c border-radius-t">
-              <h2>SAVED EVENTS</h2>
+  renderDeleteModal() {
+
+    if (this.state.deleteModal === true) {
+      return (
+        <div className='delete-modal-container flex-c'>
+          <div className='delete-modal-selection-container border-radius'>
+            <div className='delete-modal-text-container border-radius-t'>
+              <h3 className='delete-modal-text'>Are you sure you want to delete this event?</h3>
             </div>
-            <div className="saved-events-container border-radius-b">
-              {this.renderSavedEvents()}
-            </div>
-            <div className="saved-events-footer-container border-radius-b flex-c">
-              <button className="btn delete-event-btn ft-atf-franklin-gothic">DELETE EVENT</button>
+            <div className='delete-modal-buttons-container flex-space-between border-radius-b'>
+              <button className='btn delete-modal-cancel-btn' onClick={() => this.setState({ deleteModal: false })}>CANCEL</button>
+              <button className='btn delete-modal-delete-btn' onClick={this.deleteEvent}>DELETE</button>
             </div>
           </div>
-          <div className="itinerary-container border-radius">
-            {this.renderItinerary()}
+        </div>
+      );
+    }
+  }
+
+  deleteEvent() {
+    const data = {
+      eventId: this.state.eventId,
+      itineraryId: this.state.itineraryId
+    };
+
+    fetch('/api/events', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(() => {
+        this.setState({
+          deleteModal: false
+        });
+        this.getEvents();
+        this.renderItinerary();
+      });
+
+  }
+
+  render() {
+    return (
+      <div className="relative">
+        {this.renderDeleteModal()}
+        <div className="saved-layout-container flex-c">
+          <div className="saved-layout align-items-c flex-space-between">
+            <div className="saved-container border-radius">
+              <div className="saved-list-container flex-c border-radius-t">
+                <h2>SAVED EVENTS</h2>
+              </div>
+              <div className="saved-events-container border-radius-b">
+                {this.renderSavedEvents()}
+              </div>
+              <div className="saved-events-footer-container border-radius-b flex-c">
+                <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
+              </div>
+            </div>
+            <div className="itinerary-container border-radius">
+              {this.renderItinerary()}
+            </div>
           </div>
         </div>
       </div>

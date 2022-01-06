@@ -606,6 +606,65 @@ body {
   right: 15px;
 }
 
+.delete-modal-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 70%);
+  z-index: 1;
+}
+
+.delete-modal-selection-container {
+  height: 200px;
+  width: 500px;
+  background-color: white;
+}
+
+.delete-modal-text-container {
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.delete-modal-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 24;
+  font-weight: 500;
+}
+
+.delete-modal-buttons-container {
+  align-items: center;
+  height: 50%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 20px;
+}
+
+.delete-modal-cancel-btn {
+  color: white;
+  background-color: rgb(128 128 128);
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.delete-modal-delete-btn {
+  color: white;
+  background-color: #f4563c;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 40px;
+  width: 120px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {
@@ -665,6 +724,14 @@ body {
 
 .location-delete-icon:hover {
   color: #f4563c;
+}
+
+.delete-modal-cancel-btn:hover {
+  background-color: rgb(128 128 128 / 90%);
+}
+
+.delete-modal-delete-btn:hover {
+  background-color: rgb(244 86 60 / 90%);
 }
 
 /* ----------MEDIA QUERIES---------- */
