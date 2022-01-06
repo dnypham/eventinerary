@@ -228,7 +228,8 @@ export default class SavedEvents extends React.Component {
     })
       .then(() => {
         this.setState({
-          deleteModal: false
+          deleteModal: false,
+          itinerary: null
         });
         this.getEvents();
         this.renderItinerary();
