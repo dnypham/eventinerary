@@ -182,7 +182,7 @@ export default class SavedEvents extends React.Component {
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
             <i className="fas fa-edit fa-2x itinerary-icons"></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
-            <i className="fas fa-share fa-2x itinerary-icons"></i>
+            <i className="fas fa-plus-circle fa-2x itinerary-icons"></i>
           </div>
         </div>
       );
