@@ -185,6 +185,89 @@ app.post('/api/itineraries', (req, res, next) => {
 
 });
 
+app.delete('/api/events', (req, res) => {
+  const { eventId, itineraryId } = req.body;
+
+  if (itineraryId != null) {
+    const sql3 = `
+    DELETE FROM "locations"
+          WHERE "itineraryId" = $1
+    RETURNING *;
+  `;
+    const params3 = [itineraryId];
+
+    db.query(sql3, params3)
+      .then(data => {
+        res.status(201);
+
+        const sql2 = `
+          DELETE FROM "itineraries"
+                WHERE "itineraryId" = $1
+          RETURNING *;
+        `;
+        const params2 = [itineraryId];
+
+        db.query(sql2, params2)
+          .then(data => {
+            res.status(201);
+
+            const sql1 = `
+              DELETE FROM "events"
+                    WHERE "eventId" = $1
+              RETURNING *;
+            `;
+            const params1 = [eventId];
+
+            db.query(sql1, params1)
+              .then(data => {
+                res.status(201).json(data.rows);
+              })
+              .catch(err => {
+                // eslint-disable-next-line
+                console.log(err);
+                res.status(500).json({
+                  error: 'an unexpected error occurred'
+                });
+              });
+          })
+          .catch(err => {
+            // eslint-disable-next-line
+            console.log(err);
+            res.status(500).json({
+              error: 'an unexpected error occurred'
+            });
+          });
+      })
+      .catch(err => {
+        // eslint-disable-next-line
+        console.log(err);
+        res.status(500).json({
+          error: 'an unexpected error occurred'
+        });
+      });
+  } else {
+    const sql1 = `
+    DELETE FROM "events"
+          WHERE "eventId" = $1
+    RETURNING *;
+  `;
+
+    const params1 = [eventId];
+
+    db.query(sql1, params1)
+      .then(data => {
+        res.status(201).json(data.rows);
+      })
+      .catch(err => {
+        // eslint-disable-next-line
+        console.log(err);
+        res.status(500).json({
+          error: 'an unexpected error occurred'
+        });
+      });
+  }
+});
+
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`express server listening on port ${process.env.PORT}`);
