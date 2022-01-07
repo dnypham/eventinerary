@@ -655,6 +655,26 @@ body {
   font-weight: 400;
 }
 
+/* ----------LOCATION FORM MODAL---------- */
+
+.location-modal-form-container {
+  height: 600px;
+  width: 600px;
+  background-color: white;
+}
+
+.location-modal-form-header-container {
+  height: 70px;
+  background-color: #292826;
+}
+
+.location-modal-form-header {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #f4563c;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {

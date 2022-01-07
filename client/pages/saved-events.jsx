@@ -201,7 +201,7 @@ export default class SavedEvents extends React.Component {
 
     if (this.state.deleteModal === true) {
       return (
-        <div className='modal flex-c'>
+        <div className='delete-modal-container flex-c'>
           <div className='delete-modal-selection-container border-radius'>
             <div className='delete-modal-text-container border-radius-t'>
               <h3 className='delete-modal-text'>Are you sure you want to delete this event?</h3>
@@ -240,9 +240,9 @@ export default class SavedEvents extends React.Component {
   }
 
   renderLocationModal() {
-    // return (
-    //   <LocationModal />
-    // );
+    return (
+      <LocationModal />
+    );
   }
 
   render() {
