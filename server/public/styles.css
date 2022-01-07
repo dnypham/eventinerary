@@ -675,6 +675,39 @@ body {
   color: #f4563c;
 }
 
+.location-modal-form-container {
+  height: 460px;
+}
+
+.location-modal-button-container {
+  height: 70px;
+  background-color: #292826;
+  align-items: center;
+  padding: 0 150px;
+}
+
+.location-modal-back-btn {
+  color: white;
+  background-color: rgb(128 128 128);
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 80px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.location-modal-add-btn {
+  color: white;
+  background-color: #50c878;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 150px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {

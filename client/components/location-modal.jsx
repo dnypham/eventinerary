@@ -15,6 +15,13 @@ export default class LocationModal extends React.Component {
           <div className='location-modal-header-container border-radius-t flex-c'>
             <h3 className='location-modal-header'>NEW LOCATION</h3>
           </div>
+          <div className='location-modal-form-container'>
+
+          </div>
+          <div className='location-modal-button-container border-radius-b flex-space-between'>
+            <button className='btn location-modal-back-btn'>BACK</button>
+            <button className='btn location-modal-add-btn'>ADD LOCATION</button>
+          </div>
         </div>
       </div>
     );
