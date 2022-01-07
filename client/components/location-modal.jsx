@@ -10,7 +10,7 @@ export default class LocationModal extends React.Component {
 
   render() {
     return (
-      <></>
+      <div className='modal flex-c'></div>
     );
   }
 }

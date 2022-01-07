@@ -606,16 +606,6 @@ body {
   right: 15px;
 }
 
-.delete-modal-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(0 0 0 / 70%);
-  z-index: 1;
-}
-
 .delete-modal-selection-container {
   height: 200px;
   width: 500px;
