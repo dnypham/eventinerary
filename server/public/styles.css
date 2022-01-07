@@ -657,18 +657,18 @@ body {
 
 /* ----------LOCATION FORM MODAL---------- */
 
-.location-modal-form-container {
+.location-modal-container {
   height: 600px;
   width: 600px;
   background-color: white;
 }
 
-.location-modal-form-header-container {
+.location-modal-header-container {
   height: 70px;
   background-color: #292826;
 }
 
-.location-modal-form-header {
+.location-modal-header {
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   font-size: 32px;
