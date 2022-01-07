@@ -806,6 +806,14 @@ body {
   background-color: rgb(244 86 60 / 90%);
 }
 
+.location-modal-back-btn:hover {
+  background-color: rgb(128 128 128 / 90%);
+}
+
+.location-modal-add-btn:hover {
+  background-color: rgb(80 200 120 / 90%);
+}
+
 /* ----------MEDIA QUERIES---------- */
 
 /* @media only screen and (max-width: 1350px) {
