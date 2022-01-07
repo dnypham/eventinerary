@@ -676,7 +676,36 @@ body {
 }
 
 .location-modal-form-container {
+  display: flex;
+  flex-direction: column;
   height: 460px;
+  padding: 40px 40px 30px;
+  justify-content: space-between;
+}
+
+.location-modal-form-container label {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.location-modal-form-container input {
+  height: 30px;
+  width: 270px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  border: none;
+  padding: 0 10px;
+}
+
+.location-modal-form-container textarea {
+  height: 150px;
+  width: 270px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  border: none;
+  padding: 10px;
+  resize: none;
 }
 
 .location-modal-button-container {
