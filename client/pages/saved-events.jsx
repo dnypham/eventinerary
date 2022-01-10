@@ -12,7 +12,8 @@ export default class SavedEvents extends React.Component {
       itinerary: null,
       itineraryId: null,
       locations: [],
-      deleteModal: false
+      deleteModal: false,
+      addLocationModal: false
     };
 
     this.checkItinerary = this.checkItinerary.bind(this);
@@ -184,7 +185,7 @@ export default class SavedEvents extends React.Component {
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
             <i className="fas fa-edit fa-2x itinerary-icons"></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
-            <i className="fas fa-plus-circle fa-2x itinerary-icons"></i>
+            <i className="fas fa-plus-circle fa-2x itinerary-icons" onClick={() => this.setState({ addLocationModal: true })}></i>
           </div>
         </div>
       );
@@ -201,7 +202,7 @@ export default class SavedEvents extends React.Component {
 
     if (this.state.deleteModal === true) {
       return (
-        <div className='delete-modal-container flex-c'>
+        <div className='modal flex-c'>
           <div className='delete-modal-selection-container border-radius'>
             <div className='delete-modal-text-container border-radius-t'>
               <h3 className='delete-modal-text'>Are you sure you want to delete this event?</h3>
@@ -240,9 +241,12 @@ export default class SavedEvents extends React.Component {
   }
 
   renderLocationModal() {
-    return (
-      <LocationModal />
-    );
+
+    if (this.state.addLocationModal === true) {
+      return (
+        <LocationModal />
+      );
+    }
   }
 
   render() {
