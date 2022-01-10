@@ -7,7 +7,7 @@ export default class LocationModal extends React.Component {
       location: '',
       time: '',
       address: '',
-      phoneNumber: '',
+      phone: '',
       notes: ''
     };
 
@@ -27,11 +27,12 @@ export default class LocationModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state);
     this.setState({
       location: '',
       time: '',
       address: '',
-      phoneNumber: '',
+      phone: '',
       notes: ''
     });
   }
@@ -66,62 +67,14 @@ export default class LocationModal extends React.Component {
               </div>
               <div className='flex-space-between'>
                 <label htmlFor='time'>Time:</label>
-                <select
+                <input
                   required
-                  defaultValue=''
+                  type='time'
                   name='time'
                   id='time'
+                  value={this.state.time}
                   onChange={this.handleChange}>
-                    <option value='' disabled>Select a time</option>
-                    <option value='12:00AM'>12:00AM</option>
-                    <option value='12:00AM'>12:30AM</option>
-                    <option value='1:00AM'>1:00AM</option>
-                    <option value='1:00AM'>1:30AM</option>
-                    <option value='2:00AM'>2:00AM</option>
-                    <option value='2:00AM'>2:30AM</option>
-                    <option value='3:00AM'>3:00AM</option>
-                    <option value='3:00AM'>3:30AM</option>
-                    <option value='4:00AM'>4:00AM</option>
-                    <option value='4:00AM'>4:30AM</option>
-                    <option value='5:00AM'>5:00AM</option>
-                    <option value='5:00AM'>5:30AM</option>
-                    <option value='6:00AM'>6:00AM</option>
-                    <option value='6:00AM'>6:30AM</option>
-                    <option value='7:00AM'>7:00AM</option>
-                    <option value='7:00AM'>7:30AM</option>
-                    <option value='8:00AM'>8:00AM</option>
-                    <option value='8:00AM'>8:30AM</option>
-                    <option value='9:00AM'>9:00AM</option>
-                    <option value='9:00AM'>9:30AM</option>
-                    <option value='10:00AM'>10:00AM</option>
-                    <option value='10:00AM'>10:30AM</option>
-                    <option value='11:00AM'>11:00AM</option>
-                    <option value='11:00AM'>11:30AM</option>
-                    <option value='12:00PM'>12:00PM</option>
-                    <option value='12:00PM'>12:30PM</option>
-                    <option value='1:00PM'>1:00PM</option>
-                    <option value='1:00PM'>1:30PM</option>
-                    <option value='2:00PM'>2:00PM</option>
-                    <option value='2:00PM'>2:30PM</option>
-                    <option value='3:00PM'>3:00PM</option>
-                    <option value='3:00PM'>3:30PM</option>
-                    <option value='4:00PM'>4:00PM</option>
-                    <option value='4:00PM'>4:30PM</option>
-                    <option value='5:00PM'>5:00PM</option>
-                    <option value='5:00PM'>5:30PM</option>
-                    <option value='6:00PM'>6:00PM</option>
-                    <option value='6:00PM'>6:30PM</option>
-                    <option value='7:00PM'>7:00PM</option>
-                    <option value='7:00PM'>7:30PM</option>
-                    <option value='8:00PM'>8:00PM</option>
-                    <option value='8:00PM'>8:30PM</option>
-                    <option value='9:00PM'>9:00PM</option>
-                    <option value='9:00PM'>9:30PM</option>
-                    <option value='10:00PM'>10:00PM</option>
-                    <option value='10:00PM'>10:30PM</option>
-                    <option value='11:00PM'>11:00PM</option>
-                    <option value='11:00PM'>11:30PM</option>
-                </select>
+                </input>
               </div>
               <div className='flex-space-between'>
                 <label htmlFor='address'>Address:</label>
@@ -134,13 +87,13 @@ export default class LocationModal extends React.Component {
                   onChange={this.handleChange} />
               </div>
               <div className='flex-space-between'>
-                <label htmlFor='phone-number'>Phone Number:</label>
+                <label htmlFor='phone'>Phone Number:</label>
                 <input
-                  name='phone-number'
-                  type='text'
-                  id='phone-number'
-                  maxLength='15'
-                  value={this.state.phoneNumber}
+                  name='phone'
+                  type='tel'
+                  id='phone'
+                  pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                  value={this.state.phone}
                   onChange={this.handleChange} />
               </div>
               <div className='flex-space-between'>
