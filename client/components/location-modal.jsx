@@ -1,4 +1,5 @@
 import React from 'react';
+import formatTime from '../lib/formatTime';
 
 export default class LocationModal extends React.Component {
   constructor(props) {
@@ -28,6 +29,24 @@ export default class LocationModal extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
+
+    const data = {
+      location: this.state.location,
+      time: formatTime(this.state.time),
+      address: this.state.address,
+      notes: this.state.notes
+    };
+
+    console.log(data);
+
+    // fetch('/api/locations', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(data)
+    // });
+
     this.setState({
       location: '',
       time: '',

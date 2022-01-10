@@ -244,7 +244,7 @@ export default class SavedEvents extends React.Component {
   renderLocationModal() {
     if (this.state.addLocationModal === true) {
       return (
-        <LocationModal locationModalOpen={this.state.locationModalOpen} closeLocationModal={this.closeLocationModal}/>
+        <LocationModal locationModalOpen={this.state.locationModalOpen} closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId}/>
       );
     }
   }
