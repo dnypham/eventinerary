@@ -13,6 +13,7 @@ export default class LocationModal extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   handleChange(event) {
@@ -35,7 +36,16 @@ export default class LocationModal extends React.Component {
     });
   }
 
+  closeModal() {
+    this.props.closeLocationModal();
+  }
+
   render() {
+
+    if (this.props.locationModalOpen === false) {
+      return null;
+    }
+
     return (
       <div className='modal flex-c'>
         <div className='location-modal-container border-radius'>
@@ -145,7 +155,7 @@ export default class LocationModal extends React.Component {
               </div>
             </div>
             <div className='location-modal-button-container border-radius-b flex-space-between'>
-              <button className='btn location-modal-back-btn' type='button'>BACK</button>
+              <button className='btn location-modal-back-btn' type='button' onClick={this.closeModal}>BACK</button>
               <button className='btn location-modal-add-btn' type='submit'>ADD LOCATION</button>
             </div>
           </form>

@@ -21,6 +21,7 @@ export default class SavedEvents extends React.Component {
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
+    this.closeLocationModal = this.closeLocationModal.bind(this);
   }
 
   componentDidMount() {
@@ -241,15 +242,21 @@ export default class SavedEvents extends React.Component {
   }
 
   renderLocationModal() {
-
     if (this.state.addLocationModal === true) {
       return (
-        <LocationModal />
+        <LocationModal locationModalOpen={this.state.locationModalOpen} closeLocationModal={this.closeLocationModal}/>
       );
     }
   }
 
+  closeLocationModal() {
+    this.setState({
+      addLocationModal: false
+    });
+  }
+
   render() {
+    console.log(this.state);
     return (
       <div className="relative">
         {this.renderDeleteModal()}
