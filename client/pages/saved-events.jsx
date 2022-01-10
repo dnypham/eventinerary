@@ -256,7 +256,6 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="relative">
         {this.renderDeleteModal()}
