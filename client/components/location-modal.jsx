@@ -28,24 +28,25 @@ export default class LocationModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
 
     const data = {
+      itineraryId: this.props.itineraryId,
       location: this.state.location,
-      time: formatTime(this.state.time),
+      time: this.state.time,
       address: this.state.address,
+      phone: this.state.phone,
       notes: this.state.notes
     };
 
     console.log(data);
 
-    // fetch('/api/locations', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // });
+    fetch('/api/locations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
     this.setState({
       location: '',
@@ -54,6 +55,10 @@ export default class LocationModal extends React.Component {
       phone: '',
       notes: ''
     });
+
+    this.props.closeLocationModal();
+    this.props.getLocations();
+
   }
 
   closeModal() {

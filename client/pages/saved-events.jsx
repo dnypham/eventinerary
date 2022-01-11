@@ -18,10 +18,12 @@ export default class SavedEvents extends React.Component {
 
     this.checkItinerary = this.checkItinerary.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
+    this.renderItineraryLocations = this.renderItineraryLocations.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.closeLocationModal = this.closeLocationModal.bind(this);
+    this.getLocations = this.getLocations.bind(this);
   }
 
   componentDidMount() {
@@ -101,7 +103,7 @@ export default class SavedEvents extends React.Component {
             itineraryId: data[0].itineraryId
           });
 
-          fetch(`/api/locations/${data[0].itineraryId}`)
+          fetch(`/api/locations/${this.state.itineraryId}`)
             .then(req => req.json())
             .then(locations => {
               this.setState({ locations: locations });
@@ -116,6 +118,14 @@ export default class SavedEvents extends React.Component {
         }
 
       });
+  }
+
+  getLocations() {
+    fetch(`/api/locations/${this.state.itineraryId}`)
+      .then(req => req.json())
+      .then(locations => {
+        this.setState({ locations: locations });
+      }, () => this.renderItineraryLocations());
   }
 
   createItinerary() {
@@ -244,7 +254,7 @@ export default class SavedEvents extends React.Component {
   renderLocationModal() {
     if (this.state.addLocationModal === true) {
       return (
-        <LocationModal locationModalOpen={this.state.locationModalOpen} closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId}/>
+        <LocationModal locationModalOpen={this.state.locationModalOpen}closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId} renderLocations={this.renderItineraryLocations} getLocations={this.getLocations}/>
       );
     }
   }

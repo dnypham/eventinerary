@@ -185,6 +185,29 @@ app.post('/api/itineraries', (req, res, next) => {
 
 });
 
+app.post('/api/locations', (req, res) => {
+  for (const property in req.body) {
+    if (req.body[property] === '') {
+      req.body[property] = null;
+    }
+  }
+
+  const { itineraryId, location, time, address, phone, notes } = req.body;
+  const userId = 1;
+
+  const sql = `
+    INSERT INTO "locations" ("itineraryId", "location", "time", "address", "phoneNumber", "notes", "userId")
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *;
+  `;
+  const params = [itineraryId, location, time, address, phone, notes, userId];
+
+  db.query(sql, params)
+    .then(data => {
+      res.status(201).json(data.rows);
+    });
+});
+
 app.delete('/api/events', (req, res) => {
   const { eventId, itineraryId } = req.body;
 
