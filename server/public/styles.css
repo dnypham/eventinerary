@@ -592,11 +592,12 @@ body {
   height: 100%;
   flex-basis: 80%;
   text-align: center;
+  padding: 0 50px;
 }
 
 .itinerary-location-name-container > h3 {
   font-family: Montserrat, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #292826;
 }
@@ -699,6 +700,7 @@ body {
 }
 
 .location-modal-form-container textarea {
+  font-family: sans-serif;
   height: 150px;
   width: 270px;
   border-radius: 8px;

@@ -83,6 +83,7 @@ export default class LocationModal extends React.Component {
                   name='location'
                   type='text'
                   id='location'
+                  maxLength='30'
                   value={this.state.location}
                   onChange={this.handleChange} />
               </div>
@@ -104,6 +105,7 @@ export default class LocationModal extends React.Component {
                   type='text'
                   id='address'
                   maxLength='35'
+                  placeholder='Optional'
                   value={this.state.address}
                   onChange={this.handleChange} />
               </div>
@@ -114,6 +116,7 @@ export default class LocationModal extends React.Component {
                   type='tel'
                   id='phone'
                   pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                  placeholder='Optional'
                   value={this.state.phone}
                   onChange={this.handleChange} />
               </div>
@@ -124,6 +127,7 @@ export default class LocationModal extends React.Component {
                   type='text'
                   id='notes'
                   maxLength='140'
+                  placeholder='Optional'
                   value={this.state.notes}
                   onChange={this.handleChange} />
               </div>

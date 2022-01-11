@@ -157,10 +157,18 @@ export default class SavedEvents extends React.Component {
             <h3>{formatTime(location.time)}</h3>
           </div>
           <div className="itinerary-location-name-container flex-c">
-            <h3>{location.location}</h3>
+            <h3>{this.checkLocationLength(location.location)}</h3>
           </div>
         </div>
       ));
+    }
+  }
+
+  checkLocationLength(location) {
+    if (location.length > 30) {
+      return location.slice(0, 31) + '...';
+    } else {
+      return location;
     }
   }
 
