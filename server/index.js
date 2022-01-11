@@ -91,7 +91,7 @@ app.get('/api/events/:seatgeekEventId', (req, res) => {
   const sql = `
     SELECT "seatgeekEventId"
     FROM "events"
-    WHERE "seatgeekEventId" = $1
+    WHERE "seatgeekEventId" = $1;
   `;
 
   const params = [seatgeekEventId];
@@ -121,7 +121,8 @@ app.get('/api/locations/:itineraryId', (req, res) => {
   const sql = `
     SELECT *
     FROM "locations"
-    WHERE "itineraryId" = $1;
+    WHERE "itineraryId" = $1
+    ORDER BY "time" ASC;
   `;
 
   const params = [itineraryId];
