@@ -24,7 +24,7 @@ CREATE TABLE "users" (
 CREATE TABLE "locations" (
 	"locationId" serial NOT NULL,
 	"location" TEXT,
-	"time" TEXT,
+	"time" TIME,
 	"address" TEXT,
 	"notes" TEXT,
 	"phoneNumber" TEXT,

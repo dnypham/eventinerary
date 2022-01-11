@@ -91,7 +91,7 @@ app.get('/api/events/:seatgeekEventId', (req, res) => {
   const sql = `
     SELECT "seatgeekEventId"
     FROM "events"
-    WHERE "seatgeekEventId" = $1
+    WHERE "seatgeekEventId" = $1;
   `;
 
   const params = [seatgeekEventId];
@@ -121,7 +121,8 @@ app.get('/api/locations/:itineraryId', (req, res) => {
   const sql = `
     SELECT *
     FROM "locations"
-    WHERE "itineraryId" = $1;
+    WHERE "itineraryId" = $1
+    ORDER BY "time" ASC;
   `;
 
   const params = [itineraryId];
@@ -183,6 +184,36 @@ app.post('/api/itineraries', (req, res, next) => {
       });
     });
 
+});
+
+app.post('/api/locations', (req, res) => {
+  for (const property in req.body) {
+    if (req.body[property] === '') {
+      req.body[property] = null;
+    }
+  }
+
+  const { itineraryId, location, time, address, phone, notes } = req.body;
+  const userId = 1;
+
+  const sql = `
+    INSERT INTO "locations" ("itineraryId", "location", "time", "address", "phoneNumber", "notes", "userId")
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+    RETURNING *;
+  `;
+  const params = [itineraryId, location, time, address, phone, notes, userId];
+
+  db.query(sql, params)
+    .then(data => {
+      res.status(201).json(data.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
 });
 
 app.delete('/api/events', (req, res) => {

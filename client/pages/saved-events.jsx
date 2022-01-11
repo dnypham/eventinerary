@@ -1,5 +1,7 @@
 import React from 'react';
+import LocationModal from '../components/location-modal';
 import convertDateTime from '../lib/convertDateTime';
+import formatTime from '../lib/formatTime';
 
 export default class SavedEvents extends React.Component {
   constructor(props) {
@@ -11,13 +13,18 @@ export default class SavedEvents extends React.Component {
       itinerary: null,
       itineraryId: null,
       locations: [],
-      deleteModal: false
+      deleteModal: false,
+      addLocationModal: false
     };
 
     this.checkItinerary = this.checkItinerary.bind(this);
     this.createItinerary = this.createItinerary.bind(this);
+    this.renderItineraryLocations = this.renderItineraryLocations.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.renderDeleteModal = this.renderDeleteModal.bind(this);
+    this.closeLocationModal = this.closeLocationModal.bind(this);
+    this.getLocations = this.getLocations.bind(this);
   }
 
   componentDidMount() {
@@ -97,7 +104,7 @@ export default class SavedEvents extends React.Component {
             itineraryId: data[0].itineraryId
           });
 
-          fetch(`/api/locations/${data[0].itineraryId}`)
+          fetch(`/api/locations/${this.state.itineraryId}`)
             .then(req => req.json())
             .then(locations => {
               this.setState({ locations: locations });
@@ -112,6 +119,14 @@ export default class SavedEvents extends React.Component {
         }
 
       });
+  }
+
+  getLocations() {
+    fetch(`/api/locations/${this.state.itineraryId}`)
+      .then(req => req.json())
+      .then(locations => {
+        this.setState({ locations: locations });
+      }, () => this.renderItineraryLocations());
   }
 
   createItinerary() {
@@ -139,13 +154,21 @@ export default class SavedEvents extends React.Component {
       return this.state.locations.map((location, index) => (
         <div key={location.locationId} data-id={location.locationId} className="flex-c itinerary-location">
           <div className="itinerary-location-time-container flex-c">
-            <h3>{location.time}</h3>
+            <h3>{formatTime(location.time)}</h3>
           </div>
           <div className="itinerary-location-name-container flex-c">
-            <h3>{location.location}</h3>
+            <h3>{this.checkLocationLength(location.location)}</h3>
           </div>
         </div>
       ));
+    }
+  }
+
+  checkLocationLength(location) {
+    if (location.length > 30) {
+      return location.slice(0, 31) + '...';
+    } else {
+      return location;
     }
   }
 
@@ -182,7 +205,7 @@ export default class SavedEvents extends React.Component {
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
             <i className="fas fa-edit fa-2x itinerary-icons"></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
-            <i className="fas fa-share fa-2x itinerary-icons"></i>
+            <i className="fas fa-plus-circle fa-2x itinerary-icons" onClick={() => this.setState({ addLocationModal: true })}></i>
           </div>
         </div>
       );
@@ -199,7 +222,7 @@ export default class SavedEvents extends React.Component {
 
     if (this.state.deleteModal === true) {
       return (
-        <div className='delete-modal-container flex-c'>
+        <div className='modal flex-c'>
           <div className='delete-modal-selection-container border-radius'>
             <div className='delete-modal-text-container border-radius-t'>
               <h3 className='delete-modal-text'>Are you sure you want to delete this event?</h3>
@@ -230,18 +253,34 @@ export default class SavedEvents extends React.Component {
       .then(() => {
         this.setState({
           deleteModal: false,
-          itinerary: null
+          itinerary: null,
+          itineraryId: null,
+          eventId: null
         });
         this.getEvents();
         this.renderItinerary();
       });
+  }
 
+  renderLocationModal() {
+    if (this.state.addLocationModal === true) {
+      return (
+        <LocationModal locationModalOpen={this.state.locationModalOpen}closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId} renderLocations={this.renderItineraryLocations} getLocations={this.getLocations}/>
+      );
+    }
+  }
+
+  closeLocationModal() {
+    this.setState({
+      addLocationModal: false
+    });
   }
 
   render() {
     return (
       <div className="relative">
         {this.renderDeleteModal()}
+        {this.renderLocationModal()}
         <div className="saved-layout-container flex-c">
           <div className="saved-layout align-items-c flex-space-between">
             <div className="saved-container border-radius">

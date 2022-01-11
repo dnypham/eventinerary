@@ -592,11 +592,12 @@ body {
   height: 100%;
   flex-basis: 80%;
   text-align: center;
+  padding: 0 50px;
 }
 
 .itinerary-location-name-container > h3 {
   font-family: Montserrat, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #292826;
 }
@@ -604,16 +605,6 @@ body {
 .location-delete-icon {
   position: absolute;
   right: 15px;
-}
-
-.delete-modal-container {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(0 0 0 / 70%);
-  z-index: 1;
 }
 
 .delete-modal-selection-container {
@@ -661,6 +652,89 @@ body {
   font-size: 16px;
   height: 40px;
   width: 120px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+/* ----------LOCATION FORM MODAL---------- */
+
+.location-modal-container {
+  height: 600px;
+  width: 600px;
+  background-color: white;
+}
+
+.location-modal-header-container {
+  height: 70px;
+  background-color: #292826;
+}
+
+.location-modal-header {
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #f4563c;
+}
+
+.location-modal-form-container {
+  display: flex;
+  flex-direction: column;
+  height: 460px;
+  padding: 40px 40px 30px;
+  justify-content: space-between;
+}
+
+.location-modal-form-container label {
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.location-modal-form-container input {
+  height: 30px;
+  width: 270px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  border: none;
+  padding: 0 10px;
+}
+
+.location-modal-form-container textarea {
+  font-family: sans-serif;
+  height: 150px;
+  width: 270px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  border: none;
+  padding: 10px;
+  resize: none;
+}
+
+.location-modal-button-container {
+  height: 70px;
+  background-color: #292826;
+  align-items: center;
+  padding: 0 150px;
+}
+
+.location-modal-back-btn {
+  color: white;
+  background-color: rgb(128 128 128);
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 80px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.location-modal-add-btn {
+  color: white;
+  background-color: #50c878;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 150px;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -732,6 +806,14 @@ body {
 
 .delete-modal-delete-btn:hover {
   background-color: rgb(244 86 60 / 90%);
+}
+
+.location-modal-back-btn:hover {
+  background-color: rgb(128 128 128 / 90%);
+}
+
+.location-modal-add-btn:hover {
+  background-color: rgb(80 200 120 / 90%);
 }
 
 /* ----------MEDIA QUERIES---------- */
