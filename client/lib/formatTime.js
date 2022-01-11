@@ -1,14 +1,17 @@
 export default function formatTime(time) {
-  let min = parseInt(time.slice(0, 2));
-  const seconds = time.slice(3);
-  let amOrPM = '';
+  let hour = parseInt(time.slice(0, 3));
 
-  if (min > 12) {
-    min = '0' + (min - 12);
-    amOrPM = 'PM';
-  } else {
-    amOrPM = 'AM';
+  if (hour > 12) {
+    hour -= 12;
+
+    return hour + time.slice(2, 5) + 'PM';
+  } else if (hour === 12) {
+    return hour + time.slice(2, 5) + 'PM';
   }
 
-  return `${min}:${seconds}${amOrPM}`;
+  if (hour === 0) {
+    hour = 12;
+  }
+
+  return hour + time.slice(2, 5) + 'AM';
 }

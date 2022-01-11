@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationModal from '../components/location-modal';
 import convertDateTime from '../lib/convertDateTime';
+import formatTime from '../lib/formatTime';
 
 export default class SavedEvents extends React.Component {
   constructor(props) {
@@ -153,7 +154,7 @@ export default class SavedEvents extends React.Component {
       return this.state.locations.map((location, index) => (
         <div key={location.locationId} data-id={location.locationId} className="flex-c itinerary-location">
           <div className="itinerary-location-time-container flex-c">
-            <h3>{location.time}</h3>
+            <h3>{formatTime(location.time)}</h3>
           </div>
           <div className="itinerary-location-name-container flex-c">
             <h3>{location.location}</h3>

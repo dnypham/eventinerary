@@ -1,5 +1,4 @@
 import React from 'react';
-import formatTime from '../lib/formatTime';
 
 export default class LocationModal extends React.Component {
   constructor(props) {
@@ -37,8 +36,6 @@ export default class LocationModal extends React.Component {
       phone: this.state.phone,
       notes: this.state.notes
     };
-
-    console.log(data);
 
     fetch('/api/locations', {
       method: 'POST',
