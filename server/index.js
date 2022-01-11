@@ -206,6 +206,13 @@ app.post('/api/locations', (req, res) => {
   db.query(sql, params)
     .then(data => {
       res.status(201).json(data.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
     });
 });
 
