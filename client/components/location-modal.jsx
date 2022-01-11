@@ -43,18 +43,18 @@ export default class LocationModal extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    });
+    }).then(() => {
+      this.setState({
+        location: '',
+        time: '',
+        address: '',
+        phone: '',
+        notes: ''
+      });
 
-    this.setState({
-      location: '',
-      time: '',
-      address: '',
-      phone: '',
-      notes: ''
+      this.props.closeLocationModal();
+      this.props.getLocations();
     });
-
-    this.props.closeLocationModal();
-    this.props.getLocations();
 
   }
 
