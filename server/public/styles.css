@@ -589,10 +589,19 @@ body {
 }
 
 .itinerary-location-name-container {
+  position: relative;
   height: 100%;
   flex-basis: 80%;
   text-align: center;
   padding: 0 50px;
+}
+
+.selected-location-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 8px;
+  color: #50c878;
 }
 
 .itinerary-location-name-container > h3 {

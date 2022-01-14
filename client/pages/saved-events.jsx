@@ -9,6 +9,7 @@ export default class SavedEvents extends React.Component {
     this.state = {
       events: [],
       selectedEvent: [],
+      selectedLocation: [],
       eventId: null,
       itinerary: null,
       itineraryId: null,
@@ -25,6 +26,7 @@ export default class SavedEvents extends React.Component {
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.closeLocationModal = this.closeLocationModal.bind(this);
     this.getLocations = this.getLocations.bind(this);
+    this.selectLocation = this.selectLocation.bind(this);
   }
 
   componentDidMount() {
@@ -69,13 +71,13 @@ export default class SavedEvents extends React.Component {
         </div>
         <div className="saved-venue-container flex-c" onClick={() => this.checkItinerary(event.eventId)}>
           <h3 className="ft-montseratt">{event.performer}</h3>
-          {this.renderIcon(event.eventId)}
+          {this.renderEventIcon(event.eventId)}
         </div>
       </div>
     ));
   }
 
-  renderIcon(eventId) {
+  renderEventIcon(eventId) {
     if (eventId === this.state.eventId) {
       return (
           <i className="far fa-check-circle fa-2x selected-event-icon"></i>
@@ -156,11 +158,31 @@ export default class SavedEvents extends React.Component {
           <div className="itinerary-location-time-container flex-c">
             <h3>{formatTime(location.time)}</h3>
           </div>
-          <div className="itinerary-location-name-container flex-c">
+          <div className="itinerary-location-name-container flex-c" onClick={() => this.selectLocation(location.locationId)}>
             <h3>{this.checkLocationLength(location.location)}</h3>
+            {this.renderLocationIcon(location.locationId)}
           </div>
         </div>
       ));
+    }
+  }
+
+  renderLocationIcon(locationId) {
+    if (locationId === this.state.selectedLocation.locationId) {
+      return (
+        <i className="far fa-check-circle fa-2x selected-location-icon"></i>
+      );
+    }
+  }
+
+  selectLocation(locationId) {
+
+    for (let i = 0; i < this.state.locations.length; i++) {
+      if (this.state.locations[i].locationId === locationId) {
+        this.setState({
+          selectedLocation: this.state.locations[i]
+        });
+      }
     }
   }
 
