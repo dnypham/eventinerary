@@ -723,8 +723,6 @@ body {
 .location-modal-button-container {
   height: 70px;
   background-color: #292826;
-  align-items: center;
-  padding: 0 150px;
 }
 
 .location-modal-back-btn {
