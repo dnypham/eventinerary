@@ -94,8 +94,132 @@ export default class EditModal extends React.Component {
     this.props.closeEditModal();
   }
 
+  checkLocation() {
+    if (this.state.location === this.props.selectedEvent.performer) {
+      return (
+        <div className='location-modal-form-container'>
+          <div className='flex-space-between'>
+            <label htmlFor='location'>Location:</label>
+            <input
+              readOnly
+              name='location'
+              type='text'
+              id='location'
+              maxLength='30'
+              value={this.state.location}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='time'>Time:</label>
+            <input
+              readOnly
+              type='time'
+              name='time'
+              id='time'
+              value={this.state.time}
+              onChange={this.handleChange}>
+            </input>
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='address'>Address:</label>
+            <input
+              readOnly
+              name='address'
+              type='text'
+              id='address'
+              maxLength='60'
+              placeholder='Optional'
+              value={this.state.address}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='phone'>Phone Number:</label>
+            <input
+              name='phone'
+              type='tel'
+              id='phone'
+              pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+              placeholder='Optional'
+              value={this.state.phone}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='notes'>Notes:</label>
+            <textarea
+              name='notes'
+              type='text'
+              id='notes'
+              maxLength='140'
+              placeholder='Optional'
+              value={this.state.notes}
+              onChange={this.handleChange} />
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className='location-modal-form-container'>
+          <div className='flex-space-between'>
+            <label htmlFor='location'>Location:</label>
+            <input
+              required
+              name='location'
+              type='text'
+              id='location'
+              maxLength='30'
+              value={this.state.location}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='time'>Time:</label>
+            <input
+              required
+              type='time'
+              name='time'
+              id='time'
+              value={this.state.time}
+              onChange={this.handleChange}>
+            </input>
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='address'>Address:</label>
+            <input
+              name='address'
+              type='text'
+              id='address'
+              maxLength='60'
+              placeholder='Optional'
+              value={this.state.address}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='phone'>Phone Number:</label>
+            <input
+              name='phone'
+              type='tel'
+              id='phone'
+              pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+              placeholder='Optional'
+              value={this.state.phone}
+              onChange={this.handleChange} />
+          </div>
+          <div className='flex-space-between'>
+            <label htmlFor='notes'>Notes:</label>
+            <textarea
+              name='notes'
+              type='text'
+              id='notes'
+              maxLength='140'
+              placeholder='Optional'
+              value={this.state.notes}
+              onChange={this.handleChange} />
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
-    console.log(this.props.selectedLocation);
 
     if (this.props.editModalOpen === false) {
       return null;
@@ -109,63 +233,7 @@ export default class EditModal extends React.Component {
             <i className="fas fa-times-circle fa-2x close-modal-icon" onClick={this.closeModal}></i>
           </div>
           <form onSubmit={this.handleSubmit}>
-            <div className='location-modal-form-container'>
-              <div className='flex-space-between'>
-                <label htmlFor='location'>Location:</label>
-                <input
-                  required
-                  name='location'
-                  type='text'
-                  id='location'
-                  maxLength='30'
-                  value={this.state.location}
-                  onChange={this.handleChange} />
-              </div>
-              <div className='flex-space-between'>
-                <label htmlFor='time'>Time:</label>
-                <input
-                  required
-                  type='time'
-                  name='time'
-                  id='time'
-                  value={this.state.time}
-                  onChange={this.handleChange}>
-                </input>
-              </div>
-              <div className='flex-space-between'>
-                <label htmlFor='address'>Address:</label>
-                <input
-                  name='address'
-                  type='text'
-                  id='address'
-                  maxLength='60'
-                  placeholder='Optional'
-                  value={this.state.address}
-                  onChange={this.handleChange} />
-              </div>
-              <div className='flex-space-between'>
-                <label htmlFor='phone'>Phone Number:</label>
-                <input
-                  name='phone'
-                  type='tel'
-                  id='phone'
-                  pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                  placeholder='Optional'
-                  value={this.state.phone}
-                  onChange={this.handleChange} />
-              </div>
-              <div className='flex-space-between'>
-                <label htmlFor='notes'>Notes:</label>
-                <textarea
-                  name='notes'
-                  type='text'
-                  id='notes'
-                  maxLength='140'
-                  placeholder='Optional'
-                  value={this.state.notes}
-                  onChange={this.handleChange} />
-              </div>
-            </div>
+            {this.checkLocation()}
             <div className='edit-modal-button-container border-radius-b flex-space-between'>
               <button className='btn location-modal-delete-btn' type='button'>DELETE LOCATION</button>
               <button className='btn location-modal-add-btn' type='submit'>SAVE CHANGES</button>
