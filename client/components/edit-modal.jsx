@@ -22,7 +22,7 @@ export default class EditModal extends React.Component {
 
     let address, phone, notes;
 
-    if (this.props.selectedLocation.address) {
+    if (!this.props.selectedLocation.address) {
       address = '';
     } else {
       address = this.props.selectedLocation.address;
