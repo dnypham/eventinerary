@@ -306,8 +306,6 @@ app.patch('/api/locations', (req, res) => {
     }
   }
 
-  console.log(req.body);
-
   const { locationId, location, time, address, phone, notes } = req.body;
   const userId = 1;
 

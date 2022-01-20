@@ -90,6 +90,7 @@ export default class EditModal extends React.Component {
   }
 
   closeModal() {
+    this.props.getLocations();
     this.props.closeEditModal();
   }
 

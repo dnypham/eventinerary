@@ -30,6 +30,7 @@ export default class SavedEvents extends React.Component {
     this.closeEditModal = this.closeEditModal.bind(this);
     this.getLocations = this.getLocations.bind(this);
     this.selectLocation = this.selectLocation.bind(this);
+    this.deselectLocation = this.deselectLocation.bind(this);
   }
 
   componentDidMount() {
@@ -132,6 +133,8 @@ export default class SavedEvents extends React.Component {
       .then(locations => {
         this.setState({ locations: locations });
       }, () => this.renderItineraryLocations());
+
+    this.deselectLocation();
   }
 
   createItinerary() {
@@ -312,6 +315,12 @@ export default class SavedEvents extends React.Component {
   closeEditModal() {
     this.setState({
       editModal: false
+    });
+  }
+
+  deselectLocation() {
+    this.setState({
+      selectedLocation: []
     });
   }
 
