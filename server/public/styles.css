@@ -589,10 +589,19 @@ body {
 }
 
 .itinerary-location-name-container {
+  position: relative;
   height: 100%;
   flex-basis: 80%;
   text-align: center;
   padding: 0 50px;
+}
+
+.selected-location-icon {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 8px;
+  color: #50c878;
 }
 
 .itinerary-location-name-container > h3 {
@@ -665,6 +674,7 @@ body {
 }
 
 .location-modal-header-container {
+  position: relative;
   height: 70px;
   background-color: #292826;
 }
@@ -713,8 +723,6 @@ body {
 .location-modal-button-container {
   height: 70px;
   background-color: #292826;
-  align-items: center;
-  padding: 0 150px;
 }
 
 .location-modal-back-btn {
@@ -735,6 +743,33 @@ body {
   font-size: 16px;
   height: 35px;
   width: 150px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+/* ----------EDIT MODAL---------- */
+
+.edit-modal-button-container {
+  height: 70px;
+  background-color: #292826;
+  align-items: center;
+  padding: 0 100px;
+}
+
+.close-modal-icon {
+  position: absolute;
+  cursor: pointer;
+  left: 30px;
+  color: #f4563c;
+}
+
+.location-modal-delete-btn {
+  color: white;
+  background-color: #f4563c;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 180px;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -814,6 +849,14 @@ body {
 
 .location-modal-add-btn:hover {
   background-color: rgb(80 200 120 / 90%);
+}
+
+.close-modal-icon:hover {
+  color: rgb(244 86 60 / 80%);
+}
+
+.location-modal-delete-btn:hover {
+  background-color: rgb(244 86 60 / 90%);
 }
 
 /* ----------MEDIA QUERIES---------- */

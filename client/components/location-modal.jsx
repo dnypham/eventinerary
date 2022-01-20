@@ -73,6 +73,7 @@ export default class LocationModal extends React.Component {
         <div className='location-modal-container border-radius'>
           <div className='location-modal-header-container border-radius-t flex-c'>
             <h3 className='location-modal-header'>NEW LOCATION</h3>
+            <i className="fas fa-times-circle fa-2x close-modal-icon" onClick={this.closeModal}></i>
           </div>
           <form onSubmit={this.handleSubmit}>
             <div className='location-modal-form-container'>
@@ -104,7 +105,7 @@ export default class LocationModal extends React.Component {
                   name='address'
                   type='text'
                   id='address'
-                  maxLength='35'
+                  maxLength='60'
                   placeholder='Optional'
                   value={this.state.address}
                   onChange={this.handleChange} />
@@ -132,8 +133,7 @@ export default class LocationModal extends React.Component {
                   onChange={this.handleChange} />
               </div>
             </div>
-            <div className='location-modal-button-container border-radius-b flex-space-between'>
-              <button className='btn location-modal-back-btn' type='button' onClick={this.closeModal}>BACK</button>
+            <div className='location-modal-button-container border-radius-b flex-c'>
               <button className='btn location-modal-add-btn' type='submit'>ADD LOCATION</button>
             </div>
           </form>

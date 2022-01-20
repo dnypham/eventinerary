@@ -1,5 +1,6 @@
 import React from 'react';
 import LocationModal from '../components/location-modal';
+import EditModal from '../components/edit-modal';
 import convertDateTime from '../lib/convertDateTime';
 import formatTime from '../lib/formatTime';
 
@@ -9,11 +10,13 @@ export default class SavedEvents extends React.Component {
     this.state = {
       events: [],
       selectedEvent: [],
+      selectedLocation: [],
       eventId: null,
       itinerary: null,
       itineraryId: null,
       locations: [],
       deleteModal: false,
+      editModal: false,
       addLocationModal: false
     };
 
@@ -24,7 +27,10 @@ export default class SavedEvents extends React.Component {
     this.deleteEvent = this.deleteEvent.bind(this);
     this.renderDeleteModal = this.renderDeleteModal.bind(this);
     this.closeLocationModal = this.closeLocationModal.bind(this);
+    this.closeEditModal = this.closeEditModal.bind(this);
     this.getLocations = this.getLocations.bind(this);
+    this.selectLocation = this.selectLocation.bind(this);
+    this.deselectLocation = this.deselectLocation.bind(this);
   }
 
   componentDidMount() {
@@ -69,13 +75,13 @@ export default class SavedEvents extends React.Component {
         </div>
         <div className="saved-venue-container flex-c" onClick={() => this.checkItinerary(event.eventId)}>
           <h3 className="ft-montseratt">{event.performer}</h3>
-          {this.renderIcon(event.eventId)}
+          {this.renderEventIcon(event.eventId)}
         </div>
       </div>
     ));
   }
 
-  renderIcon(eventId) {
+  renderEventIcon(eventId) {
     if (eventId === this.state.eventId) {
       return (
           <i className="far fa-check-circle fa-2x selected-event-icon"></i>
@@ -127,6 +133,8 @@ export default class SavedEvents extends React.Component {
       .then(locations => {
         this.setState({ locations: locations });
       }, () => this.renderItineraryLocations());
+
+    this.deselectLocation();
   }
 
   createItinerary() {
@@ -156,11 +164,31 @@ export default class SavedEvents extends React.Component {
           <div className="itinerary-location-time-container flex-c">
             <h3>{formatTime(location.time)}</h3>
           </div>
-          <div className="itinerary-location-name-container flex-c">
+          <div className="itinerary-location-name-container flex-c" onClick={() => this.selectLocation(location.locationId)}>
             <h3>{this.checkLocationLength(location.location)}</h3>
+            {this.renderLocationIcon(location.locationId)}
           </div>
         </div>
       ));
+    }
+  }
+
+  renderLocationIcon(locationId) {
+    if (locationId === this.state.selectedLocation.locationId) {
+      return (
+        <i className="far fa-check-circle fa-2x selected-location-icon"></i>
+      );
+    }
+  }
+
+  selectLocation(locationId) {
+
+    for (let i = 0; i < this.state.locations.length; i++) {
+      if (this.state.locations[i].locationId === locationId) {
+        this.setState({
+          selectedLocation: this.state.locations[i]
+        });
+      }
     }
   }
 
@@ -203,7 +231,7 @@ export default class SavedEvents extends React.Component {
             {this.renderItineraryLocations()}
           </div>
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
-            <i className="fas fa-edit fa-2x itinerary-icons"></i>
+            <i className="fas fa-edit fa-2x itinerary-icons" onClick={() => this.state.selectedLocation.length !== 0 ? this.setState({ editModal: true }) : this.setState({ editModal: false })}></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
             <i className="fas fa-plus-circle fa-2x itinerary-icons" onClick={() => this.setState({ addLocationModal: true })}></i>
           </div>
@@ -265,7 +293,15 @@ export default class SavedEvents extends React.Component {
   renderLocationModal() {
     if (this.state.addLocationModal === true) {
       return (
-        <LocationModal locationModalOpen={this.state.locationModalOpen}closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId} renderLocations={this.renderItineraryLocations} getLocations={this.getLocations}/>
+        <LocationModal locationModalOpen={this.state.locationModalOpen} closeLocationModal={this.closeLocationModal} itineraryId={this.state.itineraryId} renderLocations={this.renderItineraryLocations} getLocations={this.getLocations} />
+      );
+    }
+  }
+
+  renderEditModal() {
+    if (this.state.editModal === true) {
+      return (
+        <EditModal editModalOpen={this.state.editModal} closeEditModal={this.closeEditModal} selectedEvent={this.state.selectedEvent} selectedLocation={this.state.selectedLocation} getLocations={this.getLocations} />
       );
     }
   }
@@ -276,11 +312,24 @@ export default class SavedEvents extends React.Component {
     });
   }
 
+  closeEditModal() {
+    this.setState({
+      editModal: false
+    });
+  }
+
+  deselectLocation() {
+    this.setState({
+      selectedLocation: []
+    });
+  }
+
   render() {
     return (
       <div className="relative">
         {this.renderDeleteModal()}
         {this.renderLocationModal()}
+        {this.renderEditModal()}
         <div className="saved-layout-container flex-c">
           <div className="saved-layout align-items-c flex-space-between">
             <div className="saved-container border-radius">
