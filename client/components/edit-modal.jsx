@@ -12,13 +12,13 @@ export default class EditModal extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
 
-    console.log(this.props.selectedLocation.location);
+    console.log(this.props.selectedLocation);
 
     let address, phone, notes;
 
@@ -107,6 +107,7 @@ export default class EditModal extends React.Component {
         <div className='location-modal-container border-radius'>
           <div className='location-modal-header-container border-radius-t flex-c'>
             <h3 className='location-modal-header'>EDIT LOCATION</h3>
+            <i className="fas fa-times-circle fa-2x close-modal-icon" onClick={this.closeModal}></i>
           </div>
           <form onSubmit={this.handleSubmit}>
             <div className='location-modal-form-container'>
@@ -166,9 +167,9 @@ export default class EditModal extends React.Component {
                   onChange={this.handleChange} />
               </div>
             </div>
-            <div className='location-modal-button-container border-radius-b flex-space-between'>
-              <button className='btn location-modal-back-btn' type='button' onClick={this.closeModal}>BACK</button>
-              <button className='btn location-modal-add-btn' type='submit'>ADD LOCATION</button>
+            <div className='edit-modal-button-container border-radius-b flex-space-between'>
+              <button className='btn location-modal-delete-btn' type='button'>DELETE LOCATION</button>
+              <button className='btn location-modal-add-btn' type='submit'>SAVE CHANGES</button>
             </div>
           </form>
         </div>

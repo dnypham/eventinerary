@@ -674,6 +674,7 @@ body {
 }
 
 .location-modal-header-container {
+  position: relative;
   height: 70px;
   background-color: #292826;
 }
@@ -744,6 +745,33 @@ body {
   font-size: 16px;
   height: 35px;
   width: 150px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+/* ----------EDIT MODAL---------- */
+
+.edit-modal-button-container {
+  height: 70px;
+  background-color: #292826;
+  align-items: center;
+  padding: 0 100px;
+}
+
+.close-modal-icon {
+  position: absolute;
+  cursor: pointer;
+  left: 30px;
+  color: #f4563c;
+}
+
+.location-modal-delete-btn {
+  color: white;
+  background-color: #f4563c;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 180px;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -823,6 +851,14 @@ body {
 
 .location-modal-add-btn:hover {
   background-color: rgb(80 200 120 / 90%);
+}
+
+.close-modal-icon:hover {
+  color: rgb(244 86 60 / 80%);
+}
+
+.location-modal-delete-btn:hover {
+  background-color: rgb(244 86 60 / 90%);
 }
 
 /* ----------MEDIA QUERIES---------- */
