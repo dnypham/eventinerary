@@ -16,6 +16,7 @@ export default class EditModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.deleteLocationConfirm = this.deleteLocationConfirm.bind(this);
+    this.deleteLocation = this.deleteLocation.bind(this);
   }
 
   componentDidMount() {
@@ -221,6 +222,29 @@ export default class EditModal extends React.Component {
     }
   }
 
+  deleteLocation() {
+
+    const data = {
+      locationId: this.props.selectedLocation.locationId
+    };
+
+    fetch('/api/locations/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(() => {
+        this.setState({
+          deleteConfirmation: false
+        });
+        this.props.closeEditModal();
+        this.props.getLocations();
+      });
+
+  }
+
   deleteLocationConfirm() {
 
     if (this.state.deleteConfirmation) {
@@ -230,8 +254,8 @@ export default class EditModal extends React.Component {
             <h4 className='delete-confirmation-text'>Delete location?</h4>
           </div>
           <div className='delete-confirmation-buttons-container flex-space-between border-radius-b'>
-            <button className='btn delete-confirmation-cancel-btn' onClick={() => this.setState({ deleteConfirmation: false })}>CANCEL</button>
-            <button className='btn delete-confirmation-delete-btn'>DELETE</button>
+            <button className='btn delete-confirmation-cancel-btn' type='button' onClick={() => this.setState({ deleteConfirmation: false })}>CANCEL</button>
+            <button className='btn delete-confirmation-delete-btn' type='button' onClick={this.deleteLocation}>DELETE</button>
           </div>
         </div>
       );
