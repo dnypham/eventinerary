@@ -224,24 +224,26 @@ export default class EditModal extends React.Component {
 
   deleteLocation() {
 
-    const data = {
-      locationId: this.props.selectedLocation.locationId
-    };
+    if (this.state.location !== this.props.selectedEvent.performer) {
+      const data = {
+        locationId: this.props.selectedLocation.locationId
+      };
 
-    fetch('/api/locations/delete', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(() => {
-        this.setState({
-          deleteConfirmation: false
+      fetch('/api/locations/delete', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(() => {
+          this.setState({
+            deleteConfirmation: false
+          });
+          this.props.closeEditModal();
+          this.props.getLocations();
         });
-        this.props.closeEditModal();
-        this.props.getLocations();
-      });
+    }
 
   }
 
