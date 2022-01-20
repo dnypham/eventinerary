@@ -90,6 +90,9 @@ export default class SavedEvents extends React.Component {
   }
 
   checkItinerary(eventId) {
+
+    this.deselectLocation();
+
     fetch(`/api/itineraries/${eventId}`)
       .then(req => req.json())
       .then(data => {
