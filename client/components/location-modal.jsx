@@ -104,7 +104,7 @@ export default class LocationModal extends React.Component {
                   name='address'
                   type='text'
                   id='address'
-                  maxLength='35'
+                  maxLength='60'
                   placeholder='Optional'
                   value={this.state.address}
                   onChange={this.handleChange} />

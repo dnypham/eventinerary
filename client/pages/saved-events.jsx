@@ -228,7 +228,7 @@ export default class SavedEvents extends React.Component {
             {this.renderItineraryLocations()}
           </div>
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
-            <i className="fas fa-edit fa-2x itinerary-icons" onClick={() => this.setState({ editModal: true })}></i>
+            <i className="fas fa-edit fa-2x itinerary-icons" onClick={() => this.state.selectedLocation.length !== 0 ? this.setState({ editModal: true }) : this.setState({ editModal: false })}></i>
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
             <i className="fas fa-plus-circle fa-2x itinerary-icons" onClick={() => this.setState({ addLocationModal: true })}></i>
           </div>
@@ -316,7 +316,6 @@ export default class SavedEvents extends React.Component {
   }
 
   render() {
-    console.log(this.state.selectedLocation);
     return (
       <div className="relative">
         {this.renderDeleteModal()}

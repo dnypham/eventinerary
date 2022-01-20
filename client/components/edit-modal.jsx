@@ -16,6 +16,39 @@ export default class EditModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentDidMount() {
+
+    console.log(this.props.selectedLocation.location);
+
+    let address, phone, notes;
+
+    if (this.props.selectedLocation.address) {
+      address = '';
+    } else {
+      address = this.props.selectedLocation.address;
+    }
+
+    if (!this.props.selectedLocation.phone) {
+      phone = '';
+    } else {
+      phone = this.props.selectedLocation.phone;
+    }
+
+    if (!this.props.selectedLocation.notes) {
+      notes = '';
+    } else {
+      notes = this.props.selectedLocation.notes;
+    }
+
+    this.setState({
+      location: this.props.selectedLocation.location,
+      time: this.props.selectedLocation.time,
+      address: address,
+      phone: phone,
+      notes: notes
+    });
+  }
+
   handleChange(event) {
     const value = event.target.value;
     const name = event.target.name;
@@ -25,44 +58,45 @@ export default class EditModal extends React.Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  // handleSubmit(event) {
+  //   event.preventDefault();
 
-    const data = {
-      itineraryId: this.props.itineraryId,
-      location: this.state.location,
-      time: this.state.time,
-      address: this.state.address,
-      phone: this.state.phone,
-      notes: this.state.notes
-    };
+  //   const data = {
+  //     itineraryId: this.props.itineraryId,
+  //     location: this.state.location,
+  //     time: this.state.time,
+  //     address: this.state.address,
+  //     phone: this.state.phone,
+  //     notes: this.state.notes
+  //   };
 
-    fetch('/api/locations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(() => {
-      this.setState({
-        location: '',
-        time: '',
-        address: '',
-        phone: '',
-        notes: ''
-      });
+  //   fetch('/api/locations', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(data)
+  //   }).then(() => {
+  //     this.setState({
+  //       location: '',
+  //       time: '',
+  //       address: '',
+  //       phone: '',
+  //       notes: ''
+  //     });
 
-      this.props.closeLocationModal();
-      this.props.getLocations();
-    });
+  //     this.props.closeLocationModal();
+  //     this.props.getLocations();
+  //   });
 
-  }
+  // }
 
   closeModal() {
     this.props.closeEditModal();
   }
 
   render() {
+    console.log(this.state);
 
     if (this.props.editModalOpen === false) {
       return null;
@@ -104,7 +138,7 @@ export default class EditModal extends React.Component {
                   name='address'
                   type='text'
                   id='address'
-                  maxLength='35'
+                  maxLength='60'
                   placeholder='Optional'
                   value={this.state.address}
                   onChange={this.handleChange} />
