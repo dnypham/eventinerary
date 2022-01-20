@@ -298,7 +298,7 @@ export default class SavedEvents extends React.Component {
   renderEditModal() {
     if (this.state.editModal === true) {
       return (
-        <EditModal editModalOpen={this.state.editModal} closeEditModal={this.closeEditModal} selectedLocation={this.state.selectedLocation} />
+        <EditModal editModalOpen={this.state.editModal} closeEditModal={this.closeEditModal} selectedLocation={this.state.selectedLocation} getLocations={this.getLocations} />
       );
     }
   }

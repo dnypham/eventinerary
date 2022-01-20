@@ -12,13 +12,11 @@ export default class EditModal extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
-
-    console.log(this.props.selectedLocation);
 
     let address, phone, notes;
 
@@ -58,45 +56,45 @@ export default class EditModal extends React.Component {
     });
   }
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
 
-  //   const data = {
-  //     itineraryId: this.props.itineraryId,
-  //     location: this.state.location,
-  //     time: this.state.time,
-  //     address: this.state.address,
-  //     phone: this.state.phone,
-  //     notes: this.state.notes
-  //   };
+    const data = {
+      locationId: this.props.selectedLocation.locationId,
+      location: this.state.location,
+      time: this.state.time,
+      address: this.state.address,
+      phone: this.state.phone,
+      notes: this.state.notes
+    };
 
-  //   fetch('/api/locations', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(data)
-  //   }).then(() => {
-  //     this.setState({
-  //       location: '',
-  //       time: '',
-  //       address: '',
-  //       phone: '',
-  //       notes: ''
-  //     });
+    fetch('/api/locations', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(() => {
+      this.setState({
+        location: '',
+        time: '',
+        address: '',
+        phone: '',
+        notes: ''
+      });
 
-  //     this.props.closeLocationModal();
-  //     this.props.getLocations();
-  //   });
+      this.props.closeEditModal();
+      this.props.getLocations();
+    });
 
-  // }
+  }
 
   closeModal() {
     this.props.closeEditModal();
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props.selectedLocation);
 
     if (this.props.editModalOpen === false) {
       return null;

@@ -299,6 +299,44 @@ app.delete('/api/events', (req, res) => {
   }
 });
 
+app.patch('/api/locations', (req, res) => {
+  for (const property in req.body) {
+    if (req.body[property] === '') {
+      req.body[property] = null;
+    }
+  }
+
+  console.log(req.body);
+
+  const { locationId, location, time, address, phone, notes } = req.body;
+  const userId = 1;
+
+  const sql = `
+    UPDATE "locations"
+       SET "location" = $2,
+           "time" = $3,
+           "address" = $4,
+           "phoneNumber" = $5,
+           "notes" = $6
+     WHERE "locationId" = $1
+       AND "userId" = $7
+    RETURNING *;
+  `;
+  const params = [locationId, location, time, address, phone, notes, userId];
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`express server listening on port ${process.env.PORT}`);
