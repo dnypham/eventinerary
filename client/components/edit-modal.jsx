@@ -8,12 +8,15 @@ export default class EditModal extends React.Component {
       time: '',
       address: '',
       phone: '',
-      notes: ''
+      notes: '',
+      deleteConfirmation: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.deleteLocationConfirm = this.deleteLocationConfirm.bind(this);
+    this.deleteLocation = this.deleteLocation.bind(this);
   }
 
   componentDidMount() {
@@ -219,6 +222,48 @@ export default class EditModal extends React.Component {
     }
   }
 
+  deleteLocation() {
+
+    if (this.state.location !== this.props.selectedEvent.performer) {
+      const data = {
+        locationId: this.props.selectedLocation.locationId
+      };
+
+      fetch('/api/locations/delete', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(() => {
+          this.setState({
+            deleteConfirmation: false
+          });
+          this.props.closeEditModal();
+          this.props.getLocations();
+        });
+    }
+
+  }
+
+  deleteLocationConfirm() {
+
+    if (this.state.deleteConfirmation) {
+      return (
+        <div className='delete-confirmation-container border-radius'>
+          <div className='delete-confirmation-text-container'>
+            <h4 className='delete-confirmation-text'>Delete location?</h4>
+          </div>
+          <div className='delete-confirmation-buttons-container flex-space-between border-radius-b'>
+            <button className='btn delete-confirmation-cancel-btn' type='button' onClick={() => this.setState({ deleteConfirmation: false })}>CANCEL</button>
+            <button className='btn delete-confirmation-delete-btn' type='button' onClick={this.deleteLocation}>DELETE</button>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
 
     if (this.props.editModalOpen === false) {
@@ -228,6 +273,7 @@ export default class EditModal extends React.Component {
     return (
       <div className='modal flex-c'>
         <div className='location-modal-container border-radius'>
+          {this.deleteLocationConfirm()}
           <div className='location-modal-header-container border-radius-t flex-c'>
             <h3 className='location-modal-header'>EDIT LOCATION</h3>
             <i className="fas fa-times-circle fa-2x close-modal-icon" onClick={this.closeModal}></i>
@@ -235,7 +281,7 @@ export default class EditModal extends React.Component {
           <form onSubmit={this.handleSubmit}>
             {this.checkLocation()}
             <div className='edit-modal-button-container border-radius-b flex-space-between'>
-              <button className='btn location-modal-delete-btn' type='button'>DELETE LOCATION</button>
+              <button className='btn location-modal-delete-btn' type='button' onClick={() => this.setState({ deleteConfirmation: true })}>DELETE LOCATION</button>
               <button className='btn location-modal-add-btn' type='submit'>SAVE CHANGES</button>
             </div>
           </form>

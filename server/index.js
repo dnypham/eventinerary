@@ -299,6 +299,29 @@ app.delete('/api/events', (req, res) => {
   }
 });
 
+app.delete('/api/locations/delete', (req, res) => {
+  const { locationId } = req.body;
+
+  const sql = `
+    DELETE FROM "locations"
+          WHERE "locationId" = $1
+    RETURNING *;
+  `;
+  const params = [locationId];
+
+  db.query(sql, params)
+    .then(data => {
+      res.status(201).json(data.rows);
+    })
+    .catch(err => {
+      // eslint-disable-next-line
+      console.log(err);
+      res.status(500).json({
+        error: 'an unexpected error occurred'
+      });
+    });
+});
+
 app.patch('/api/locations', (req, res) => {
   for (const property in req.body) {
     if (req.body[property] === '') {

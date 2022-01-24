@@ -668,6 +668,7 @@ body {
 /* ----------LOCATION FORM MODAL---------- */
 
 .location-modal-container {
+  position: relative;
   height: 600px;
   width: 600px;
   background-color: white;
@@ -774,6 +775,61 @@ body {
   font-weight: 400;
 }
 
+/* ----------DELETE LOCATION CONFIRMATION---------- */
+
+.delete-confirmation-container {
+  position: absolute;
+  left: 40px;
+  bottom: 100px;
+  height: 80px;
+  width: 200px;
+  border: solid 1px #f4563c;
+  background-color: lightgray;
+}
+
+.delete-confirmation-text-container {
+  height: 50%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.delete-confirmation-text {
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.delete-confirmation-buttons-container {
+  align-items: center;
+  height: 50%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+.delete-confirmation-cancel-btn {
+  color: white;
+  background-color: rgb(128 128 128);
+  font-family: Montseratt, sans-serif;
+  font-size: 12px;
+  height: 20px;
+  width: 70px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.delete-confirmation-delete-btn {
+  color: white;
+  background-color: #f4563c;
+  font-family: Montseratt, sans-serif;
+  font-size: 12px;
+  height: 20px;
+  width: 70px;
+  border-radius: 12px;
+  font-weight: 400;
+}
+
 /* ----------FOOTER---------- */
 
 /* .footer-container {
@@ -856,6 +912,14 @@ body {
 }
 
 .location-modal-delete-btn:hover {
+  background-color: rgb(244 86 60 / 90%);
+}
+
+.delete-confirmation-cancel-btn:hover {
+  background-color: rgb(128 128 128 / 90%);
+}
+
+.delete-confirmation-delete-btn:hover {
   background-color: rgb(244 86 60 / 90%);
 }
 
