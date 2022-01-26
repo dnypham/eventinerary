@@ -11,6 +11,7 @@ export default class Event extends React.Component {
     };
 
     this.saveEvent = this.saveEvent.bind(this);
+    this.getTickets = this.getTickets.bind(this);
   }
 
   componentDidMount() {
@@ -58,8 +59,13 @@ export default class Event extends React.Component {
 
   }
 
+  getTickets() {
+    window.open(this.props.eventInfo.url, '_blank');
+  }
+
   render() {
 
+    console.log(this.props.eventInfo);
     return (
       <div className="event-info-layout-container flex-c">
         <div className="flex-c">
@@ -89,7 +95,7 @@ export default class Event extends React.Component {
               </div>
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
-              <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
+              <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic" onClick={this.getTickets}>TICKETS</button>
               <button className={`${this.state.saved ? 'save-event-btn-2' : 'save-event-btn'} event-info-btn ft-atf-franklin-gothic`} onClick={this.saveEvent}>{this.state.saved ? 'SAVED' : 'SAVE EVENT'}</button>
             </div>
           </div>
