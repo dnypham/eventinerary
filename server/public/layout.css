@@ -89,13 +89,12 @@
   border-top-right-radius: 20px;
 }
 
-.ft-18px {
-  font-size: 18px;
-}
-
 .ft-16px {
   font-size: 16px;
-  color: gray;
+}
+
+.ft-14px {
+  font-size: 14px;
 }
 
 .txt-gray {

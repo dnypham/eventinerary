@@ -65,7 +65,6 @@ export default class Event extends React.Component {
 
   render() {
 
-    console.log(this.props.eventInfo);
     return (
       <div className="event-info-layout-container flex-c">
         <div className="flex-c">
@@ -87,10 +86,10 @@ export default class Event extends React.Component {
               <h2 className="event-title">{this.props.eventInfo.title}</h2>
               <div className="flex-space-between">
                 <div className="event-info-txt-container">
-                  <h2 className="ft-18px">{this.props.eventInfo.venue.name}</h2>
-                  <h2 className="ft-16px txt-gray">{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</h2>
-                  <h2 className="ft-18px">{convertDateTime(this.props.eventInfo.datetime_local).date}</h2>
-                  <h2 className="ft-16px txt-gray">{convertDateTime(this.props.eventInfo.datetime_local).time}</h2>
+                  <h2 className="ft-16px">{this.props.eventInfo.venue.name}</h2>
+                  <h2 className="ft-14px txt-gray">{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</h2>
+                  <h2 className="ft-16px">{convertDateTime(this.props.eventInfo.datetime_local).date}</h2>
+                  <h2 className="ft-14px txt-gray">{convertDateTime(this.props.eventInfo.datetime_local).time}</h2>
                 </div>
               </div>
             </div>
