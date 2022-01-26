@@ -34,7 +34,7 @@ export default class LocalEvents extends React.Component {
     return concerts.map((event, index) => (
       <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id}>
         <div className="home-event-image-container">
-          <img className="border-radius-t"src={event.performers[0].image}></img>
+          <img className="border-radius-t" src={event.performers[0].image}></img>
         </div>
         <div className="home-event-info-container">
           <div className="flex-space-between">
@@ -71,6 +71,7 @@ export default class LocalEvents extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <>
         <div className="home-layout-container flex-c">
