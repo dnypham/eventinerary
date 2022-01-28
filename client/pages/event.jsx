@@ -5,10 +5,13 @@ export default class Event extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      saved: false
+      saved: false,
+      performerName: '',
+      performerImage: ''
     };
 
     this.saveEvent = this.saveEvent.bind(this);
+    this.getTickets = this.getTickets.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +22,18 @@ export default class Event extends React.Component {
       .then(idExists => {
         this.setState({ saved: idExists });
       });
+
+    if (!this.props.performer) {
+      this.setState({
+        performerImage: this.props.eventInfo.performers[0].image,
+        performerName: this.props.eventInfo.performers[0].name
+      });
+    } else {
+      this.setState({
+        performerImage: this.props.performer.image,
+        performerName: this.props.performer.name
+      });
+    }
   }
 
   saveEvent() {
@@ -26,8 +41,8 @@ export default class Event extends React.Component {
     if (!this.state.saved) {
       const event = {
         seatgeekEventId: this.props.eventInfo.id,
-        performer: this.props.performer.name,
-        performerImage: this.props.performer.image,
+        performer: this.state.performerName,
+        performerImage: this.state.performerImage,
         date: this.props.eventInfo.datetime_local.slice(0, 10)
       };
 
@@ -44,15 +59,20 @@ export default class Event extends React.Component {
 
   }
 
+  getTickets() {
+    window.open(this.props.eventInfo.url, '_blank');
+  }
+
   render() {
+
     return (
       <div className="event-info-layout-container flex-c">
         <div className="flex-c">
           <div className="event-info-container pos-rel border-radius">
             <div className="row">
-              <img className="event-info-img" src={this.props.performer.image}></img>
+              <img className="event-info-img" src={this.state.performerImage}></img>
               <div className="event-info-performer-container flex-c">
-                <h1 className="event-info-performer">{this.props.performer.name.toUpperCase()}</h1>
+                <h1 className="event-info-performer">{this.state.performerName}</h1>
               </div>
             </div>
             <div className="event-info-map-container flex-c">
@@ -66,15 +86,15 @@ export default class Event extends React.Component {
               <h2 className="event-title">{this.props.eventInfo.title}</h2>
               <div className="flex-space-between">
                 <div className="event-info-txt-container">
-                  <h2 className="ft-18px">{this.props.eventInfo.venue.name}</h2>
-                  <h2 className="ft-16px txt-gray">{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</h2>
-                  <h2 className="ft-18px">{convertDateTime(this.props.eventInfo.datetime_local).date}</h2>
-                  <h2 className="ft-16px txt-gray">{convertDateTime(this.props.eventInfo.datetime_local).time}</h2>
+                  <h2 className="ft-16px">{this.props.eventInfo.venue.name}</h2>
+                  <h2 className="ft-14px txt-gray">{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</h2>
+                  <h2 className="ft-16px">{convertDateTime(this.props.eventInfo.datetime_local).date}</h2>
+                  <h2 className="ft-14px txt-gray">{convertDateTime(this.props.eventInfo.datetime_local).time}</h2>
                 </div>
               </div>
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
-              <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic">TICKETS</button>
+              <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic" onClick={this.getTickets}>TICKETS</button>
               <button className={`${this.state.saved ? 'save-event-btn-2' : 'save-event-btn'} event-info-btn ft-atf-franklin-gothic`} onClick={this.saveEvent}>{this.state.saved ? 'SAVED' : 'SAVE EVENT'}</button>
             </div>
           </div>

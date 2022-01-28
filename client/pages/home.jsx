@@ -6,7 +6,7 @@ export default function Home(props) {
   return (
     <>
       <Banner />
-      <LocalEvents />
+      <LocalEvents getEventInfo={props.getEventInfo}/>
     </>
   );
 }

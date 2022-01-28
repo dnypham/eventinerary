@@ -64,16 +64,16 @@ export default class App extends React.Component {
   renderPage() {
     const { route } = this.state;
     if (route.path === '') {
-      return <Home />;
+      return <Home getEventInfo={this.getEventInfo} />;
     }
     if (route.path === 'results') {
-      return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer}/>;
+      return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer} />;
     }
     if (route.path === 'itinerary') {
       return <Itinerary />;
     }
     if (route.path === 'event') {
-      return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
+      return <Event eventInfo={this.state.eventInfo} />;
     }
     if (route.path === 'saved-events') {
       return <SavedEvents />;
@@ -83,7 +83,7 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <Header search={this.getSearchResults}/>
+        <Header search={this.getSearchResults} />
         {this.renderPage()}
         <Footer />
       </>
