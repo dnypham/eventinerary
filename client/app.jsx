@@ -3,6 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
+import NoResults from './pages/no-results';
 import Event from './pages/event';
 import SavedEvents from './pages/saved-events';
 import Itinerary from './pages/itinerary';
@@ -16,7 +17,8 @@ export default class App extends React.Component {
       searchResults: [],
       performer: [],
       meta: [],
-      eventInfo: []
+      eventInfo: [],
+      search: ''
     };
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getEventInfo = this.getEventInfo.bind(this);
@@ -34,19 +36,27 @@ export default class App extends React.Component {
     fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=' + process.env.SEATGEEK_API_KEY)
       .then(request => request.json())
       .then(data => {
-        this.setState({
-          performer: data.performers[0]
-        });
-        fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=' + process.env.SEATGEEK_API_KEY)
-          .then(request => request.json())
-          .then(data => {
-            this.setState({
-              searchResults: data.events,
-              meta: data.meta
-            }, () => {
-              location.hash = '#results';
-            });
+
+        if (data.performers.length === 0) {
+          location.hash = '#no-results';
+          this.setState({
+            search: search.replace('-', ' ')
           });
+        } else {
+          this.setState({
+            performer: data.performers[0]
+          });
+          fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=' + process.env.SEATGEEK_API_KEY)
+            .then(request => request.json())
+            .then(data => {
+              this.setState({
+                searchResults: data.events,
+                meta: data.meta
+              }, () => {
+                location.hash = '#results';
+              });
+            });
+        }
       });
   }
 
@@ -91,6 +101,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'saved-events') {
       return <SavedEvents />;
+    }
+    if (route.path === 'no-results') {
+      return <NoResults search={this.state.search}/>;
     }
   }
 

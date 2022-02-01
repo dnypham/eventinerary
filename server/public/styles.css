@@ -179,7 +179,7 @@ body {
   right: 15px;
 }
 
-/* ----------RESULTS COMPONENT---------- */
+/* ----------RESULTS---------- */
 
 .results-layout-container {
   height: 900px;
@@ -283,6 +283,23 @@ body {
   font-family: Montserrat, sans-serif;
   font-size: 56px;
   font-weight: bold;
+}
+
+/* ----------NO RESULTS---------- */
+
+.no-results-container {
+  height: 100%;
+  width: 100%;
+}
+
+.no-results-container > h1 {
+  font-family: Montserrat, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.no-results-search {
+  color: #f4563c;
 }
 
 /* ----------EVENT VIEW---------- */
