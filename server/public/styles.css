@@ -484,6 +484,15 @@ body {
   border-radius: 10px;
 }
 
+.delete-event-btn-disabled {
+  color: white;
+  height: 35px;
+  width: 130px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  border: none;
+}
+
 .saved-venue-container {
   height: 50px;
   flex-basis: 70%;

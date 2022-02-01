@@ -327,6 +327,18 @@ export default class SavedEvents extends React.Component {
     });
   }
 
+  renderDeleteEventButton() {
+    if (this.state.selectedEvent.length !== 0) {
+      return (
+        <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
+      );
+    } else {
+      return (
+        <button className="delete-event-btn-disabled ft-atf-franklin-gothic">DELETE EVENT</button>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="relative">
@@ -343,7 +355,7 @@ export default class SavedEvents extends React.Component {
                 {this.renderSavedEvents()}
               </div>
               <div className="saved-events-footer-container border-radius-b flex-c">
-                <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
+                {this.renderDeleteEventButton()}
               </div>
             </div>
             <div className="itinerary-container border-radius">
