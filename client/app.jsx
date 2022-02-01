@@ -3,6 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Results from './pages/results';
+import NoResults from './pages/no-results';
 import Event from './pages/event';
 import SavedEvents from './pages/saved-events';
 import Itinerary from './pages/itinerary';
@@ -16,10 +17,12 @@ export default class App extends React.Component {
       searchResults: [],
       performer: [],
       meta: [],
-      eventInfo: []
+      eventInfo: [],
+      search: ''
     };
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getEventInfo = this.getEventInfo.bind(this);
+    this.getLocalEventInfo = this.getLocalEventInfo.bind(this);
   }
 
   componentDidMount() {
@@ -33,19 +36,27 @@ export default class App extends React.Component {
     fetch('https://api.seatgeek.com/2/performers?slug=' + search + '&client_id=' + process.env.SEATGEEK_API_KEY)
       .then(request => request.json())
       .then(data => {
-        this.setState({
-          performer: data.performers[0]
-        });
-        fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=' + process.env.SEATGEEK_API_KEY)
-          .then(request => request.json())
-          .then(data => {
-            this.setState({
-              searchResults: data.events,
-              meta: data.meta
-            }, () => {
-              location.hash = '#results';
-            });
+
+        if (data.performers.length === 0) {
+          location.hash = '#no-results';
+          this.setState({
+            search: search.replace('-', ' ')
           });
+        } else {
+          this.setState({
+            performer: data.performers[0]
+          });
+          fetch('https://api.seatgeek.com/2/events?performers.id=' + data.performers[0].id + '&per_page=50&client_id=' + process.env.SEATGEEK_API_KEY)
+            .then(request => request.json())
+            .then(data => {
+              this.setState({
+                searchResults: data.events,
+                meta: data.meta
+              }, () => {
+                location.hash = '#results';
+              });
+            });
+        }
       });
   }
 
@@ -61,10 +72,23 @@ export default class App extends React.Component {
       });
   }
 
+  getLocalEventInfo(eventId) {
+    fetch('https://api.seatgeek.com/2/events/' + eventId + '?client_id=' + process.env.SEATGEEK_API_KEY)
+      .then(request => request.json())
+      .then(data => {
+        this.setState({
+          eventInfo: data,
+          performer: data.performers[0]
+        }, () => {
+          location.hash = '#event';
+        });
+      });
+  }
+
   renderPage() {
     const { route } = this.state;
     if (route.path === '') {
-      return <Home getEventInfo={this.getEventInfo} />;
+      return <Home getLocalEventInfo={this.getLocalEventInfo} />;
     }
     if (route.path === 'results') {
       return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer} />;
@@ -73,20 +97,25 @@ export default class App extends React.Component {
       return <Itinerary />;
     }
     if (route.path === 'event') {
-      return <Event eventInfo={this.state.eventInfo} />;
+      return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
     }
     if (route.path === 'saved-events') {
       return <SavedEvents />;
+    }
+    if (route.path === 'no-results') {
+      return <NoResults search={this.state.search}/>;
     }
   }
 
   render() {
     return (
-      <>
-        <Header search={this.getSearchResults} />
-        {this.renderPage()}
-        <Footer />
-      </>
+      <div className='page-container'>
+        <div className='content-wrap'>
+          <Header search={this.getSearchResults} />
+          {this.renderPage()}
+          <Footer />
+        </div>
+      </div>
     );
   }
 }

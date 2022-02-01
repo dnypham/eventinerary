@@ -234,7 +234,7 @@ export default class SavedEvents extends React.Component {
             {this.renderItineraryLocations()}
           </div>
           <div className="saved-itinerary-footer-container border-radius-b flex-space-between align-items-c">
-            <i className="fas fa-edit fa-2x itinerary-icons" onClick={() => this.state.selectedLocation.length !== 0 ? this.setState({ editModal: true }) : this.setState({ editModal: false })}></i>
+            {this.renderEditIcon()}
             <h2 className="saved-itinerary-footer-txt">{this.state.selectedEvent.dateTimeLocal.date.toUpperCase()}</h2>
             <i className="fas fa-plus-circle fa-2x itinerary-icons" onClick={() => this.setState({ addLocationModal: true })}></i>
           </div>
@@ -327,6 +327,30 @@ export default class SavedEvents extends React.Component {
     });
   }
 
+  renderDeleteEventButton() {
+    if (this.state.selectedEvent.length !== 0) {
+      return (
+        <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
+      );
+    } else {
+      return (
+        <button className="delete-event-btn-disabled ft-atf-franklin-gothic">DELETE EVENT</button>
+      );
+    }
+  }
+
+  renderEditIcon() {
+    if (this.state.selectedLocation.length !== 0) {
+      return (
+        <i className="fas fa-edit fa-2x itinerary-icons" onClick={() => this.state.selectedLocation.length !== 0 ? this.setState({ editModal: true }) : this.setState({ editModal: false })}></i>
+      );
+    } else {
+      return (
+        <i className="fas fa-edit fa-2x itinerary-icons-disabled"></i>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="relative">
@@ -343,7 +367,7 @@ export default class SavedEvents extends React.Component {
                 {this.renderSavedEvents()}
               </div>
               <div className="saved-events-footer-container border-radius-b flex-c">
-                <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
+                {this.renderDeleteEventButton()}
               </div>
             </div>
             <div className="itinerary-container border-radius">
