@@ -794,6 +794,18 @@ body {
   font-weight: 400;
 }
 
+.location-modal-delete-btn-2 {
+  color: white;
+  background-color: #e5e5e5;
+  font-family: Montseratt, sans-serif;
+  font-size: 16px;
+  height: 35px;
+  width: 180px;
+  border-radius: 10px;
+  font-weight: 400;
+  border: none;
+}
+
 /* ----------DELETE LOCATION CONFIRMATION---------- */
 
 .delete-confirmation-container {

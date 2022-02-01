@@ -119,3 +119,8 @@
   background-color: rgb(0 0 0 / 70%);
   z-index: 1;
 }
+
+.outline-none {
+  cursor: auto;
+  outline: none;
+}

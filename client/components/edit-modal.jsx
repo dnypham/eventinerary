@@ -109,8 +109,8 @@ export default class EditModal extends React.Component {
               type='text'
               id='location'
               maxLength='30'
-              value={this.state.location}
-              onChange={this.handleChange} />
+              className='outline-none'
+              value={this.state.location} />
           </div>
           <div className='flex-space-between'>
             <label htmlFor='time'>Time:</label>
@@ -119,9 +119,8 @@ export default class EditModal extends React.Component {
               type='time'
               name='time'
               id='time'
-              value={this.state.time}
-              onChange={this.handleChange}>
-            </input>
+              className='outline-none'
+              value={this.state.time} />
           </div>
           <div className='flex-space-between'>
             <label htmlFor='address'>Address:</label>
@@ -130,10 +129,9 @@ export default class EditModal extends React.Component {
               name='address'
               type='text'
               id='address'
+              className='outline-none'
               maxLength='60'
-              placeholder='Optional'
-              value={this.state.address}
-              onChange={this.handleChange} />
+              value={this.state.address} />
           </div>
           <div className='flex-space-between'>
             <label htmlFor='phone'>Phone Number:</label>
@@ -181,8 +179,7 @@ export default class EditModal extends React.Component {
               name='time'
               id='time'
               value={this.state.time}
-              onChange={this.handleChange}>
-            </input>
+              onChange={this.handleChange} />
           </div>
           <div className='flex-space-between'>
             <label htmlFor='address'>Address:</label>
@@ -264,6 +261,18 @@ export default class EditModal extends React.Component {
     }
   }
 
+  renderDeleteLocationButton() {
+    if (this.props.selectedLocation.location !== this.props.selectedEvent.performer) {
+      return (
+        <button className='btn location-modal-delete-btn' type='button' onClick={() => this.setState({ deleteConfirmation: true })}>DELETE LOCATION</button>
+      );
+    } else {
+      return (
+        <button className='location-modal-delete-btn-2' type='button'>DELETE LOCATION</button>
+      );
+    }
+  }
+
   render() {
 
     if (this.props.editModalOpen === false) {
@@ -281,7 +290,7 @@ export default class EditModal extends React.Component {
           <form onSubmit={this.handleSubmit}>
             {this.checkLocation()}
             <div className='edit-modal-button-container border-radius-b flex-space-between'>
-              <button className='btn location-modal-delete-btn' type='button' onClick={() => this.setState({ deleteConfirmation: true })}>DELETE LOCATION</button>
+              {this.renderDeleteLocationButton()}
               <button className='btn location-modal-add-btn' type='submit'>SAVE CHANGES</button>
             </div>
           </form>
