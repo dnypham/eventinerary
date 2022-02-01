@@ -109,11 +109,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <>
-        <Header search={this.getSearchResults} />
-        {this.renderPage()}
-        <Footer />
-      </>
+      <div className='page-container'>
+        <div className='content-wrap'>
+          <Header search={this.getSearchResults} />
+          {this.renderPage()}
+          <Footer />
+        </div>
+      </div>
     );
   }
 }
