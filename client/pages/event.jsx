@@ -5,9 +5,7 @@ export default class Event extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      saved: false,
-      performerName: '',
-      performerImage: ''
+      saved: false
     };
 
     this.saveEvent = this.saveEvent.bind(this);
@@ -22,18 +20,6 @@ export default class Event extends React.Component {
       .then(idExists => {
         this.setState({ saved: idExists });
       });
-
-    if (!this.props.performer) {
-      this.setState({
-        performerImage: this.props.eventInfo.performers[0].image,
-        performerName: this.props.eventInfo.performers[0].name
-      });
-    } else {
-      this.setState({
-        performerImage: this.props.performer.image,
-        performerName: this.props.performer.name
-      });
-    }
   }
 
   saveEvent() {
@@ -41,8 +27,8 @@ export default class Event extends React.Component {
     if (!this.state.saved) {
       const event = {
         seatgeekEventId: this.props.eventInfo.id,
-        performer: this.state.performerName,
-        performerImage: this.state.performerImage,
+        performer: this.props.performer.name,
+        performerImage: this.props.performer.image,
         date: this.props.eventInfo.datetime_local.slice(0, 10)
       };
 
@@ -70,9 +56,9 @@ export default class Event extends React.Component {
         <div className="flex-c">
           <div className="event-info-container pos-rel border-radius">
             <div className="row">
-              <img className="event-info-img" src={this.state.performerImage}></img>
+              <img className="event-info-img" src={this.props.performer.image}></img>
               <div className="event-info-performer-container flex-c">
-                <h1 className="event-info-performer">{this.state.performerName}</h1>
+                <h1 className="event-info-performer">{this.props.performer.name}</h1>
               </div>
             </div>
             <div className="event-info-map-container flex-c">

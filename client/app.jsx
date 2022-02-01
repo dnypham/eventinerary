@@ -20,6 +20,7 @@ export default class App extends React.Component {
     };
     this.getSearchResults = this.getSearchResults.bind(this);
     this.getEventInfo = this.getEventInfo.bind(this);
+    this.getLocalEventInfo = this.getLocalEventInfo.bind(this);
   }
 
   componentDidMount() {
@@ -61,10 +62,23 @@ export default class App extends React.Component {
       });
   }
 
+  getLocalEventInfo(eventId) {
+    fetch('https://api.seatgeek.com/2/events/' + eventId + '?client_id=' + process.env.SEATGEEK_API_KEY)
+      .then(request => request.json())
+      .then(data => {
+        this.setState({
+          eventInfo: data,
+          performer: data.performers[0]
+        }, () => {
+          location.hash = '#event';
+        });
+      });
+  }
+
   renderPage() {
     const { route } = this.state;
     if (route.path === '') {
-      return <Home getEventInfo={this.getEventInfo} />;
+      return <Home getLocalEventInfo={this.getLocalEventInfo} />;
     }
     if (route.path === 'results') {
       return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer} />;
@@ -73,7 +87,7 @@ export default class App extends React.Component {
       return <Itinerary />;
     }
     if (route.path === 'event') {
-      return <Event eventInfo={this.state.eventInfo} />;
+      return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;
     }
     if (route.path === 'saved-events') {
       return <SavedEvents />;

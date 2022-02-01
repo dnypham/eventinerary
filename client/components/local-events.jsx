@@ -32,7 +32,7 @@ export default class LocalEvents extends React.Component {
     const concerts = this.state.events.filter(event => event.taxonomies[0].name === 'concert');
 
     return concerts.map((event, index) => (
-      <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id} onClick={() => this.props.getEventInfo(event.id)}>
+      <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id} onClick={() => this.props.getLocalEventInfo(event.id)}>
         <div className="home-event-image-container">
           <img className="border-radius-t" src={event.performers[0].image}></img>
         </div>
@@ -53,7 +53,7 @@ export default class LocalEvents extends React.Component {
     const sportingEvents = this.state.events.filter(event => event.taxonomies[0].name === 'sports');
 
     return sportingEvents.map((event, index) => (
-      <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id} onClick={() => this.props.getEventInfo(event.id)}>
+      <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id} onClick={() => this.props.getLocalEventInfo(event.id)}>
         <div className="home-event-image-ctr">
           <img className="border-radius-t" src={event.performers[0].image}></img>
         </div>
