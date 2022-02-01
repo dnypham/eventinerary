@@ -592,8 +592,12 @@ body {
   margin: 0;
 }
 
-.saved-itinerary-footer-container > i {
+.itinerary-icons {
   cursor: pointer;
+}
+
+.itinerary-icons-disabled {
+  color: gray;
 }
 
 .itinerary-location {
