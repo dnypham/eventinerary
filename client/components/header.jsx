@@ -4,11 +4,39 @@ import Searchbar from './searchbar';
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchbar: false,
+      menu: false
+    };
+
+    this.displaySearchbar = this.displaySearchbar.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
     location.hash = '';
+  }
+
+  displaySearchbar() {
+    if (!this.state.searchbar) {
+      this.setState({
+        searchbar: true
+      });
+    } else {
+      this.setState({
+        searchbar: false
+      });
+    }
+  }
+
+  searchbar() {
+    if (this.state.searchbar) {
+      return (
+        <div className='searchbar-container flex-c'>
+          <Searchbar search={this.props.search} />
+        </div>
+      );
+    }
   }
 
   render() {
@@ -17,7 +45,7 @@ export default class Header extends React.Component {
         <header className="header-layout-container flex-c">
           <div className="col-third">
             <div className="flex-s">
-              <Searchbar search={this.props.search}/>
+              <Searchbar search={this.props.search} />
             </div>
           </div>
           <div className="col-third">
@@ -38,7 +66,7 @@ export default class Header extends React.Component {
         <header className="header-layout-container-2 flex-c">
           <div className="col-third">
             <div className="flex-s">
-              <i className="fas fa-search fa-lg header-icons"></i>
+              <i className="fas fa-search fa-lg header-icons" onClick={this.displaySearchbar}></i>
             </div>
           </div>
           <div className="col-third">
@@ -52,6 +80,7 @@ export default class Header extends React.Component {
             </div>
           </div>
         </header>
+        {this.searchbar()}
       </>
     );
   }
