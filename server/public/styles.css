@@ -12,6 +12,13 @@ body {
   padding: 0 60px;
 }
 
+.header-layout-container-2 {
+  display: none;
+  background-color: #292826;
+  height: 55px;
+  padding: 0 60px;
+}
+
 .logo {
   color: #f4563c;
   cursor: pointer;
@@ -43,6 +50,11 @@ body {
   border-bottom-right-radius: 5px;
   right: 0;
   top: 1px;
+}
+
+.header-icons {
+  color: white;
+  cursor: pointer;
 }
 
 /* ----------HOME BANNER---------- */
@@ -972,21 +984,30 @@ body {
   transform: scale(1.1);
 }
 
+.header-icons:hover {
+  color: #f4563c;
+}
+
 /* ----------MEDIA QUERIES---------- */
 
 @media only screen and (max-width: 1200px) {
   .home-header {
     font-size: 1.5em;
   }
-
-  .links {
-    font-size: 0.9em;
-  }
 }
 
 @media only screen and (max-width: 992px) {
   .home-header {
     font-size: 1.4em;
+  }
+
+  .header-layout-container {
+    display: none;
+  }
+
+  .header-layout-container-2 {
+    display: flex;
+    padding: 0 30px;
   }
 }
 
