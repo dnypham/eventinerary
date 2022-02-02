@@ -10,6 +10,7 @@ export default class Header extends React.Component {
     };
 
     this.displaySearchbar = this.displaySearchbar.bind(this);
+    this.displayMenu = this.displayMenu.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -20,7 +21,8 @@ export default class Header extends React.Component {
   displaySearchbar() {
     if (!this.state.searchbar) {
       this.setState({
-        searchbar: true
+        searchbar: true,
+        menu: false
       });
     } else {
       this.setState({
@@ -29,11 +31,38 @@ export default class Header extends React.Component {
     }
   }
 
-  searchbar() {
+  displayMenu() {
+    if (!this.state.menu) {
+      this.setState({
+        menu: true,
+        searchbar: false
+      });
+    } else {
+      this.setState({
+        menu: false
+      });
+    }
+  }
+
+  renderSearchbar() {
     if (this.state.searchbar) {
       return (
-        <div className='searchbar-container flex-c'>
+        <div className='pop-up-container flex-c'>
           <Searchbar search={this.props.search} />
+        </div>
+      );
+    }
+  }
+
+  renderMenu() {
+    if (this.state.menu) {
+      return (
+        <div className='pop-up-container flex-c'>
+          <nav className="navbar-links">
+            <a className="links ft-atf-franklin-gothic" href="#saved-events">Saved Events</a>
+            <a className="links ft-atf-franklin-gothic" href="#contact">Contact</a>
+            <a className="links ft-atf-franklin-gothic" href="#log-in">Log In</a>
+          </nav>
         </div>
       );
     }
@@ -76,11 +105,12 @@ export default class Header extends React.Component {
           </div>
           <div className="col-third">
             <div className="flex-e">
-              <i className="fas fa-bars fa-lg header-icons"></i>
+              <i className="fas fa-bars fa-lg header-icons" onClick={this.displayMenu}></i>
             </div>
           </div>
         </header>
-        {this.searchbar()}
+        {this.renderSearchbar()}
+        {this.renderMenu()}
       </>
     );
   }
