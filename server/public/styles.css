@@ -340,7 +340,7 @@ body {
 }
 
 .event-info-img {
-  flex-basis: 20%;
+  width: 20%;
   height: 100px;
   object-fit: cover;
   user-select: none;
@@ -349,7 +349,7 @@ body {
 
 .event-info-performer-container {
   height: 100px;
-  flex-basis: 80%;
+  width: 80%;
   background-color: #292826;
   border-top-right-radius: 20px;
 }
@@ -400,7 +400,7 @@ body {
   background-color: #292826;
   height: 75px;
   width: 100%;
-  padding: 0 175px;
+  padding: 0 20%;
 }
 
 .event-info-btn {
@@ -412,20 +412,20 @@ body {
 }
 
 .tickets-btn {
-  width: 90px;
+  width: 35%;
   background-color: #f4563c;
   color: white;
 }
 
 .save-event-btn {
-  width: 120px;
+  width: 40%;
   background-color: #50c878;
   color: white;
   cursor: pointer;
 }
 
 .save-event-btn-2 {
-  width: 120px;
+  width: 40%;
   background-color: white;
   color: #50c878;
   border: 1px solid #50c878;
@@ -1138,6 +1138,27 @@ body {
   .results-no-events-txt {
     font-size: 34px;
   }
+
+  .event-info-container {
+    width: 78vw;
+    height: 580px;
+  }
+
+  .map-outline {
+    width: 65vw;
+  }
+
+  .event-info-img {
+    height: 80px;
+  }
+
+  .event-info-performer-container {
+    height: 80px;
+  }
+
+  .event-info-btn {
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -1195,5 +1216,17 @@ body {
 
   .results-no-events-txt {
     font-size: 28px;
+  }
+
+  .event-info-container {
+    height: 560px;
+  }
+
+  .event-info-img {
+    height: 60px;
+  }
+
+  .event-info-performer-container {
+    height: 60px;
   }
 }
