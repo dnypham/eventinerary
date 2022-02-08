@@ -380,22 +380,6 @@ body {
   padding: 0 50px;
 }
 
-.event-title {
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  text-align: center;
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.event-info-txt-container {
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  line-height: 5px;
-  margin: 0;
-}
-
 .event-info-btn-layout-container {
   background-color: #292826;
   height: 75px;
@@ -429,6 +413,34 @@ body {
   background-color: white;
   color: #50c878;
   border: 1px solid #50c878;
+}
+
+.event-info-table {
+  margin: 0 auto;
+  width: 95%;
+  table-layout: fixed;
+}
+
+th {
+  font-family: Montseratt, sans-serif;
+  font-size: 24px;
+  height: 35px;
+  background-color: #292826;
+  color: #f4563c;
+  padding: 0 20px;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+td {
+  font-family: Montseratt, sans-serif;
+  font-size: 14px;
+  height: 25px;
+  overflow: scroll;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid #292826;
+  padding: 0 5px;
 }
 
 /* ----------SAVED EVENTS VIEW---------- */
@@ -999,6 +1011,11 @@ body {
   color: #f4563c;
 }
 
+td::-webkit-scrollbar,
+th::-webkit-scrollbar {
+  display: none;
+}
+
 /* ----------MEDIA QUERIES---------- */
 
 @media only screen and (max-width: 1200px) {
@@ -1159,6 +1176,18 @@ body {
   .event-info-btn {
     font-size: 12px;
   }
+
+  .ft-16px {
+    font-size: 14px;
+  }
+
+  .ft-14px {
+    font-size: 12px;
+  }
+
+  .event-info-txt-container > h2 {
+    line-height: 15px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -1229,4 +1258,5 @@ body {
   .event-info-performer-container {
     height: 60px;
   }
+}
 }
