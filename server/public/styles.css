@@ -1091,6 +1091,10 @@ body {
     font-size: 1.25em;
   }
 
+  .header-layout-container-2 {
+    padding: 0 15px;
+  }
+
   .results-container {
     height: 740px;
   }
