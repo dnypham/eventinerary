@@ -5,6 +5,7 @@ export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.getFontSize = this.getFontSize.bind(this);
   }
 
   handleClick(eventId) {
@@ -20,8 +21,10 @@ export default class Results extends React.Component {
       fontSize = 'ft-size-3';
     } else if (this.props.performer.name.length > 26) {
       fontSize = 'ft-size-2';
-    } else if (this.props.performer.name.length > 12) {
+    } else if (this.props.performer.name.length > 9) {
       fontSize = 'ft-size-1';
+    } else {
+      fontSize = 'ft-size-default';
     }
 
     return fontSize;
