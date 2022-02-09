@@ -450,11 +450,12 @@ td {
 }
 
 .saved-layout {
-  width: 1250px;
+  width: 90%;
+  flex-wrap: wrap;
 }
 
 .saved-container {
-  width: 600px;
+  width: 46%;
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -475,7 +476,7 @@ td {
 
 .saved-events-container {
   height: 560px;
-  width: inherit;
+  width: 100%;
   overflow-y: auto;
 }
 
@@ -495,7 +496,7 @@ td {
 
 .saved-date-container {
   height: 50px;
-  flex-basis: 30%;
+  width: 30%;
   background-color: #292826;
 }
 
@@ -530,7 +531,8 @@ td {
 
 .saved-venue-container {
   height: 50px;
-  flex-basis: 70%;
+  width: 70%;
+  padding: 0 50px;
 }
 
 .saved-venue-container > h3 {
@@ -540,7 +542,7 @@ td {
 }
 
 .itinerary-container {
-  width: 600px;
+  width: 46%;
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -554,7 +556,7 @@ td {
 
 .saved-no-itinerary-txt {
   font-family: Montserrat, sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
 }
 
@@ -580,14 +582,14 @@ td {
 }
 
 .saved-itinerary-img {
-  flex-basis: 20%;
+  width: 20%;
   height: 70px;
   object-fit: cover;
   user-select: none;
 }
 
 .saved-itinerary-performer-container {
-  flex-basis: 80%;
+  width: 80%;
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   margin: 0;
@@ -699,7 +701,6 @@ td {
 
 .delete-modal-text {
   font-family: Montserrat, sans-serif;
-  font-size: 24;
   font-weight: 500;
 }
 
@@ -811,7 +812,7 @@ td {
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 150px;
+  width: 40%;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -822,7 +823,7 @@ td {
   height: 70px;
   background-color: #292826;
   align-items: center;
-  padding: 0 100px;
+  padding: 0 17%;
 }
 
 .close-modal-icon {
@@ -838,7 +839,7 @@ td {
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 180px;
+  width: 45%;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -849,7 +850,7 @@ td {
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 180px;
+  width: 45%;
   border-radius: 10px;
   font-weight: 400;
   border: none;
@@ -862,7 +863,7 @@ td {
   left: 40px;
   bottom: 100px;
   height: 80px;
-  width: 200px;
+  width: 35%;
   border: solid 1px #f4563c;
   background-color: lightgray;
 }
@@ -1030,6 +1031,18 @@ th::-webkit-scrollbar {
   .results-event-venue-container > h3 {
     font-size: 18px;
   }
+
+  .saved-date-container > h3 {
+    font-size: 16px;
+  }
+
+  .saved-no-itinerary-txt {
+    font-size: 20px;
+  }
+
+  .itinerary-location-time-container > h3 {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -1100,6 +1113,74 @@ th::-webkit-scrollbar {
 
   .results-no-events-txt {
     font-size: 42px;
+  }
+
+  .saved-layout-container {
+    height: 1550px;
+  }
+
+  .saved-layout {
+    width: 80%;
+  }
+
+  .saved-container {
+    width: 100%;
+  }
+
+  .itinerary-container {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .location-modal-container {
+    width: 500px;
+  }
+
+  .location-modal-header {
+    font-size: 28px;
+  }
+
+  .location-modal-form-container label {
+    font-size: 16px;
+  }
+
+  .location-modal-form-container input {
+    width: 200px;
+  }
+
+  .location-modal-form-container textarea {
+    width: 200px;
+  }
+
+  .delete-confirmation-buttons-container {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .delete-confirmation-text {
+    font-size: 10px;
+  }
+
+  .delete-confirmation-cancel-btn {
+    font-size: 10px;
+    width: 40%;
+  }
+
+  .delete-confirmation-delete-btn {
+    font-size: 10px;
+    width: 45%;
+  }
+
+  .location-modal-add-btn {
+    font-size: 13px;
+  }
+
+  .location-modal-delete-btn {
+    font-size: 13px;
+  }
+
+  .location-modal-delete-btn-2 {
+    font-size: 13px;
   }
 }
 
@@ -1188,6 +1269,48 @@ th::-webkit-scrollbar {
   .event-info-txt-container > h2 {
     line-height: 15px;
   }
+
+  .location-modal-container {
+    width: 400px;
+  }
+
+  .location-modal-header {
+    font-size: 22px;
+  }
+
+  .location-modal-form-container label {
+    font-size: 16px;
+  }
+
+  .location-modal-form-container input {
+    width: 150px;
+  }
+
+  .location-modal-form-container textarea {
+    width: 150px;
+  }
+
+  .delete-confirmation-cancel-btn {
+    font-size: 8px;
+    width: 40%;
+  }
+
+  .delete-confirmation-delete-btn {
+    font-size: 8px;
+    width: 45%;
+  }
+
+  .location-modal-add-btn {
+    font-size: 10px;
+  }
+
+  .location-modal-delete-btn {
+    font-size: 10px;
+  }
+
+  .location-modal-delete-btn-2 {
+    font-size: 10px;
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -1257,5 +1380,121 @@ th::-webkit-scrollbar {
 
   .event-info-performer-container {
     height: 60px;
+  }
+
+  .saved-date-container > h3 {
+    font-size: 12px;
+  }
+
+  .saved-list-container > h2 {
+    font-size: 26px;
+  }
+
+  .saved-venue-container > h3 {
+    font-size: 18px;
+  }
+
+  .saved-itinerary-performer-txt {
+    font-size: 18px;
+  }
+
+  .saved-itinerary-venue-txt {
+    font-size: 14px;
+  }
+
+  .saved-itinerary-footer-container {
+    padding: 0 15px;
+  }
+
+  .saved-itinerary-footer-container > h2 {
+    font-size: 20px;
+  }
+
+  .itinerary-location-time-container > h3 {
+    font-size: 12px;
+  }
+
+  .saved-no-itinerary-txt {
+    font-size: 14px;
+  }
+
+  .location-modal-container {
+    width: 300px;
+  }
+
+  .location-modal-header {
+    font-size: 20px;
+  }
+
+  .location-modal-form-container label {
+    font-size: 12px;
+  }
+
+  .location-modal-form-container input {
+    width: 100px;
+  }
+
+  .location-modal-form-container textarea {
+    width: 100px;
+  }
+
+  .close-modal-icon {
+    font-size: 23px;
+  }
+
+  .delete-confirmation-cancel-btn {
+    font-size: 7px;
+    width: 45%;
+  }
+
+  .delete-confirmation-delete-btn {
+    font-size: 7px;
+    width: 50%;
+  }
+
+  .location-modal-form-container {
+    padding: 40px 25px 30px;
+  }
+
+  .delete-confirmation-container {
+    left: 35px;
+  }
+
+  .location-modal-add-btn {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .location-modal-delete-btn {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .location-modal-delete-btn-2 {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .delete-modal-selection-container {
+    width: 80%;
+  }
+
+  .delete-modal-text {
+    font-size: 12px;
+  }
+
+  .delete-modal-buttons-container {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .delete-modal-cancel-btn {
+    font-size: 12px;
+    width: 40%;
+  }
+
+  .delete-modal-delete-btn {
+    font-size: 12px;
+    width: 40%;
   }
 }
