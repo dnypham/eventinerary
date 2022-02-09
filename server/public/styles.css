@@ -524,7 +524,7 @@ td {
   color: white;
   height: 35px;
   width: 130px;
-  background-color: #e5e5e5;
+  background-color: darkgray;
   border-radius: 10px;
   border: none;
 }
@@ -634,7 +634,7 @@ td {
 }
 
 .itinerary-icons-disabled {
-  color: gray;
+  color: darkgray;
 }
 
 .itinerary-location {
@@ -846,7 +846,7 @@ td {
 
 .location-modal-delete-btn-2 {
   color: white;
-  background-color: #e5e5e5;
+  background-color: darkgray;
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
