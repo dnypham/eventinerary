@@ -223,6 +223,10 @@ export default class SavedEvents extends React.Component {
 
   renderItinerary() {
 
+    if (this.state.isLoadingEvents) {
+      return <Spinner />;
+    }
+
     if (this.state.events.length === 0) {
       return (
         <div className="saved-no-itinerary-container flex-c">
