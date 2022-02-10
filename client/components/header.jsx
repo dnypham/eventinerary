@@ -60,8 +60,6 @@ export default class Header extends React.Component {
         <div className='pop-up-container flex-c'>
           <nav className="navbar-links">
             <a className="links ft-atf-franklin-gothic" href="#saved-events">Saved Events</a>
-            <a className="links ft-atf-franklin-gothic" href="#contact">Contact</a>
-            <a className="links ft-atf-franklin-gothic" href="#log-in">Log In</a>
           </nav>
         </div>
       );
@@ -86,8 +84,6 @@ export default class Header extends React.Component {
             <div className="flex-e">
               <nav className="navbar-links">
                 <a className="links ft-atf-franklin-gothic" href="#saved-events">Saved Events</a>
-                <a className="links ft-atf-franklin-gothic" href="#contact">Contact</a>
-                <a className="links ft-atf-franklin-gothic" href="#log-in">Log In</a>
               </nav>
             </div>
           </div>
