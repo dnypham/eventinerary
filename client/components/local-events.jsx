@@ -1,10 +1,13 @@
 import React from 'react';
+import Spinner from './spinner';
 import convertDateTime from '../lib/convertDateTime';
 
 export default class LocalEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoadingIp: true,
+      isLoadingEvents: true,
       events: [],
       meta: [],
       location: ''
@@ -15,12 +18,16 @@ export default class LocalEvents extends React.Component {
     fetch('https://api.techniknews.net/ipgeo/')
       .then(request => request.json())
       .then(data => {
-        this.setState({ ip: data });
-        this.setState({ location: data.city + ', ' + data.regionName });
+        this.setState({
+          isLoadingIp: false,
+          ip: data,
+          location: data.city + ', ' + data.regionName
+        });
         fetch('https://api.seatgeek.com/2/events/?per_page=50&geoip=' + data.ip + '&client_id=' + process.env.SEATGEEK_API_KEY)
           .then(request => request.json())
           .then(data => {
             this.setState({
+              isLoadingEvents: false,
               events: data.events,
               meta: data.meta
             });
@@ -29,6 +36,11 @@ export default class LocalEvents extends React.Component {
   }
 
   renderConcerts() {
+
+    if (this.state.isLoadingEvents) {
+      return <Spinner />;
+    }
+
     const concerts = this.state.events.filter(event => event.taxonomies[0].name === 'concert');
 
     return concerts.map((event, index) => (
@@ -50,6 +62,11 @@ export default class LocalEvents extends React.Component {
   }
 
   renderSportingEvents() {
+
+    if (this.state.isLoadingEvents) {
+      return <Spinner />;
+    }
+
     const sportingEvents = this.state.events.filter(event => event.taxonomies[0].name === 'sports');
 
     return sportingEvents.map((event, index) => (
@@ -78,7 +95,7 @@ export default class LocalEvents extends React.Component {
             <div className="flex-c">
               <div className="home-container bdr-radius">
                 <div className="row justify-c">
-                  <h1 className="home-header">{`CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : `CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
                   <div className="home-events-layout-container">
@@ -94,7 +111,7 @@ export default class LocalEvents extends React.Component {
             <div className="flex-c">
               <div className="home-container bdr-radius">
                 <div className="row justify-c">
-                  <h1 className="home-header">{`SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : `SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
                   <div className="home-events-layout-container">
