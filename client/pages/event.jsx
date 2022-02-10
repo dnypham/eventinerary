@@ -70,21 +70,25 @@ export default class Event extends React.Component {
             </div>
             <div className="event-info-txt-layout-container">
               <table className='event-info-table'>
-                <tr>
-                  <th>{this.props.eventInfo.title}</th>
-                </tr>
-                <tr>
-                  <td>{this.props.eventInfo.venue.name}</td>
-                </tr>
-                <tr>
-                  <td>{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</td>
-                </tr>
-                <tr>
-                  <td>{convertDateTime(this.props.eventInfo.datetime_local).date}</td>
-                </tr>
-                <tr>
-                  <td>{convertDateTime(this.props.eventInfo.datetime_local).time}</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>{this.props.eventInfo.title}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{this.props.eventInfo.venue.name}</td>
+                  </tr>
+                  <tr>
+                    <td>{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</td>
+                  </tr>
+                  <tr>
+                    <td>{convertDateTime(this.props.eventInfo.datetime_local).date}</td>
+                  </tr>
+                  <tr>
+                    <td>{convertDateTime(this.props.eventInfo.datetime_local).time}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
