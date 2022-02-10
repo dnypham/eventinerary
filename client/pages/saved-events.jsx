@@ -1,6 +1,7 @@
 import React from 'react';
 import LocationModal from '../components/location-modal';
 import EditModal from '../components/edit-modal';
+import Spinner from '../components/spinner';
 import convertDateTime from '../lib/convertDateTime';
 import formatTime from '../lib/formatTime';
 
@@ -8,6 +9,8 @@ export default class SavedEvents extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoadingEvents: true,
+      isLoadingLocations: true,
       events: [],
       selectedEvent: [],
       selectedLocation: [],
@@ -53,12 +56,17 @@ export default class SavedEvents extends React.Component {
         Promise
           .all(seatgeekEventFetches)
           .then(events => this.setState({
+            isLoadingEvents: false,
             events: events
           }));
       });
   }
 
   renderSavedEvents() {
+
+    if (this.state.isLoadingEvents) {
+      return <Spinner />;
+    }
 
     if (this.state.events.length === 0) {
       return (
@@ -116,7 +124,10 @@ export default class SavedEvents extends React.Component {
           fetch(`/api/locations/${this.state.itineraryId}`)
             .then(req => req.json())
             .then(locations => {
-              this.setState({ locations: locations });
+              this.setState({
+                isLoadingLocations: false,
+                locations: locations
+              });
             });
         } else {
           this.setState({
@@ -134,7 +145,9 @@ export default class SavedEvents extends React.Component {
     fetch(`/api/locations/${this.state.itineraryId}`)
       .then(req => req.json())
       .then(locations => {
-        this.setState({ locations: locations });
+        this.setState({
+          locations: locations
+        });
       }, () => this.renderItineraryLocations());
 
     this.deselectLocation();
@@ -161,6 +174,11 @@ export default class SavedEvents extends React.Component {
   }
 
   renderItineraryLocations() {
+
+    if (this.state.isLoadingLocations) {
+      return <Spinner />;
+    }
+
     if (this.state.locations.length !== 0) {
       return this.state.locations.map((location, index) => (
         <div key={location.locationId} data-id={location.locationId} className="flex-c itinerary-location">
