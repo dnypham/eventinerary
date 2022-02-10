@@ -84,7 +84,7 @@ export default class SavedEvents extends React.Component {
   renderEventIcon(eventId) {
     if (eventId === this.state.eventId) {
       return (
-          <i className="far fa-check-circle fa-2x selected-event-icon"></i>
+        <i className="far fa-check-circle fa-2x selected-event-icon"></i>
       );
     }
   }
@@ -328,7 +328,7 @@ export default class SavedEvents extends React.Component {
   }
 
   renderDeleteEventButton() {
-    if (this.state.selectedEvent.length !== 0) {
+    if (this.state.eventId) {
       return (
         <button className="btn delete-event-btn ft-atf-franklin-gothic" onClick={() => this.state.eventId != null ? this.setState({ deleteModal: true }) : this.setState({ deleteModal: false })}>DELETE EVENT</button>
       );
