@@ -12,6 +12,13 @@ body {
   padding: 0 60px;
 }
 
+.header-layout-container-2 {
+  display: none;
+  background-color: #292826;
+  height: 55px;
+  padding: 0 60px;
+}
+
 .logo {
   color: #f4563c;
   cursor: pointer;
@@ -26,7 +33,7 @@ body {
 }
 
 .searchbar {
-  width: 350px;
+  width: 25vw;
   height: 25px;
   padding-left: 10px;
   padding-right: 75px;
@@ -45,6 +52,18 @@ body {
   top: 1px;
 }
 
+.header-icons {
+  color: white;
+  cursor: pointer;
+}
+
+.pop-up-container {
+  display: none;
+  width: 100%;
+  height: 50px;
+  background-color: #292826;
+}
+
 /* ----------HOME BANNER---------- */
 
 .banner-container {
@@ -52,7 +71,7 @@ body {
 }
 
 .banner {
-  width: 1100px;
+  width: 80vw;
   height: 400px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px;
@@ -93,13 +112,13 @@ body {
 
 .home-container {
   height: 400px;
-  width: 1300px;
+  width: 80vw;
 }
 
 .home-header {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 1.8em;
   margin-top: 0;
 }
 
@@ -180,6 +199,13 @@ body {
   right: 15px;
 }
 
+.home-error {
+  font-family: Montserrat, sans-serif;
+  height: 100%;
+  width: 100%;
+  padding: 0 10%;
+}
+
 /* ----------RESULTS---------- */
 
 .results-layout-container {
@@ -187,14 +213,14 @@ body {
 }
 
 .results-container {
-  width: 1200px;
+  width: 83vw;
   height: 800px;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
   border-radius: 20px 20px 0;
 }
 
 .results-img {
-  flex-basis: 20%;
+  width: 20%;
   height: 160px;
   object-fit: cover;
   user-select: none;
@@ -202,22 +228,25 @@ body {
 
 .results-performer-container {
   height: 160px;
-  flex-basis: 80%;
+  width: 80%;
   background-color: #292826;
   border-top-right-radius: 20px;
 }
 
 .results-performer-txt {
   font-family: Montserrat, sans-serif;
-  font-size: 96px;
   font-weight: bold;
   margin: 0;
   user-select: none;
   color: #f4563c;
 }
 
+.ft-size-default {
+  font-size: 82px;
+}
+
 .ft-size-1 {
-  font-size: 58px;
+  font-size: 52px;
 }
 
 .ft-size-2 {
@@ -229,7 +258,7 @@ body {
 }
 
 .ft-size-4 {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .results-events-container {
@@ -246,22 +275,23 @@ body {
 
 .results-event-date-container {
   height: 80px;
-  flex-basis: 20.3%;
+  width: 20.3%;
   background-color: #292826;
+  padding: 0 10px;
 }
 
 .results-event-date-container > h3 {
   font-family: Montserrat, sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
   color: #f4563c;
 }
 
 .results-event-venue-container {
   background-color: white;
-  padding-left: 30px;
+  padding: 0 30px;
   height: 80px;
-  flex-basis: 79.7%;
+  width: 79.7%;
 }
 
 .results-event-venue-container > h3 {
@@ -317,7 +347,7 @@ body {
 }
 
 .event-info-img {
-  flex-basis: 20%;
+  width: 20%;
   height: 100px;
   object-fit: cover;
   user-select: none;
@@ -326,7 +356,7 @@ body {
 
 .event-info-performer-container {
   height: 100px;
-  flex-basis: 80%;
+  width: 80%;
   background-color: #292826;
   border-top-right-radius: 20px;
 }
@@ -357,27 +387,11 @@ body {
   padding: 0 50px;
 }
 
-.event-title {
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  text-align: center;
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
-.event-info-txt-container {
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  line-height: 5px;
-  margin: 0;
-}
-
 .event-info-btn-layout-container {
   background-color: #292826;
   height: 75px;
   width: 100%;
-  padding: 0 175px;
+  padding: 0 20%;
 }
 
 .event-info-btn {
@@ -389,23 +403,51 @@ body {
 }
 
 .tickets-btn {
-  width: 90px;
+  width: 35%;
   background-color: #f4563c;
   color: white;
 }
 
 .save-event-btn {
-  width: 120px;
+  width: 40%;
   background-color: #50c878;
   color: white;
   cursor: pointer;
 }
 
 .save-event-btn-2 {
-  width: 120px;
+  width: 40%;
   background-color: white;
   color: #50c878;
   border: 1px solid #50c878;
+}
+
+.event-info-table {
+  margin: 0 auto;
+  width: 95%;
+  table-layout: fixed;
+}
+
+th {
+  font-family: Montseratt, sans-serif;
+  font-size: 24px;
+  height: 35px;
+  background-color: #292826;
+  color: #f4563c;
+  padding: 0 20px;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+td {
+  font-family: Montseratt, sans-serif;
+  font-size: 14px;
+  height: 25px;
+  overflow: scroll;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid #292826;
+  padding: 0 5px;
 }
 
 /* ----------SAVED EVENTS VIEW---------- */
@@ -415,11 +457,12 @@ body {
 }
 
 .saved-layout {
-  width: 1250px;
+  width: 90%;
+  flex-wrap: wrap;
 }
 
 .saved-container {
-  width: 600px;
+  width: 46%;
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -440,7 +483,7 @@ body {
 
 .saved-events-container {
   height: 560px;
-  width: inherit;
+  width: 100%;
   overflow-y: auto;
 }
 
@@ -460,7 +503,7 @@ body {
 
 .saved-date-container {
   height: 50px;
-  flex-basis: 30%;
+  width: 30%;
   background-color: #292826;
 }
 
@@ -488,14 +531,15 @@ body {
   color: white;
   height: 35px;
   width: 130px;
-  background-color: #e5e5e5;
+  background-color: darkgray;
   border-radius: 10px;
   border: none;
 }
 
 .saved-venue-container {
   height: 50px;
-  flex-basis: 70%;
+  width: 70%;
+  padding: 0 50px;
 }
 
 .saved-venue-container > h3 {
@@ -505,7 +549,7 @@ body {
 }
 
 .itinerary-container {
-  width: 600px;
+  width: 46%;
   height: 700px;
   background-color: white;
   box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
@@ -519,7 +563,7 @@ body {
 
 .saved-no-itinerary-txt {
   font-family: Montserrat, sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
 }
 
@@ -545,14 +589,14 @@ body {
 }
 
 .saved-itinerary-img {
-  flex-basis: 20%;
+  width: 20%;
   height: 70px;
   object-fit: cover;
   user-select: none;
 }
 
 .saved-itinerary-performer-container {
-  flex-basis: 80%;
+  width: 80%;
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   margin: 0;
@@ -597,7 +641,7 @@ body {
 }
 
 .itinerary-icons-disabled {
-  color: gray;
+  color: darkgray;
 }
 
 .itinerary-location {
@@ -664,7 +708,6 @@ body {
 
 .delete-modal-text {
   font-family: Montserrat, sans-serif;
-  font-size: 24;
   font-weight: 500;
 }
 
@@ -776,7 +819,7 @@ body {
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 150px;
+  width: 40%;
   border-radius: 10px;
   font-weight: 400;
 }
@@ -787,7 +830,7 @@ body {
   height: 70px;
   background-color: #292826;
   align-items: center;
-  padding: 0 100px;
+  padding: 0 17%;
 }
 
 .close-modal-icon {
@@ -803,18 +846,18 @@ body {
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 180px;
+  width: 45%;
   border-radius: 10px;
   font-weight: 400;
 }
 
 .location-modal-delete-btn-2 {
   color: white;
-  background-color: #e5e5e5;
+  background-color: darkgray;
   font-family: Montseratt, sans-serif;
   font-size: 16px;
   height: 35px;
-  width: 180px;
+  width: 45%;
   border-radius: 10px;
   font-weight: 400;
   border: none;
@@ -827,7 +870,7 @@ body {
   left: 40px;
   bottom: 100px;
   height: 80px;
-  width: 200px;
+  width: 35%;
   border: solid 1px #f4563c;
   background-color: lightgray;
 }
@@ -883,6 +926,84 @@ body {
   bottom: 0;
   height: 2.5rem;
   width: 100%;
+}
+
+/* ----------SPINNER---------- */
+
+.spinner-container {
+  width: 100%;
+  height: 100%;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  background-color: #f4563c;
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  background-color: #f4563c;
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  background-color: #f4563c;
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  background-color: #f4563c;
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
 }
 
 /* ----------PSEUDO CLASSES---------- */
@@ -972,314 +1093,493 @@ body {
   transform: scale(1.1);
 }
 
+.header-icons:hover {
+  color: #f4563c;
+}
+
+td::-webkit-scrollbar,
+th::-webkit-scrollbar {
+  display: none;
+}
+
 /* ----------MEDIA QUERIES---------- */
 
-/* @media only screen and (max-width: 1350px) {
-  .home-container {
-    width: 1200px;
+@media only screen and (max-width: 1200px) {
+  .home-header {
+    font-size: 1.5em;
   }
 
-  .home-events-layout-container {
-    width: 1100px;
-  }
-}
-
-@media only screen and (max-width: 1250px) {
-  .banner {
-    width: 1000px;
+  .results-event-date-container > h3 {
+    font-size: 20px;
   }
 
-  .searchbar {
-    width: 300px;
+  .results-event-venue-container > h3 {
+    font-size: 18px;
   }
 
-  .home-container {
-    width: 1000px;
+  .saved-date-container > h3 {
+    font-size: 16px;
   }
 
-  .home-events-layout-container {
-    width: 1000px;
+  .saved-no-itinerary-txt {
+    font-size: 20px;
   }
 
-  .results-container {
-    width: 1000px;
-  }
-
-  .results-event-date-container {
-    flex-basis: 21.5%;
-  }
-
-  .results-event-venue-container {
-    flex-basis: 78.5%;
+  .itinerary-location-time-container > h3 {
+    font-size: 16px;
   }
 }
 
-@media only screen and (max-width: 1100px) {
-  .col-full {
-    flex-basis: 100%;
-  }
-
-  .col-third {
-    flex-basis: calc(100% / 3);
-  }
-
-  .searchbar {
-    width: 250px;
-  }
-
-  .banner {
-    width: 900px;
-  }
-
-  .home-container {
-    width: 950px;
-  }
-
-  .home-events-layout-container {
-    width: 950px;
-  }
-
-  .justify-c {
-    justify-content: center;
-  }
-}
-
-@media only screen and (max-width: 1050px) {
-  .results-container {
-    width: 800px;
-  }
-
-  .results-event-date-container {
-    flex-basis: 27.3%;
-  }
-
-  .results-event-venue-container {
-    flex-basis: 72.7%;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .justify-c {
-    justify-content: center;
-  }
-
-  .banner {
-    width: 800px;
-  }
-
-  .home-container {
-    width: 800px;
-  }
-
-  .home-events-layout-container {
-    width: 800px;
-  }
-
-  .searchbar {
-    width: 200px;
-  }
-}
-
-@media only screen and (max-width: 950px) {
-  .justify-c {
-    justify-content: center;
-  }
-
-  .banner {
-    width: 700px;
-  }
-
-  .home-container {
-    width: 800px;
-  }
-
-  .home-events-layout-container {
-    width: 800px;
-  }
-
-  .searchbar {
-    width: 200px;
-    height: 22px;
-  }
-
-  .search-btn {
-    height: 20px;
-  }
-
-  .links {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
-  .justify-c {
-    justify-content: center;
-  }
-
-  .banner {
-    width: 700px;
-  }
-
-  .home-container {
-    width: 750px;
-  }
-
-  .home-events-layout-container {
-    width: 750px;
-  }
-
-  .logo {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (max-width: 850px) {
-  .justify-c {
-    justify-content: center;
-  }
-
-  .banner {
-    width: 650px;
-  }
-
-  .home-container {
-    width: 750px;
-  }
-
-  .home-events-layout-container {
-    width: 750px;
-  }
-
-  .logo {
-    font-size: 28px;
+@media only screen and (max-width: 992px) {
+  .home-header {
+    font-size: 1.4em;
   }
 
   .header-layout-container {
+    display: none;
+  }
+
+  .header-layout-container-2 {
+    display: flex;
     padding: 0 30px;
   }
 
-  .links {
-    font-size: 12px;
-  }
-}
-
-@media only screen and (max-width: 750px) {
-  .justify-c {
-    justify-content: center;
+  .searchbar {
+    width: 60vw;
   }
 
-  .banner {
-    width: 650px;
-  }
-
-  .home-container {
-    width: 750px;
-  }
-
-  .home-events-layout-container {
-    width: 750px;
-  }
-
-  .logo {
-    font-size: 24px;
-  }
-
-  .header-layout-container {
-    padding: 0 10px;
-  }
-
-  .links {
-    font-size: 12px;
-  }
-}
-
-@media only screen and (max-width: 700px) {
-  .justify-c {
-    justify-content: center;
-  }
-
-  .banner {
-    width: 550px;
-  }
-
-  .home-container {
-    width: 700px;
-  }
-
-  .home-events-layout-container {
-    width: 700px;
-  }
-
-  .logo {
-    font-size: 24px;
-  }
-
-  .header-layout-container {
-    padding: 0 10px;
-  }
-
-  .links {
-    font-size: 12px;
-  }
-
-  .navbar-links {
+  .pop-up-container {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-@media only screen and (max-width: 650px) {
-  .search-btn {
-    width: 50px;
-    font-size: 10px;
   }
 
-  .searchbar {
-    width: 125px;
+  .results-container {
+    height: 760px;
   }
 
-  .banner {
+  .results-img {
+    height: 120px;
+  }
+
+  .results-event-date-container {
+    height: 60px;
+  }
+
+  .results-event-venue-container {
+    height: 60px;
+  }
+
+  .results-performer-container {
+    height: 120px;
+  }
+
+  .results-event-date-container > h3 {
+    font-size: 15px;
+  }
+
+  .ft-size-default {
+    font-size: 66px;
+  }
+
+  .ft-size-1 {
+    font-size: 42px;
+  }
+
+  .ft-size-2 {
+    font-size: 32px;
+  }
+
+  .ft-size-3 {
+    font-size: 22px;
+  }
+
+  .ft-size-4 {
+    font-size: 16px;
+  }
+
+  .results-no-events-txt {
+    font-size: 42px;
+  }
+
+  .saved-layout-container {
+    height: 1550px;
+  }
+
+  .saved-layout {
+    width: 80%;
+  }
+
+  .saved-container {
+    width: 100%;
+  }
+
+  .itinerary-container {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .location-modal-container {
     width: 500px;
   }
 
-  .home-container {
-    width: 600px;
+  .location-modal-header {
+    font-size: 28px;
   }
 
-  .home-events-layout-container {
-    width: 600px;
+  .location-modal-form-container label {
+    font-size: 16px;
   }
 
-  .home-header {
-    font-size: 20px;
+  .location-modal-form-container input {
+    width: 200px;
   }
-}
 
-@media only screen and (max-width: 550px) {
-  .search-btn {
-    width: 50px;
+  .location-modal-form-container textarea {
+    width: 200px;
+  }
+
+  .delete-confirmation-buttons-container {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .delete-confirmation-text {
     font-size: 10px;
   }
 
-  .searchbar {
-    width: 125px;
+  .delete-confirmation-cancel-btn {
+    font-size: 10px;
+    width: 40%;
   }
 
-  .banner {
-    width: 400px;
-    height: 300px;
+  .delete-confirmation-delete-btn {
+    font-size: 10px;
+    width: 45%;
   }
 
-  .home-container {
-    width: 500px;
+  .location-modal-add-btn {
+    font-size: 13px;
   }
 
-  .home-events-layout-container {
-    width: 400px;
+  .location-modal-delete-btn {
+    font-size: 13px;
   }
 
+  .location-modal-delete-btn-2 {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
   .home-header {
+    font-size: 1.25em;
+  }
+
+  .header-layout-container-2 {
+    padding: 0 15px;
+  }
+
+  .results-container {
+    height: 740px;
+  }
+
+  .results-img {
+    height: 100px;
+  }
+
+  .results-performer-container {
+    height: 100px;
+  }
+
+  .results-event-date-container > h3 {
+    font-size: 11px;
+  }
+
+  .results-event-venue-container > h3 {
+    font-size: 15px;
+  }
+
+  .ft-size-default {
+    font-size: 56px;
+  }
+
+  .ft-size-1 {
+    font-size: 32px;
+  }
+
+  .ft-size-2 {
+    font-size: 22px;
+  }
+
+  .ft-size-3 {
+    font-size: 16px;
+  }
+
+  .ft-size-4 {
+    font-size: 14px;
+  }
+
+  .results-no-events-txt {
+    font-size: 34px;
+  }
+
+  .event-info-container {
+    width: 78vw;
+    height: 580px;
+  }
+
+  .map-outline {
+    width: 65vw;
+  }
+
+  .event-info-img {
+    height: 80px;
+  }
+
+  .event-info-performer-container {
+    height: 80px;
+  }
+
+  .event-info-btn {
+    font-size: 12px;
+  }
+
+  .ft-16px {
+    font-size: 14px;
+  }
+
+  .ft-14px {
+    font-size: 12px;
+  }
+
+  .event-info-txt-container > h2 {
+    line-height: 15px;
+  }
+
+  .location-modal-container {
+    width: 400px;
+  }
+
+  .location-modal-header {
+    font-size: 22px;
+  }
+
+  .location-modal-form-container label {
+    font-size: 16px;
+  }
+
+  .location-modal-form-container input {
+    width: 150px;
+  }
+
+  .location-modal-form-container textarea {
+    width: 150px;
+  }
+
+  .delete-confirmation-cancel-btn {
+    font-size: 8px;
+    width: 40%;
+  }
+
+  .delete-confirmation-delete-btn {
+    font-size: 8px;
+    width: 45%;
+  }
+
+  .location-modal-add-btn {
+    font-size: 10px;
+  }
+
+  .location-modal-delete-btn {
+    font-size: 10px;
+  }
+
+  .location-modal-delete-btn-2 {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .home-header {
+    font-size: 1em;
+  }
+
+  .results-container {
+    height: 720px;
+  }
+
+  .results-img {
+    height: 80px;
+  }
+
+  .results-performer-container {
+    height: 80px;
+  }
+
+  .results-event-date-container {
+    height: 50px;
+  }
+
+  .results-event-venue-container {
+    height: 50px;
+  }
+
+  .results-event-date-container > h3 {
+    font-size: 10px;
+  }
+
+  .results-event-venue-container > h3 {
+    font-size: 14px;
+  }
+
+  .ft-size-default {
+    font-size: 56px;
+  }
+
+  .ft-size-1 {
+    font-size: 28px;
+  }
+
+  .ft-size-2 {
+    font-size: 22px;
+  }
+
+  .ft-size-3 {
+    font-size: 16px;
+  }
+
+  .ft-size-4 {
+    font-size: 14px;
+  }
+
+  .results-no-events-txt {
+    font-size: 22px;
+  }
+
+  .event-info-container {
+    height: 560px;
+  }
+
+  .event-info-img {
+    height: 60px;
+  }
+
+  .event-info-performer-container {
+    height: 60px;
+  }
+
+  .saved-date-container > h3 {
+    font-size: 12px;
+  }
+
+  .saved-list-container > h2 {
+    font-size: 26px;
+  }
+
+  .saved-venue-container > h3 {
+    font-size: 18px;
+  }
+
+  .saved-itinerary-performer-txt {
+    font-size: 18px;
+  }
+
+  .saved-itinerary-venue-txt {
+    font-size: 14px;
+  }
+
+  .saved-itinerary-footer-container {
+    padding: 0 15px;
+  }
+
+  .saved-itinerary-footer-container > h2 {
     font-size: 20px;
   }
-} */
+
+  .itinerary-location-time-container > h3 {
+    font-size: 12px;
+  }
+
+  .saved-no-itinerary-txt {
+    font-size: 14px;
+  }
+
+  .location-modal-container {
+    width: 300px;
+  }
+
+  .location-modal-header {
+    font-size: 20px;
+  }
+
+  .location-modal-form-container label {
+    font-size: 12px;
+  }
+
+  .location-modal-form-container input {
+    width: 100px;
+  }
+
+  .location-modal-form-container textarea {
+    width: 100px;
+  }
+
+  .close-modal-icon {
+    font-size: 23px;
+  }
+
+  .delete-confirmation-cancel-btn {
+    font-size: 7px;
+    width: 45%;
+  }
+
+  .delete-confirmation-delete-btn {
+    font-size: 7px;
+    width: 50%;
+  }
+
+  .location-modal-form-container {
+    padding: 40px 25px 30px;
+  }
+
+  .delete-confirmation-container {
+    left: 35px;
+  }
+
+  .location-modal-add-btn {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .location-modal-delete-btn {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .location-modal-delete-btn-2 {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  .delete-modal-selection-container {
+    width: 80%;
+  }
+
+  .delete-modal-text {
+    font-size: 12px;
+  }
+
+  .delete-modal-buttons-container {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .delete-modal-cancel-btn {
+    font-size: 12px;
+    width: 40%;
+  }
+
+  .delete-modal-delete-btn {
+    font-size: 12px;
+    width: 40%;
+  }
+}

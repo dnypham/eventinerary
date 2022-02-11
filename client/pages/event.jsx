@@ -69,15 +69,27 @@ export default class Event extends React.Component {
               </div>
             </div>
             <div className="event-info-txt-layout-container">
-              <h2 className="event-title">{this.props.eventInfo.title}</h2>
-              <div className="flex-space-between">
-                <div className="event-info-txt-container">
-                  <h2 className="ft-16px">{this.props.eventInfo.venue.name}</h2>
-                  <h2 className="ft-14px txt-gray">{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</h2>
-                  <h2 className="ft-16px">{convertDateTime(this.props.eventInfo.datetime_local).date}</h2>
-                  <h2 className="ft-14px txt-gray">{convertDateTime(this.props.eventInfo.datetime_local).time}</h2>
-                </div>
-              </div>
+              <table className='event-info-table'>
+                <thead>
+                  <tr>
+                    <th>{this.props.eventInfo.title}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{this.props.eventInfo.venue.name}</td>
+                  </tr>
+                  <tr>
+                    <td>{`${this.props.eventInfo.venue.address}, ${this.props.eventInfo.venue.extended_address}`}</td>
+                  </tr>
+                  <tr>
+                    <td>{convertDateTime(this.props.eventInfo.datetime_local).date}</td>
+                  </tr>
+                  <tr>
+                    <td>{convertDateTime(this.props.eventInfo.datetime_local).time}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="event-info-btn-layout-container border-radius-b flex-space-between align-items-c">
               <button className="btn tickets-btn event-info-btn ft-atf-franklin-gothic" onClick={this.getTickets}>TICKETS</button>
