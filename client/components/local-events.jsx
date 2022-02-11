@@ -164,7 +164,7 @@ export default class LocalEvents extends React.Component {
             <div className="flex-c">
               <div className="home-container bdr-radius">
                 <div className="row justify-c">
-                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : this.state.errorIp ? 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.' : `CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : this.state.errorIp ? 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.' : `SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
                   <div className="home-events-layout-container">

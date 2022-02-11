@@ -20,7 +20,9 @@ export default class SavedEvents extends React.Component {
       locations: [],
       deleteModal: false,
       editModal: false,
-      addLocationModal: false
+      addLocationModal: false,
+      errorEvents: false,
+      errorItinerary: false
     };
 
     this.checkItinerary = this.checkItinerary.bind(this);
@@ -42,11 +44,43 @@ export default class SavedEvents extends React.Component {
 
   getEvents() {
     fetch('/api/events')
-      .then(request => request.json())
+      .then(request => {
+        if (!request.ok) {
+          this.setState({
+            errorEvents: true,
+            isLoadingEvents: false
+          });
+        } else {
+          return request.json();
+        }
+      })
+      .catch(err => {
+        this.setState({
+          errorEvents: true,
+          isLoadingEvents: false
+        });
+        throw err;
+      })
       .then(events => {
         const seatgeekEventFetches = events.map(event => {
           return fetch('https://api.seatgeek.com/2/events/' + event.seatgeekEventId + '?client_id=' + process.env.SEATGEEK_API_KEY)
-            .then(response => response.json())
+            .then(response => {
+              if (!response.ok) {
+                this.setState({
+                  errorEvents: true,
+                  isLoadingEvents: false
+                });
+              } else {
+                return response.json();
+              }
+            })
+            .catch(err => {
+              this.setState({
+                errorEvents: true,
+                isLoadingEvents: false
+              });
+              throw err;
+            })
             .then(data => {
               data.performer = event.performer;
               data.eventId = event.eventId;
@@ -56,6 +90,7 @@ export default class SavedEvents extends React.Component {
         Promise
           .all(seatgeekEventFetches)
           .then(events => this.setState({
+            errorEvents: false,
             isLoadingEvents: false,
             events: events
           }));
@@ -66,6 +101,14 @@ export default class SavedEvents extends React.Component {
 
     if (this.state.isLoadingEvents) {
       return <Spinner />;
+    }
+
+    if (this.state.errorEvents) {
+      return (
+        <div className='home-error flex-c'>
+          <h3>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</h3>
+        </div>
+      );
     }
 
     if (this.state.events.length === 0) {
@@ -102,7 +145,23 @@ export default class SavedEvents extends React.Component {
     this.deselectLocation();
 
     fetch(`/api/itineraries/${eventId}`)
-      .then(req => req.json())
+      .then(request => {
+        if (!request.ok) {
+          this.setState({
+            errorItinerary: true,
+            isLoadingLocations: false
+          });
+        } else {
+          return request.json();
+        }
+      })
+      .catch(err => {
+        this.setState({
+          errorItinerary: true,
+          isLoadingLocations: false
+        });
+        throw err;
+      })
       .then(data => {
         for (let i = 0; i < this.state.events.length; i++) {
           if (this.state.events[i].eventId === eventId) {
@@ -118,13 +177,31 @@ export default class SavedEvents extends React.Component {
             itinerary: true,
             eventId: eventId,
             selectedEvent: data,
-            itineraryId: data[0].itineraryId
+            itineraryId: data[0].itineraryId,
+            errorItinerary: false
           });
 
           fetch(`/api/locations/${this.state.itineraryId}`)
-            .then(req => req.json())
+            .then(request => {
+              if (!request.ok) {
+                this.setState({
+                  errorItinerary: true,
+                  isLoadingLocations: false
+                });
+              } else {
+                return request.json();
+              }
+            })
+            .catch(err => {
+              this.setState({
+                errorItinerary: true,
+                isLoadingLocations: false
+              });
+              throw err;
+            })
             .then(locations => {
               this.setState({
+                errorItinerary: false,
                 isLoadingLocations: false,
                 locations: locations
               });
@@ -134,7 +211,8 @@ export default class SavedEvents extends React.Component {
             itinerary: false,
             eventId: eventId,
             selectedEvent: data,
-            itineraryId: null
+            itineraryId: null,
+            errorItinerary: false
           });
         }
 
@@ -143,7 +221,23 @@ export default class SavedEvents extends React.Component {
 
   getLocations() {
     fetch(`/api/locations/${this.state.itineraryId}`)
-      .then(req => req.json())
+      .then(request => {
+        if (!request.ok) {
+          this.setState({
+            errorItinerary: true,
+            isLoadingLocations: false
+          });
+        } else {
+          return request.json();
+        }
+      })
+      .catch(err => {
+        this.setState({
+          errorItinerary: true,
+          isLoadingLocations: false
+        });
+        throw err;
+      })
       .then(locations => {
         this.setState({
           locations: locations
@@ -225,6 +319,14 @@ export default class SavedEvents extends React.Component {
 
     if (this.state.isLoadingEvents) {
       return <Spinner />;
+    }
+
+    if (this.state.errorItinerary) {
+      return (
+        <div className='home-error flex-c'>
+          <h3>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</h3>
+        </div>
+      );
     }
 
     if (this.state.events.length === 0) {
