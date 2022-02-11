@@ -199,6 +199,12 @@ body {
   right: 15px;
 }
 
+.home-error {
+  font-family: Montserrat, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
 /* ----------RESULTS---------- */
 
 .results-layout-container {

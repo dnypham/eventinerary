@@ -10,26 +10,63 @@ export default class LocalEvents extends React.Component {
       isLoadingEvents: true,
       events: [],
       meta: [],
-      location: ''
+      location: '',
+      errorIp: false,
+      errorEvents: false
     };
   }
 
   componentDidMount() {
     fetch('https://api.techniknews.net/ipgeo/')
-      .then(request => request.json())
+      .then(request => {
+        if (!request.ok) {
+          this.setState({
+            isLoadingIp: false,
+            errorIp: true
+          });
+        } else {
+          return request.json();
+        }
+      })
+      .catch(err => {
+        this.setState({
+          isLoadingIp: false,
+          isLoadingEvents: false,
+          errorIp: true
+        });
+        throw err;
+      })
       .then(data => {
         this.setState({
           isLoadingIp: false,
           ip: data,
-          location: data.city + ', ' + data.regionName
+          location: data.city + ', ' + data.regionName,
+          errorIp: false
         });
         fetch('https://api.seatgeek.com/2/events/?per_page=50&geoip=' + data.ip + '&client_id=' + process.env.SEATGEEK_API_KEY)
-          .then(request => request.json())
+          .then(request => {
+            if (!request.ok) {
+              this.setState({
+                isLoadingEvents: false,
+                errorEvents: true
+              });
+            } else {
+              return request.json();
+            }
+          })
+          .catch(err => {
+            this.setState({
+              isLoadingEvents: false,
+              errorEvents: true
+            });
+            throw err;
+          })
           .then(data => {
             this.setState({
               isLoadingEvents: false,
               events: data.events,
-              meta: data.meta
+              meta: data.meta,
+              errorEvents: false
             });
           });
       });
@@ -39,6 +76,14 @@ export default class LocalEvents extends React.Component {
 
     if (this.state.isLoadingEvents) {
       return <Spinner />;
+    }
+
+    if (this.state.errorEvents || this.state.errorIp) {
+      return (
+        <div className='home-error flex-c'>
+          <h3>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</h3>
+        </div>
+      );
     }
 
     const concerts = this.state.events.filter(event => event.taxonomies[0].name === 'concert');
@@ -65,6 +110,14 @@ export default class LocalEvents extends React.Component {
 
     if (this.state.isLoadingEvents) {
       return <Spinner />;
+    }
+
+    if (this.state.errorEvents || this.state.errorIp) {
+      return (
+        <div className='home-error flex-c'>
+          <h3>Sorry, there was an error connecting to the network! Please check your internet connection and try again.</h3>
+        </div>
+      );
     }
 
     const sportingEvents = this.state.events.filter(event => event.taxonomies[0].name === 'sports');
@@ -95,7 +148,7 @@ export default class LocalEvents extends React.Component {
             <div className="flex-c">
               <div className="home-container bdr-radius">
                 <div className="row justify-c">
-                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : `CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : this.state.errorIp ? 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.' : `CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
                   <div className="home-events-layout-container">
@@ -111,7 +164,7 @@ export default class LocalEvents extends React.Component {
             <div className="flex-c">
               <div className="home-container bdr-radius">
                 <div className="row justify-c">
-                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : `SPORTING EVENTS NEAR ${this.state.location.toUpperCase()}`}</h1>
+                  <h1 className="home-header">{this.state.isLoadingIp ? <Spinner /> : this.state.errorIp ? 'Sorry, there was an error connecting to the network! Please check your internet connection and try again.' : `CONCERTS NEAR ${this.state.location.toUpperCase()}`}</h1>
                 </div>
                 <div className="row">
                   <div className="home-events-layout-container">
