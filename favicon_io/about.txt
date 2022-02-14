@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Corben
+- Font Author: Copyright (c) 2010, 2011 by vernon adams (vern@newtypography.co.uk) with Reserved Font Name 'Corben'. All rights reserved.
+- Font Source: http://fonts.gstatic.com/s/corben/v17/LYjAdGzzklQtCMpFHCZgrXArXN7HWQ.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
