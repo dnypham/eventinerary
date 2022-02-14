@@ -1478,23 +1478,23 @@ th::-webkit-scrollbar {
   }
 
   .ft-size-default {
-    font-size: 30px;
-  }
-
-  .ft-size-1 {
     font-size: 28px;
   }
 
-  .ft-size-2 {
-    font-size: 22px;
+  .ft-size-1 {
+    font-size: 20px;
   }
 
-  .ft-size-3 {
+  .ft-size-2 {
     font-size: 16px;
   }
 
+  .ft-size-3 {
+    font-size: 12px;
+  }
+
   .ft-size-4 {
-    font-size: 14px;
+    font-size: 10px;
   }
 
   .results-no-events-txt {
