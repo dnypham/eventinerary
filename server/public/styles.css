@@ -1648,4 +1648,8 @@ th::-webkit-scrollbar {
   .saved-itinerary-locations-container {
     height: 360px;
   }
+
+  .event-info-txt-layout-container {
+    padding: 0 20px;
+  }
 }
