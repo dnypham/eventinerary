@@ -1440,6 +1440,10 @@ th::-webkit-scrollbar {
     width: 100%;
   }
 
+  .results-layout-container {
+    height: 800px;
+  }
+
   .results-container {
     height: 720px;
   }
@@ -1469,7 +1473,7 @@ th::-webkit-scrollbar {
   }
 
   .ft-size-default {
-    font-size: 56px;
+    font-size: 30px;
   }
 
   .ft-size-1 {
@@ -1618,5 +1622,25 @@ th::-webkit-scrollbar {
   .delete-modal-delete-btn {
     font-size: 12px;
     width: 40%;
+  }
+
+  .saved-layout-container {
+    height: 1150px;
+  }
+
+  .saved-container {
+    height: 500px;
+  }
+
+  .saved-events-container {
+    height: 360px;
+  }
+
+  .itinerary-container {
+    height: 500px;
+  }
+
+  .saved-itinerary-locations-container {
+    height: 360px;
   }
 }
