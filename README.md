@@ -49,19 +49,21 @@ Live Demo: [Eventinerary](https://eventinerary.herokuapp.com/)
 
     npm install
     
-   3. Make a copy of the provided .env.example file with the name .env. Switch all config variables to your project's variables.
+   3. Get an API key from [Seatgeek](http://platform.seatgeek.com/)
+    
+   4. Make a copy of the provided .env.example file with the name .env. Switch all config variables to your project's variables.
 
     cp .env.example .env
     
-   4. Create a new database
+   5. Create a new database
 
     pgweb --db=databaseName
     
-   5. Import the database schema
+   6. Import the database schema
 
     npm run db:import
     
-   6. View application by opening http://localhost:3000 in your browser.
+   7. View application by opening http://localhost:3000 in your browser.
 
     npm run dev
     
