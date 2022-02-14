@@ -124,7 +124,7 @@ export default class LocalEvents extends React.Component {
 
     return sportingEvents.map((event, index) => (
       <div className="home-event-card-container pos-rel border-radius" data-id={event.id} key={event.id} onClick={() => this.props.getLocalEventInfo(event.id)}>
-        <div className="home-event-image-ctr">
+        <div className="home-event-image-container">
           <img className="border-radius-t" src={event.performers[0].image}></img>
         </div>
         <div className="home-event-info-container">

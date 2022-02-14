@@ -6,7 +6,6 @@ import Results from './pages/results';
 import NoResults from './pages/no-results';
 import Event from './pages/event';
 import SavedEvents from './pages/saved-events';
-import Itinerary from './pages/itinerary';
 import parseRoute from './lib/parse-route';
 
 export default class App extends React.Component {
@@ -92,9 +91,6 @@ export default class App extends React.Component {
     }
     if (route.path === 'results') {
       return <Results getEventInfo={this.getEventInfo} results={this.state.searchResults} performer={this.state.performer} />;
-    }
-    if (route.path === 'itinerary') {
-      return <Itinerary />;
     }
     if (route.path === 'event') {
       return <Event eventInfo={this.state.eventInfo} performer={this.state.performer}/>;

@@ -1399,8 +1399,49 @@ th::-webkit-scrollbar {
 }
 
 @media only screen and (max-width: 576px) {
+  .logo {
+    font-size: 30px;
+  }
+
   .home-header {
     font-size: 1em;
+    text-align: center;
+  }
+
+  .banner-container {
+    height: 400px;
+  }
+
+  .banner {
+    height: 300px;
+  }
+
+  .home-events-layout-container {
+    margin: 0;
+    height: 280px;
+  }
+
+  .home-layout-container {
+    height: 300px;
+    margin-top: 40px;
+  }
+
+  .home-event-card-container {
+    width: 200px;
+    height: 220px;
+  }
+
+  .home-event-image-container {
+    width: 100%;
+    height: 130px;
+  }
+
+  .home-event-info-container {
+    width: 100%;
+  }
+
+  .results-layout-container {
+    height: 800px;
   }
 
   .results-container {
@@ -1432,7 +1473,7 @@ th::-webkit-scrollbar {
   }
 
   .ft-size-default {
-    font-size: 56px;
+    font-size: 30px;
   }
 
   .ft-size-1 {
@@ -1581,5 +1622,25 @@ th::-webkit-scrollbar {
   .delete-modal-delete-btn {
     font-size: 12px;
     width: 40%;
+  }
+
+  .saved-layout-container {
+    height: 1150px;
+  }
+
+  .saved-container {
+    height: 500px;
+  }
+
+  .saved-events-container {
+    height: 360px;
+  }
+
+  .itinerary-container {
+    height: 500px;
+  }
+
+  .saved-itinerary-locations-container {
+    height: 360px;
   }
 }
