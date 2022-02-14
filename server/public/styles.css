@@ -1399,8 +1399,45 @@ th::-webkit-scrollbar {
 }
 
 @media only screen and (max-width: 576px) {
+  .logo {
+    font-size: 30px;
+  }
+
   .home-header {
     font-size: 1em;
+    text-align: center;
+  }
+
+  .banner-container {
+    height: 400px;
+  }
+
+  .banner {
+    height: 300px;
+  }
+
+  .home-events-layout-container {
+    margin: 0;
+    height: 280px;
+  }
+
+  .home-layout-container {
+    height: 300px;
+    margin-top: 40px;
+  }
+
+  .home-event-card-container {
+    width: 200px;
+    height: 220px;
+  }
+
+  .home-event-image-container {
+    width: 100%;
+    height: 130px;
+  }
+
+  .home-event-info-container {
+    width: 100%;
   }
 
   .results-container {
