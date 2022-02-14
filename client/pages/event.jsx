@@ -10,6 +10,7 @@ export default class Event extends React.Component {
 
     this.saveEvent = this.saveEvent.bind(this);
     this.getTickets = this.getTickets.bind(this);
+    this.getFontSize = this.getFontSize.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +50,24 @@ export default class Event extends React.Component {
     window.open(this.props.eventInfo.url, '_blank');
   }
 
+  getFontSize() {
+    let fontSize = '';
+
+    if (this.props.performer.name.length > 41) {
+      fontSize = 'ft-size-4';
+    } else if (this.props.performer.name.length > 32) {
+      fontSize = 'ft-size-3';
+    } else if (this.props.performer.name.length > 26) {
+      fontSize = 'ft-size-2';
+    } else if (this.props.performer.name.length > 9) {
+      fontSize = 'ft-size-1';
+    } else {
+      fontSize = 'ft-size-default';
+    }
+
+    return fontSize;
+  }
+
   render() {
 
     return (
@@ -58,7 +77,7 @@ export default class Event extends React.Component {
             <div className="row">
               <img className="event-info-img" src={this.props.performer.image}></img>
               <div className="event-info-performer-container flex-c">
-                <h1 className="event-info-performer">{this.props.performer.name}</h1>
+                <h1 className={`event-info-performer ${this.getFontSize()}`}>{this.props.performer.name}</h1>
               </div>
             </div>
             <div className="event-info-map-container flex-c">
