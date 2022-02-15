@@ -2,7 +2,9 @@
 
 A full stack JavaScript web application for event-goers who want to find events and create itineraries for those events.
 
-Live Demo: [Eventinerary](https://eventinerary.herokuapp.com/)
+## Live Demo
+
+[Eventinerary](https://eventinerary.herokuapp.com/)
 
 ## Technologies Used:
   - React.js
