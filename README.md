@@ -34,6 +34,7 @@ A full stack JavaScript web application for event-goers who want to find events 
 
 ## Preview:
 ![eventinerary-demo-1](https://user-images.githubusercontent.com/85265067/153956855-73cba1fe-9b7b-442c-9488-0df82d0bf125.gif)
+![eventinerary-mobile](https://user-images.githubusercontent.com/85265067/156073322-30cabb8a-b24b-438c-b8fe-97c0d306866e.gif)
 
 ## System Requirements
   - Node.js 10 or higher
